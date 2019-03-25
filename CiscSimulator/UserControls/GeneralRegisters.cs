@@ -6,22 +6,22 @@ namespace CiscSimulator.UserControls
 {
     public partial class GeneralRegisters : UserControl
     {
-        public Register R1 { get; set; }
-        public Register R2 { get; set; }
-        public Register R3 { get; set; }
-        public Register R4 { get; set; }
-        public Register R5 { get; set; }
-        public Register R6 { get; set; }
-        public Register R7 { get; set; }
-        public Register R8 { get; set; }
-        public Register R9 { get; set; }
-        public Register R10 { get; set; }
-        public Register R11 { get; set; }
-        public Register R12 { get; set; }
-        public Register R13 { get; set; }
-        public Register R14 { get; set; }
-        public Register R15 { get; set; }
-        public Register R16 { get; set; }
+        public Register R1 { get; private set; }
+        public Register R2 { get; private set; }
+        public Register R3 { get; private set; }
+        public Register R4 { get; private set; }
+        public Register R5 { get; private set; }
+        public Register R6 { get; private set; }
+        public Register R7 { get; private set; }
+        public Register R8 { get; private set; }
+        public Register R9 { get; private set; }
+        public Register R10 { get; private set; }
+        public Register R11 { get; private set; }
+        public Register R12 { get; private set; }
+        public Register R13 { get; private set; }
+        public Register R14 { get; private set; }
+        public Register R15 { get; private set; }
+        public Register R16 { get; private set; }
 
         private List<Register> registers;
 

@@ -1,5 +1,5 @@
-﻿using System.Windows.Forms;
-using CiscSimulator.Classes;
+﻿using System;
+using System.Windows.Forms;
 
 namespace CiscSimulator.UserControls
 {
@@ -10,25 +10,36 @@ namespace CiscSimulator.UserControls
             get => labelRegisterName.Text;
             private set => labelRegisterName.Text = value;
         }
-        public string Value
+
+        private byte _HiByte;
+        public byte HiByte
         {
-            get => textBoxValue.Text;
-            set => textBoxValue.Text = value;
+            get => _HiByte;
+            set
+            {
+                _HiByte = value;
+                textBoxHiByte.Text = Convert.ToString(_HiByte, 2).PadLeft(8, '0');
+            }
         }
 
-        public Register(string registerName, string value = null)
+        private byte _LoByte;
+        public byte LoByte
+        {
+            get => _LoByte;
+            set
+            {
+                _LoByte = value;
+                textBoxLoByte.Text = Convert.ToString(_LoByte, 2).PadLeft(8, '0');
+            }
+        }
+
+        public Register(string registerName, byte loByte = byte.MinValue, byte hiByte = byte.MinValue)
         {
             InitializeComponent();
 
             RegisterName = registerName;
-            if (string.IsNullOrEmpty(value))
-            {
-                Value = Constants.DefaultRegisterValue;
-            }
-            else
-            {
-                Value = value;
-            }
+            LoByte = loByte;
+            HiByte = hiByte;
         }
     }
 }

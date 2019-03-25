@@ -12,7 +12,7 @@ namespace CiscSimulator
         {
             InitializeComponent();
 
-            generalRegisters = new GeneralRegisters {Location = new Point(50, 50)};
+            generalRegisters = new GeneralRegisters {Location = new Point(25, 25)};
             Controls.Add(generalRegisters);
         }
     }

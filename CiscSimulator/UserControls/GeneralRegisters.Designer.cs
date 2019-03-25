@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Name = "GeneralRegisters";
-            this.Size = new System.Drawing.Size(148, 398);
+            this.Size = new System.Drawing.Size(200, 398);
             this.ResumeLayout(false);
 
         }
