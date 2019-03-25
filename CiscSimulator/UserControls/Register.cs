@@ -18,7 +18,7 @@ namespace CiscSimulator.UserControls
             set
             {
                 _HiByte = value;
-                textBoxHiByte.Text = Convert.ToString(_HiByte, 2).PadLeft(8, '0');
+                textBoxHiByte.Text = GetBinaryStringRepresentation(value);
             }
         }
 
@@ -29,7 +29,7 @@ namespace CiscSimulator.UserControls
             set
             {
                 _LoByte = value;
-                textBoxLoByte.Text = Convert.ToString(_LoByte, 2).PadLeft(8, '0');
+                textBoxLoByte.Text = GetBinaryStringRepresentation(value);
             }
         }
 
@@ -40,6 +40,11 @@ namespace CiscSimulator.UserControls
             RegisterName = registerName;
             LoByte = loByte;
             HiByte = hiByte;
+        }
+
+        private string GetBinaryStringRepresentation(byte value)
+        {
+            return Convert.ToString(value, 2).PadLeft(8, '0');
         }
     }
 }
