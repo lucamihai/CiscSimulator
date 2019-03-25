@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -24,6 +25,24 @@ namespace CiscSimulator.UserControls
         public Register R16 { get; private set; }
 
         private List<Register> registers;
+
+        public Register this[int registerNumber]
+        {
+            get
+            {
+                ValidateRegisterNumber(registerNumber);
+
+                return registers[registerNumber - 1];
+            }
+        }
+
+        private void ValidateRegisterNumber(int registerNumber)
+        {
+            if (registerNumber < 1 || registerNumber > 16)
+            {
+                throw new ArgumentException($"{nameof(registerNumber)} must be at least 1 and at most 16");
+            }
+        }
 
         public GeneralRegisters()
         {
