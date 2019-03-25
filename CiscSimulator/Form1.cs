@@ -16,12 +16,12 @@ namespace CiscSimulator
             Controls.Add(generalRegisters);
 
             // General registers - properties test
-            generalRegisters.R1.LoByte = 25;
-            generalRegisters.R1.HiByte = 50;
+            generalRegisters.R0.LoByte = 25;
+            generalRegisters.R0.HiByte = 50;
 
             // General registers - [] operator test
-            generalRegisters[2].LoByte = 2;
-            generalRegisters[2].HiByte = 4;
+            generalRegisters[1].LoByte = 2;
+            generalRegisters[1].HiByte = 4;
 
         }
     }

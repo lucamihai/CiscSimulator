@@ -40,7 +40,7 @@
             this.labelRegisterName.Name = "labelRegisterName";
             this.labelRegisterName.Size = new System.Drawing.Size(21, 13);
             this.labelRegisterName.TabIndex = 1;
-            this.labelRegisterName.Text = "R1";
+            this.labelRegisterName.Text = "R0";
             // 
             // textBoxHiByte
             // 
