@@ -1,5 +1,5 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using CiscSimulator.Classes;
 
 namespace CiscSimulator.UserControls
 {
@@ -18,7 +18,7 @@ namespace CiscSimulator.UserControls
             set
             {
                 _HiByte = value;
-                textBoxHiByte.Text = GetBinaryStringRepresentation(value);
+                textBoxHiByte.Text = Utilities.GetBinaryStringRepresentation(value);
             }
         }
 
@@ -29,7 +29,7 @@ namespace CiscSimulator.UserControls
             set
             {
                 _LoByte = value;
-                textBoxLoByte.Text = GetBinaryStringRepresentation(value);
+                textBoxLoByte.Text = Utilities.GetBinaryStringRepresentation(value);
             }
         }
 
@@ -40,11 +40,6 @@ namespace CiscSimulator.UserControls
             RegisterName = registerName;
             LoByte = loByte;
             HiByte = hiByte;
-        }
-
-        private string GetBinaryStringRepresentation(byte value)
-        {
-            return Convert.ToString(value, 2).PadLeft(8, '0');
         }
     }
 }

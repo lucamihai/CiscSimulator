@@ -1,28 +1,50 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using CiscSimulator.Classes;
 using CiscSimulator.UserControls;
 
 namespace CiscSimulator
 {
     public partial class Form1 : Form
     {
-        private GeneralRegisters generalRegisters;
+        private Timer timerDraw;
+
+        private Line lineDataIn;
+        private Line lineDataOut;
+        private Line lineAddress;
+        private Memory memory;
 
         public Form1()
         {
             InitializeComponent();
 
-            generalRegisters = new GeneralRegisters {Location = new Point(25, 25)};
-            Controls.Add(generalRegisters);
+            timerDraw = new Timer();
+            timerDraw.Interval = 100;
+            timerDraw.Tick += TimerDrawTick;
+            timerDraw.Start();
 
-            // General registers - properties test
-            generalRegisters.R0.LoByte = 25;
-            generalRegisters.R0.HiByte = 50;
+            lineDataIn = new Line(new Point(10, 10), new Point(100, 10));
+            lineDataOut = new Line(new Point(250, 10), new Point(340, 10));
+            lineAddress = new Line(new Point(10, 100), new Point(100, 100));
 
-            // General registers - [] operator test
-            generalRegisters[1].LoByte = 2;
-            generalRegisters[1].HiByte = 4;
+            memory = new Memory(lineDataIn, lineDataOut, lineAddress);
+            memory.Location = new Point(100, 10);
+            Controls.Add(memory);
 
+            lineDataIn.Data.LoByte = 10;
+            lineDataIn.Data.HiByte = 15;
+        }
+
+        private void TimerDrawTick(object sender, System.EventArgs e)
+        {
+            Refresh();
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            lineDataIn.Draw(e);
+            lineDataOut.Draw(e);
+            lineAddress.Draw(e);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace CiscSimulator.Classes
         public Color Color { get; private set; }
         public Point FirstPoint { get; private set; }
         public Point SecondPoint { get; private set; }
+        public Data Data { get; set; } = new Data();
 
         public bool Active
         {
