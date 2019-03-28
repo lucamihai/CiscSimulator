@@ -74,14 +74,6 @@ namespace CiscSimulator.GeneralRegisters
             return location;
         }
 
-        private void AddRegistersToControls()
-        {
-            foreach (var register in registers)
-            {
-                Controls.Add(register);
-            }
-        }
-
         private void InitializeProperties()
         {
             R0 = registers[0];
@@ -100,6 +92,14 @@ namespace CiscSimulator.GeneralRegisters
             R13 = registers[13];
             R14 = registers[14];
             R15 = registers[15];
+        }
+
+        private void AddRegistersToControls()
+        {
+            foreach (var register in registers)
+            {
+                Controls.Add(register);
+            }
         }
     }
 }
