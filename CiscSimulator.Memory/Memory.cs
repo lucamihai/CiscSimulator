@@ -19,7 +19,7 @@ namespace CiscSimulator.Memory
             get
             {
                 ValidateAddress();
-                return dataDictionary[Constants.MinimumAddress.Value];
+                return dataDictionary[LineAddress.Data.Value];
             }
         }
 
@@ -70,7 +70,7 @@ namespace CiscSimulator.Memory
             WaitIfWaitingEnabled();
 
             LineDataIn.Active = false;
-            dataDictionary[Constants.MinimumAddress.Value] = LineDataIn.Data;
+            dataDictionary[LineAddress.Data.Value] = LineDataIn.Data;
             WaitIfWaitingEnabled();
         }
 
@@ -79,7 +79,7 @@ namespace CiscSimulator.Memory
             ValidateAddress();
 
             LineDataOut.Active = true;
-            LineDataOut.Data = this.Data;
+            LineDataOut.Data = (Data)this.Data.Clone();
             WaitIfWaitingEnabled();
         }
 
