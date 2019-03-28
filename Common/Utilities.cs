@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CiscSimulator.Classes
+namespace Common
 {
     public static class Utilities
     {

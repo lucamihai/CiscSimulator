@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CiscSimulator.Classes;
+using Common;
 
 namespace CiscSimulator.UserControls
 {

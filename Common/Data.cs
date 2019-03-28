@@ -1,4 +1,4 @@
-﻿namespace CiscSimulator.Classes
+﻿namespace Common
 {
     public class Data
     {

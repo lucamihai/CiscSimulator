@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using Common;
 
 namespace CiscSimulator.Classes
 {
@@ -13,17 +14,7 @@ namespace CiscSimulator.Classes
         public bool Active
         {
             get => Color == Constants.LineActiveColor;
-            set
-            {
-                if (value)
-                {
-                    Color = Constants.LineActiveColor;
-                }
-                else
-                {
-                    Color = Constants.LineInactiveColor;
-                }
-            }
+            set => Color = value ? Constants.LineActiveColor : Constants.LineInactiveColor;
         }
 
         public Line(Point p1, Point p2)
@@ -35,8 +26,10 @@ namespace CiscSimulator.Classes
 
         public void Draw(PaintEventArgs e)
         {
-            var pen = new Pen(Color);
-            e.Graphics.DrawLine(pen, FirstPoint.X, FirstPoint.Y, SecondPoint.X, SecondPoint.Y);
+            using (var pen = new Pen(Color))
+            {
+                e.Graphics.DrawLine(pen, FirstPoint, SecondPoint);
+            }
         }
     }
 }
