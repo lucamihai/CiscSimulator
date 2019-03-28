@@ -6,5 +6,6 @@ namespace CiscSimulator.Common
     {
         public static readonly Color LineInactiveColor = Color.Black;
         public static readonly Color LineActiveColor = Color.Red;
+        public const int WaitIntervalInMilliseconds = 100;
     }
 }

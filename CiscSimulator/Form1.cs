@@ -16,11 +16,7 @@ namespace CiscSimulator
         public Form1()
         {
             InitializeComponent();
-
-            timerDraw = new Timer();
-            timerDraw.Interval = 100;
-            timerDraw.Tick += TimerDrawTick;
-            timerDraw.Start();
+            InitializeTimer();
 
             lineDataIn = new Line(new Point(10, 10), new Point(100, 10));
             lineDataOut = new Line(new Point(250, 10), new Point(340, 10));
@@ -32,6 +28,15 @@ namespace CiscSimulator
 
             lineDataIn.Data.LoByte = 10;
             lineDataIn.Data.HiByte = 15;
+
+            timerDraw.Start();
+        }
+
+        private void InitializeTimer()
+        {
+            timerDraw = new Timer();
+            timerDraw.Interval = 100;
+            timerDraw.Tick += TimerDrawTick;
         }
 
         private void TimerDrawTick(object sender, System.EventArgs e)
