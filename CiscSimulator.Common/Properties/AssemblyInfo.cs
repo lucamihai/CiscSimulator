@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CiscSimulator")]
+[assembly: AssemblyTitle("CiscSimulator.Common")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CiscSimulator")]
+[assembly: AssemblyProduct("CiscSimulator.Common")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("14365805-afb2-4c87-843e-e7dffdd09e60")]
+[assembly: Guid("1ff97eef-85ab-47ec-93e2-a8fdb8d88f8d")]
 
 // Version information for an assembly consists of the following four values:
 //

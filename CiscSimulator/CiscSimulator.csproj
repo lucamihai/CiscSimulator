@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{955D0FB5-5695-4B36-B90A-BAE8005CD5E4}</ProjectGuid>
+    <ProjectGuid>{14365805-AFB2-4C87-843E-E7DFFDD09E60}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>CiscSimulator</RootNamespace>
     <AssemblyName>CiscSimulator</AssemblyName>
@@ -46,8 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Constants.cs" />
-    <Compile Include="Classes\Line.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,24 +54,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\GeneralRegisters.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\GeneralRegisters.Designer.cs">
-      <DependentUpon>GeneralRegisters.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Memory.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Memory.Designer.cs">
-      <DependentUpon>Memory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Register.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Register.Designer.cs">
-      <DependentUpon>Register.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,15 +66,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\GeneralRegisters.resx">
-      <DependentUpon>GeneralRegisters.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Memory.resx">
-      <DependentUpon>Memory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Register.resx">
-      <DependentUpon>Register.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -109,9 +80,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{3eccdd72-5576-4615-83f1-4defd0c7e8bf}</Project>
-      <Name>Common</Name>
+    <ProjectReference Include="..\CiscSimulator.Assembler\CiscSimulator.Assembler.csproj">
+      <Project>{500618a2-93a6-4bb0-b531-b73da3968b14}</Project>
+      <Name>CiscSimulator.Assembler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CiscSimulator.Common\CiscSimulator.Common.csproj">
+      <Project>{1ff97eef-85ab-47ec-93e2-a8fdb8d88f8d}</Project>
+      <Name>CiscSimulator.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CiscSimulator.GeneralRegisters\CiscSimulator.GeneralRegisters.csproj">
+      <Project>{c62cefa7-2d3d-4acd-a8da-8d1d01c97db0}</Project>
+      <Name>CiscSimulator.GeneralRegisters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CiscSimulator.Memory\CiscSimulator.Memory.csproj">
+      <Project>{628451b3-72fb-4f09-98ff-5d853eff9fc5}</Project>
+      <Name>CiscSimulator.Memory</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

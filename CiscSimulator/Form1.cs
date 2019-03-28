@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-using CiscSimulator.Classes;
-using CiscSimulator.UserControls;
+using CiscSimulator.Common;
 
 namespace CiscSimulator
 {
@@ -12,7 +11,7 @@ namespace CiscSimulator
         private Line lineDataIn;
         private Line lineDataOut;
         private Line lineAddress;
-        private Memory memory;
+        private Memory.Memory memory;
 
         public Form1()
         {
@@ -27,7 +26,7 @@ namespace CiscSimulator
             lineDataOut = new Line(new Point(250, 10), new Point(340, 10));
             lineAddress = new Line(new Point(10, 100), new Point(100, 100));
 
-            memory = new Memory(lineDataIn, lineDataOut, lineAddress);
+            memory = new Memory.Memory(lineDataIn, lineDataOut, lineAddress);
             memory.Location = new Point(100, 10);
             Controls.Add(memory);
 
