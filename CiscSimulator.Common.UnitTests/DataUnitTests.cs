@@ -51,5 +51,36 @@ namespace CiscSimulator.Common.UnitTests
         {
             Assert.AreEqual(expectedValue2, data2.Value);
         }
+
+        [TestMethod]
+        public void CloneWorks1()
+        {
+            Assert.AreEqual(data1, (Data)data1.Clone());
+        }
+
+        [TestMethod]
+        public void CloneWorks2()
+        {
+            Assert.AreEqual(data2, (Data)data2.Clone());
+        }
+
+        [TestMethod]
+        public void EqualsReturnsTrueForEqualData()
+        {
+            var data1Clone = (Data)data1.Clone();
+            Assert.AreEqual(true, data1.Equals(data1Clone));
+        }
+
+        [TestMethod]
+        public void EqualsReturnsFalseForDifferentData()
+        {
+            Assert.AreEqual(false, data1.Equals(data2));
+        }
+
+        [TestMethod]
+        public void Data1IsSmallerThanData2()
+        {
+            Assert.AreEqual(true, data1.Value < data2.Value);
+        }
     }
 }

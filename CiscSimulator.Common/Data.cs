@@ -7,7 +7,17 @@ namespace CiscSimulator.Common
         public byte LoByte { get; set; } = byte.MinValue;
         public byte HiByte { get; set; } = byte.MinValue;
 
-        public short Value => BitConverter.ToInt16(new[] {LoByte, HiByte}, 0);
+        public static Data LowestData => new Data { HiByte = byte.MinValue, LoByte = byte.MinValue };
+
+        public short Value
+        {
+            get => BitConverter.ToInt16(new[] {LoByte, HiByte}, 0);
+            set
+            {
+                HiByte = (byte) (value >> 8);
+                LoByte = (byte) (value & 255);
+            }
+        }
 
         public override string ToString()
         {
@@ -19,7 +29,7 @@ namespace CiscSimulator.Common
         {
             if (obj is Data otherData)
             {
-                return this.LoByte == otherData.LoByte && this.HiByte == otherData.HiByte;
+                return this.Value == otherData.Value;
             }
 
             return false;

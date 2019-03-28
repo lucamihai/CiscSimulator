@@ -10,35 +10,24 @@ namespace CiscSimulator.Common
             private set => labelRegisterName.Text = value;
         }
 
-        private byte _HiByte;
-        public byte HiByte
+        private Data _Data;
+        public Data Data
         {
-            get => _HiByte;
+            get => _Data;
             set
             {
-                _HiByte = value;
-                textBoxHiByte.Text = Utilities.GetBinaryStringRepresentation(value);
+                _Data = value;
+                textBoxHiByte.Text = Utilities.GetBinaryStringRepresentation(_Data.HiByte);
+                textBoxLoByte.Text = Utilities.GetBinaryStringRepresentation(_Data.LoByte);
             }
         }
 
-        private byte _LoByte;
-        public byte LoByte
-        {
-            get => _LoByte;
-            set
-            {
-                _LoByte = value;
-                textBoxLoByte.Text = Utilities.GetBinaryStringRepresentation(value);
-            }
-        }
-
-        public Register(string registerName, byte loByte = byte.MinValue, byte hiByte = byte.MinValue)
+        public Register(string registerName, Data data = null)
         {
             InitializeComponent();
 
             RegisterName = registerName;
-            LoByte = loByte;
-            HiByte = hiByte;
+            Data = data != null ? data : Data.LowestData;
         }
     }
 }
