@@ -13,6 +13,8 @@ namespace CiscSimulator
         private Line lineAddress;
         private Memory.Memory memory;
 
+        private Register registerTest;
+
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +31,10 @@ namespace CiscSimulator
             lineDataIn.Data.LoByte = 10;
             lineDataIn.Data.HiByte = 15;
 
+            registerTest = new Register("R0");
+            registerTest.Location = new Point(200, 200);
+            Controls.Add(registerTest);
+
             timerDraw.Start();
         }
 
@@ -42,6 +48,7 @@ namespace CiscSimulator
         private void TimerDrawTick(object sender, System.EventArgs e)
         {
             Refresh();
+            registerTest.Data.Value++;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)

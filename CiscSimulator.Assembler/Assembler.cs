@@ -44,10 +44,10 @@ namespace CiscSimulator.Assembler
                 }
 
                 var lineToInsert = line;
-                if (line.Contains(Constants.CommentMarker))
+                if (lineToInsert.Contains(Constants.CommentMarker))
                 {
-                    var indexOfCommentMarker = line.IndexOf(Constants.CommentMarker);
-                    lineToInsert = line.Remove(indexOfCommentMarker);
+                    var indexOfCommentMarker = lineToInsert.IndexOf(Constants.CommentMarker);
+                    lineToInsert = lineToInsert.Remove(indexOfCommentMarker);
                 }
 
                 linesAfterCommentRemoval.Add(lineToInsert);
