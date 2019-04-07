@@ -41,9 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressMode.cs" />
     <Compile Include="Assembler.cs" />
+    <Compile Include="InstructionClass.cs" />
+    <Compile Include="B1Instruction.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Instruction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CiscSimulator.Common\CiscSimulator.Common.csproj">
+      <Project>{1ff97eef-85ab-47ec-93e2-a8fdb8d88f8d}</Project>
+      <Name>CiscSimulator.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
