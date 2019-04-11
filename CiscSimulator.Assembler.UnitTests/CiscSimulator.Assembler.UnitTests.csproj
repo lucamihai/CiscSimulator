@@ -63,6 +63,10 @@
       <Project>{500618a2-93a6-4bb0-b531-b73da3968b14}</Project>
       <Name>CiscSimulator.Assembler</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CiscSimulator.Common\CiscSimulator.Common.csproj">
+      <Project>{1FF97EEF-85AB-47EC-93E2-A8FDB8D88F8D}</Project>
+      <Name>CiscSimulator.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

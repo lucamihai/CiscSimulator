@@ -4,6 +4,6 @@ namespace CiscSimulator.Assembler
 {
     public class Instruction
     {
-        public virtual Data Data { get; } 
+        public virtual Data Data { get; }
     }
 }

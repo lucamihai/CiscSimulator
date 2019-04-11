@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CiscSimulator.Common;
 
 namespace CiscSimulator.Assembler
 {
@@ -121,53 +122,61 @@ namespace CiscSimulator.Assembler
 
             if (instructionClass == InstructionClass.B1)
             {
-                if (arguments.Length != Constants.ExpectedArgumentsForInstructionClassB1)
-                {
-                    throw new ArgumentException(
-                        $"Expected {Constants.ExpectedArgumentsForInstructionClassB1} arguments, received {arguments.Length}");
-                }
-
-                var destination = arguments[0];
-                var source = arguments[1];
-
-                var instruction = new B1Instruction();
-                instruction.InstructionNumber = B1InstructionNumbers[instructionName];
-                instruction.SourceAddressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(source);
-                instruction.DestinationAddressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(destination);
-
-                if (instruction.SourceAddressMode == AddressMode.Immediate)
-                {
-                    if (int.TryParse(source, out var value))
-                    {
-                        instruction.Source = (byte)value;
-                    }
-                }
-
-                if (instruction.SourceAddressMode == AddressMode.Direct)
-                {
-                    if (int.TryParse(source.Substring(1), out var registerNumber))
-                    {
-                        instruction.Source = (byte)registerNumber;
-                    }
-                }
-
-                if (instruction.DestinationAddressMode == AddressMode.Immediate)
-                {
-                    throw new InvalidOperationException("Destination cannot be an immediate value");
-                }
-
-                if (instruction.DestinationAddressMode == AddressMode.Direct)
-                {
-                    if (int.TryParse(destination.Substring(1), out var registerNumber))
-                    {
-                        instruction.Destination = (byte)registerNumber;
-                    }
-                }
-
-                return instruction;
+                return GenerateB1Instruction(instructionName, arguments);
             }
 
             return null;
+        }
+
+        private B1Instruction GenerateB1Instruction(string instructionName, string[] arguments)
+        {
+            if (arguments.Length != Constants.ExpectedArgumentsForInstructionClassB1)
+            {
+                throw new ArgumentException(
+                    $"Expected {Constants.ExpectedArgumentsForInstructionClassB1} arguments, received {arguments.Length}");
+            }
+
+            var destination = arguments[0];
+            var source = arguments[1];
+
+            var instruction = new B1Instruction();
+            instruction.InstructionNumber = B1InstructionNumbers[instructionName];
+
+            AddressMode sourceAddressMode;
+            byte sourceValue;
+            Data sourceExtendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                source, 
+                out sourceAddressMode, 
+                out sourceValue, 
+                out sourceExtendedData
+            );
+
+            AddressMode destinationAddressMode;
+            byte destinationValue;
+            Data destinationExtendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                destination, 
+                out destinationAddressMode, 
+                out destinationValue, 
+                out destinationExtendedData
+            );
+
+            instruction.SourceAddressMode = sourceAddressMode;
+            instruction.Source = sourceValue;
+
+            instruction.DestinationAddressMode = destinationAddressMode;
+            instruction.Destination = destinationValue;
+
+            instruction.SourceDataExtension = sourceExtendedData;
+            instruction.DestinationDataExtension = destinationExtendedData;
+
+            if (instruction.DestinationAddressMode == AddressMode.Immediate)
+            {
+                throw new InvalidOperationException("Destination cannot be an immediate value");
+            }
+
+            return instruction;
         }
 
         private string[] GetArgumentsFromLine(string line)

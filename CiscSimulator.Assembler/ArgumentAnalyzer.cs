@@ -6,49 +6,39 @@ namespace CiscSimulator.Assembler
     {
         public static AddressMode GetAddressModeBasedOnArgument(string argument)
         {
-            if (ArgumentHasAddressModeImmediate(argument))
-            {
-                return AddressMode.Immediate;
-            }
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            GetInformationFromArgument(argument, out addressMode, out value, out extendedData);
 
-            if (ArgumentHasAddressModeDirect(argument))
-            {
-                return AddressMode.Direct;
-            }
-
-            if (ArgumentHasAddressModeIndirect(argument))
-            {
-                return AddressMode.Indirect;
-            }
-
-            if (ArgumentHasAddressModeIndexed(argument))
-            {
-                return AddressMode.Indexed;
-            }
-
-            return AddressMode.NotRecognized;
+            return addressMode;
         }
 
-        private static bool ArgumentHasAddressModeImmediate(string argument)
+        public static void GetInformationFromArgument(string argument, out AddressMode addressMode, out byte value, out Data extendedData)
         {
-            return int.TryParse(argument, out var immediateValue) && immediateValue >= 0;
-        }
+            addressMode = AddressMode.NotRecognized;
+            value = 0;
+            extendedData = new Data();
 
-        private static bool ArgumentHasAddressModeDirect(string argument)
-        {
+            if (int.TryParse(argument, out var immediateValue) && immediateValue >= 0)
+            {
+                addressMode = AddressMode.Immediate;
+                value = (byte)immediateValue;
+
+                return;
+            }
+
             if (argument.StartsWith("r"))
             {
                 if (int.TryParse(argument.Substring(1), out var registerNumber))
                 {
-                    return true;
+                    addressMode = AddressMode.Direct;
+                    value = (byte)registerNumber;
+
+                    return;
                 }
             }
 
-            return false;
-        }
-
-        private static bool ArgumentHasAddressModeIndirect(string argument)
-        {
             if (argument.StartsWith("(") && argument.EndsWith(")"))
             {
                 var indexOfLastParentheses = argument.Length - 1;
@@ -58,16 +48,14 @@ namespace CiscSimulator.Assembler
                 {
                     if (int.TryParse(stuffBetweenParentheses.Substring(1), out var registerNumber))
                     {
-                        return true;
+                        addressMode = AddressMode.Indirect;
+                        value = (byte) registerNumber;
+
+                        return;
                     }
                 }
             }
 
-            return false;
-        }
-
-        private static bool ArgumentHasAddressModeIndexed(string argument)
-        {
             if (argument.StartsWith("("))
             {
                 var indexOfLastParentheses = argument.LastIndexOf(")");
@@ -79,19 +67,22 @@ namespace CiscSimulator.Assembler
                     {
                         if (indexOfLastParentheses == argument.Length - 1)
                         {
-                            return false;
+                            return;
                         }
 
                         var stuffAfterParentheses = argument.Substring(indexOfLastParentheses + 1);
-                        if (int.TryParse(stuffAfterParentheses, out var value))
+                        if (int.TryParse(stuffAfterParentheses, out var offset))
                         {
-                            return true;
+                            addressMode = AddressMode.Indexed;
+                            value = (byte)registerNumber;
+                            extendedData.Value = (short)offset;
+
+                            return;
                         }
                     }
                 }
             }
-
-            return false;
         }
+
     }
 }

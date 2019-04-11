@@ -8,9 +8,12 @@ namespace CiscSimulator.Assembler
 
         public AddressMode SourceAddressMode { get; set; }
         public byte Source { get; set; }
+        public Data SourceDataExtension { get; set; }
 
         public AddressMode DestinationAddressMode { get; set; }
         public byte Destination { get; set; }
+        public Data DestinationDataExtension { get; set; }
+        
 
         public override Data Data
         {

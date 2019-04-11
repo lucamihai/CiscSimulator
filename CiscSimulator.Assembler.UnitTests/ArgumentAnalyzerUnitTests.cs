@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CiscSimulator.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CiscSimulator.Assembler.UnitTests
 {
@@ -22,88 +23,245 @@ namespace CiscSimulator.Assembler.UnitTests
         private const string argumentAddressModeNotRecognized3 = "(10)";
         private const string argumentAddressModeNotRecognized4 = "(r1)r2";
 
+
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeImmediate1()
+        public void GetInformationFromArgumentWorksOkForAddressModeImmediate1()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeImmediate1);
+            var argument = argumentAddressModeImmediate1;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.Immediate, addressMode);
+            Assert.AreEqual(10, value);
+            Assert.AreEqual(0, extendedData.Value);
         }
 
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeImmediate2()
+        public void GetInformationFromArgumentWorksOkForAddressModeImmediate2()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeImmediate2);
+            var argument = argumentAddressModeImmediate2;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.Immediate, addressMode);
+            Assert.AreEqual(15, value);
+            Assert.AreEqual(0, extendedData.Value);
         }
 
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeDirect1()
+        public void GetInformationFromArgumentWorksOkForAddressModeDirect1()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeDirect1);
+            var argument = argumentAddressModeDirect1;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.Direct, addressMode);
+            Assert.AreEqual(5, value);
+            Assert.AreEqual(0, extendedData.Value);
         }
 
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeDirect2()
+        public void GetInformationFromArgumentWorksOkForAddressModeDirect2()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeDirect2);
+            var argument = argumentAddressModeDirect2;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.Direct, addressMode);
+            Assert.AreEqual(6, value);
+            Assert.AreEqual(0, extendedData.Value);
         }
 
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeIndirect1()
+        public void GetInformationFromArgumentWorksOkForAddressModeIndirect1()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeIndirect1);
+            var argument = argumentAddressModeIndirect1;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.Indirect, addressMode);
+            Assert.AreEqual(1, value);
+            Assert.AreEqual(0, extendedData.Value);
         }
 
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeIndirect2()
+        public void GetInformationFromArgumentWorksOkForAddressModeIndirect2()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeIndirect2);
+            var argument = argumentAddressModeIndirect2;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.Indirect, addressMode);
+            Assert.AreEqual(2, value);
+            Assert.AreEqual(0, extendedData.Value);
         }
 
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeIndexed1()
+        public void GetInformationFromArgumentWorksOkForAddressModeIndexed1()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeIndexed1);
+            var argument = argumentAddressModeIndexed1;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.Indexed, addressMode);
+            Assert.AreEqual(1, value);
+            Assert.AreEqual(1, extendedData.Value);
         }
 
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeIndexed2()
+        public void GetInformationFromArgumentWorksOkForAddressModeIndexed2()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeIndexed2);
+            var argument = argumentAddressModeIndexed2;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.Indexed, addressMode);
+            Assert.AreEqual(2, value);
+            Assert.AreEqual(13, extendedData.Value);
         }
 
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeNotRecognized1()
+        public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized1()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeNotRecognized1);
+            var argument = argumentAddressModeNotRecognized1;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.NotRecognized, addressMode);
+            Assert.AreEqual(0, value);
+            Assert.AreEqual(0, extendedData.Value);
         }
 
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeNotRecognized2()
+        public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized2()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeNotRecognized2);
+            var argument = argumentAddressModeNotRecognized2;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.NotRecognized, addressMode);
+            Assert.AreEqual(0, value);
+            Assert.AreEqual(0, extendedData.Value);
         }
 
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeNotRecognized3()
+        public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized3()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeNotRecognized3);
+            var argument = argumentAddressModeNotRecognized3;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.NotRecognized, addressMode);
+            Assert.AreEqual(0, value);
+            Assert.AreEqual(0, extendedData.Value);
         }
 
         [TestMethod]
-        public void GetAddressModeBasedOnArgumentReturnsAddressModeNotRecognized4()
+        public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized4()
         {
-            var addressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(argumentAddressModeNotRecognized4);
+            var argument = argumentAddressModeNotRecognized4;
+
+            AddressMode addressMode;
+            byte value;
+            Data extendedData;
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out addressMode,
+                out value,
+                out extendedData
+            );
+
             Assert.AreEqual(AddressMode.NotRecognized, addressMode);
+            Assert.AreEqual(0, value);
+            Assert.AreEqual(0, extendedData.Value);
         }
     }
 }
