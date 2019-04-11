@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ArgumentAnalyzerUnitTests.cs" />
     <Compile Include="AssemblerUnitTests.cs" />
+    <Compile Include="InstructionGeneratorUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.cs" />
   </ItemGroup>

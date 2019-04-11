@@ -5,22 +5,22 @@ namespace CiscSimulator.Assembler.UnitTests
     [TestClass]
     public class ArgumentAnalyzerUnitTests
     {
-        private string argumentAddressModeImmediate1 = "10";
-        private string argumentAddressModeImmediate2 = "15";
+        private const string argumentAddressModeImmediate1 = "10";
+        private const string argumentAddressModeImmediate2 = "15";
 
-        private string argumentAddressModeDirect1 = "r5";
-        private string argumentAddressModeDirect2 = "r6";
+        private const string argumentAddressModeDirect1 = "r5";
+        private const string argumentAddressModeDirect2 = "r6";
 
-        private string argumentAddressModeIndirect1 = "(r1)";
-        private string argumentAddressModeIndirect2 = "(r2)";
+        private const string argumentAddressModeIndirect1 = "(r1)";
+        private const string argumentAddressModeIndirect2 = "(r2)";
 
-        private string argumentAddressModeIndexed1 = "(r1)1";
-        private string argumentAddressModeIndexed2 = "(r2)13";
+        private const string argumentAddressModeIndexed1 = "(r1)1";
+        private const string argumentAddressModeIndexed2 = "(r2)13";
 
-        private string argumentAddressModeNotRecognized1 = "-10";
-        private string argumentAddressModeNotRecognized2 = "rr";
-        private string argumentAddressModeNotRecognized3 = "(10)";
-        private string argumentAddressModeNotRecognized4 = "(r1)r2";
+        private const string argumentAddressModeNotRecognized1 = "-10";
+        private const string argumentAddressModeNotRecognized2 = "rr";
+        private const string argumentAddressModeNotRecognized3 = "(10)";
+        private const string argumentAddressModeNotRecognized4 = "(r1)r2";
 
         [TestMethod]
         public void GetAddressModeBasedOnArgumentReturnsAddressModeImmediate1()
