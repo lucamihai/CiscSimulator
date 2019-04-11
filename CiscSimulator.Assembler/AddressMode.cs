@@ -5,7 +5,7 @@
         Immediate,
         Direct,
         Indirect,
-        Indexat,
+        Indexed,
         NotRecognized
     }
 }

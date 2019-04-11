@@ -197,8 +197,8 @@ namespace CiscSimulator.Assembler
 
                 var instruction = new B1Instruction();
                 instruction.InstructionNumber = B1InstructionNumbers[instructionName];
-                instruction.SourceAddressMode = DetermineAddressModeByArgument(source);
-                instruction.DestinationAddressMode = DetermineAddressModeByArgument(destination);
+                instruction.SourceAddressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(source);
+                instruction.DestinationAddressMode = ArgumentAnalyzer.GetAddressModeBasedOnArgument(destination);
 
                 if (instruction.SourceAddressMode == AddressMode.Immediate)
                 {
@@ -272,34 +272,6 @@ namespace CiscSimulator.Assembler
             }
 
             return InstructionClass.NotRecognized;
-        }
-
-        private AddressMode DetermineAddressModeByArgument(string argument)
-        {
-            if (int.TryParse(argument, out var immediateValue))
-            {
-                return AddressMode.Immediate;
-            }
-
-            if (argument.StartsWith("r"))
-            {
-                if (int.TryParse(argument.Substring(1), out var registerNumber))
-                {
-                    return AddressMode.Direct;
-                }
-            }
-
-            if (argument.StartsWith("(") && argument.EndsWith(")"))
-            {
-                var indexOfLastParentheses = argument.Length - 1;
-                var stuffBetweenParatheses = Utilities.Slice(argument, 1, indexOfLastParentheses);
-                if (int.TryParse(argument.Substring(1), out var registerNumber))
-                {
-                    return AddressMode.Direct;
-                }
-            }
-
-            return AddressMode.NotRecognized;
         }
     }
 }
