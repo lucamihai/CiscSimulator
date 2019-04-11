@@ -13,8 +13,8 @@ namespace CiscSimulator.Memory.Tests
         private Line lineAddress;
         private Memory memory;
 
-        private Data dataToBeInserted1 = new Data {HiByte = 2, LoByte = 3};
-        private Data dataToBeInserted2 = new Data {HiByte = 1, LoByte = 9};
+        private readonly Data dataToBeInserted1 = new Data {HiByte = 2, LoByte = 3};
+        private readonly Data dataToBeInserted2 = new Data {HiByte = 1, LoByte = 9};
 
         [TestInitialize]
         public void Initialize()

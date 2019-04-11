@@ -4,16 +4,6 @@ namespace CiscSimulator.Assembler
 {
     public static class ArgumentAnalyzer
     {
-        public static AddressMode GetAddressModeBasedOnArgument(string argument)
-        {
-            AddressMode addressMode;
-            byte value;
-            Data extendedData;
-            GetInformationFromArgument(argument, out addressMode, out value, out extendedData);
-
-            return addressMode;
-        }
-
         public static void GetInformationFromArgument(string argument, out AddressMode addressMode, out byte value, out Data extendedData)
         {
             addressMode = AddressMode.NotRecognized;

@@ -142,24 +142,18 @@ namespace CiscSimulator.Assembler
             var instruction = new B1Instruction();
             instruction.InstructionNumber = B1InstructionNumbers[instructionName];
 
-            AddressMode sourceAddressMode;
-            byte sourceValue;
-            Data sourceExtendedData;
             ArgumentAnalyzer.GetInformationFromArgument(
                 source, 
-                out sourceAddressMode, 
-                out sourceValue, 
-                out sourceExtendedData
+                out var sourceAddressMode, 
+                out var sourceValue, 
+                out var sourceExtendedData
             );
 
-            AddressMode destinationAddressMode;
-            byte destinationValue;
-            Data destinationExtendedData;
             ArgumentAnalyzer.GetInformationFromArgument(
                 destination, 
-                out destinationAddressMode, 
-                out destinationValue, 
-                out destinationExtendedData
+                out var destinationAddressMode, 
+                out var destinationValue, 
+                out var destinationExtendedData
             );
 
             instruction.SourceAddressMode = sourceAddressMode;
