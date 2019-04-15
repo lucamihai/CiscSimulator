@@ -18,7 +18,7 @@ namespace CiscSimulator.Assembler.UnitTests
         {
             assembler.ParseText(Resources.Text1);
 
-            Assert.AreEqual(5, assembler.LineCount);
+            Assert.AreEqual(6, assembler.LineCount);
         }
     }
 }

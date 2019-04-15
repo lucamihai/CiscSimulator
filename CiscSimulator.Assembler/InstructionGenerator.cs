@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using CiscSimulator.Common;
 
 namespace CiscSimulator.Assembler
 {
@@ -125,6 +124,11 @@ namespace CiscSimulator.Assembler
                 return GenerateB1Instruction(instructionName, arguments);
             }
 
+            if (instructionClass == InstructionClass.B2)
+            {
+                return GenerateB2Instruction(instructionName, arguments);
+            }
+
             return null;
         }
 
@@ -139,8 +143,7 @@ namespace CiscSimulator.Assembler
             var destination = arguments[0];
             var source = arguments[1];
 
-            var instruction = new B1Instruction();
-            instruction.InstructionNumber = B1InstructionNumbers[instructionName];
+            
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 source, 
@@ -155,6 +158,9 @@ namespace CiscSimulator.Assembler
                 out var destinationValue, 
                 out var destinationExtendedData
             );
+
+            var instruction = new B1Instruction();
+            instruction.InstructionNumber = B1InstructionNumbers[instructionName];
 
             instruction.SourceAddressMode = sourceAddressMode;
             instruction.Source = sourceValue;
@@ -173,9 +179,39 @@ namespace CiscSimulator.Assembler
             return instruction;
         }
 
+        private B2Instruction GenerateB2Instruction(string instructionName, string[] arguments)
+        {
+            if (arguments.Length != Constants.ExpectedArgumentsForInstructionClassB2)
+            {
+                throw new ArgumentException(
+                    $"Expected {Constants.ExpectedArgumentsForInstructionClassB2} arguments, received {arguments.Length}");
+            }
+
+            var argument = arguments[0];
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out var addressMode,
+                out var value,
+                out var extendedData
+            );
+
+            var instruction = new B2Instruction();
+            instruction.InstructionNumber = B2InstructionNumbers[instructionName];
+
+            instruction.AddressMode = addressMode;
+            instruction.Value = value;
+            instruction.DataExtension = extendedData;
+
+            return instruction;
+        }
+
         private string[] GetArgumentsFromLine(string line)
         {
             var spaceIndex = line.IndexOf(' ');
+            if (spaceIndex < 0)
+            {
+                return new string[0];
+            }
             var argumentsString = line.Substring(spaceIndex + 1);
             var arguments = argumentsString.Split(Constants.ArgumentSeparator);
 

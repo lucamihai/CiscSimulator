@@ -4,15 +4,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CiscSimulator.Assembler.UnitTests
 {
     [TestClass]
-    public class InstructionGeneratorUnitTests
+    public class InstructionGeneratorB1UnitTests
     {
         private InstructionGenerator instructionGenerator;
 
         private const string LineInstructionB1WithDestinationImmediateValue = "add 10, r1";
-
         private const string LineInstructionB1WithTooFewArguments = "add r0";
         private const string LineInstructionB1WithTooManyArguments = "add r0, r1, r2";
-
         private const string LineInstructionAddR0ImmediateValue2 = "add r0, 2";
         private const string LineInstructionAddR0R1 = "add r0, r1";
 
@@ -46,7 +44,7 @@ namespace CiscSimulator.Assembler.UnitTests
         }
 
         [TestMethod]
-        public void GenerateInstructionFromLineReturnsExpectedInstruction1()
+        public void GenerateInstructionFromLineReturnsExpectedB1Instruction1()
         {
             var instruction = instructionGenerator.GenerateInstructionFromLine(LineInstructionAddR0ImmediateValue2);
             var instructionIsB1 = instruction is B1Instruction;
@@ -65,7 +63,7 @@ namespace CiscSimulator.Assembler.UnitTests
         }
 
         [TestMethod]
-        public void GenerateInstructionFromLineReturnsExpectedInstruction2()
+        public void GenerateInstructionFromLineReturnsExpectedB2Instruction2()
         {
             var instruction = instructionGenerator.GenerateInstructionFromLine(LineInstructionAddR0R1);
             var instructionIsB1 = instruction is B1Instruction;
@@ -82,5 +80,6 @@ namespace CiscSimulator.Assembler.UnitTests
                 Assert.AreEqual(1, b1Instruction.Source);
             }
         }
+
     }
 }

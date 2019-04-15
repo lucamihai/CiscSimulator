@@ -44,6 +44,7 @@
     <Compile Include="AddressMode.cs" />
     <Compile Include="ArgumentAnalyzer.cs" />
     <Compile Include="Assembler.cs" />
+    <Compile Include="B2Instruction.cs" />
     <Compile Include="InstructionClass.cs" />
     <Compile Include="B1Instruction.cs" />
     <Compile Include="Constants.cs" />
