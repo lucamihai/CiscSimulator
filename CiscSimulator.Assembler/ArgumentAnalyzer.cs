@@ -65,7 +65,7 @@ namespace CiscSimulator.Assembler
                         {
                             addressMode = AddressMode.Indexed;
                             value = (byte)registerNumber;
-                            extendedData.Value = (short)offset;
+                            extendedData.Value = (ushort)offset;
 
                             return;
                         }

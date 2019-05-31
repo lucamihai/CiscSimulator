@@ -26,9 +26,9 @@ namespace CiscSimulator.Common
             }
         }
 
-        public short Value
+        public ushort Value
         {
-            get => BitConverter.ToInt16(new[] {LoByte, HiByte}, 0);
+            get => BitConverter.ToUInt16(new[] {LoByte, HiByte}, 0);
             set
             {
                 HiByte = (byte) (value >> 8);

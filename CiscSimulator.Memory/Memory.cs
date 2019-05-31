@@ -12,7 +12,7 @@ namespace CiscSimulator.Memory
         public Line LineAddress { get; }
         public bool WaitingEnabled { get; set; } = true;
 
-        private Dictionary<short, Data> dataDictionary;
+        private Dictionary<ushort, Data> dataDictionary;
         // TODO: Will use LineAddress in order to return data
         public Data Data
         {
@@ -55,7 +55,7 @@ namespace CiscSimulator.Memory
 
         private void InitializeDataDictionary()
         {
-            dataDictionary = new Dictionary<short, Data>();
+            dataDictionary = new Dictionary<ushort, Data>();
             for (var i = Constants.MinimumAddress.Value; i <= Constants.MaximumAddress.Value; i++)
             {
                 dataDictionary[i] = new Data();

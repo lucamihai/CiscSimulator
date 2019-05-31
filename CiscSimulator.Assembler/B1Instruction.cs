@@ -20,11 +20,11 @@ namespace CiscSimulator.Assembler
             get
             {
                 var data = new Data();
-                data.Value += (short)(InstructionNumber << 12);
-                data.Value += (short)((short)SourceAddressMode << 10);
-                data.Value += (short)(Source << 6);
-                data.Value += (short)((short)DestinationAddressMode << 4);
-                data.Value += (short)Destination;
+                data.Value += (ushort)(InstructionNumber << 12);
+                data.Value += (ushort)((ushort)SourceAddressMode << 10);
+                data.Value += (ushort)(Source << 6);
+                data.Value += (ushort)((ushort)DestinationAddressMode << 4);
+                data.Value += (ushort)Destination;
 
                 return data;
             }

@@ -129,6 +129,11 @@ namespace CiscSimulator.Assembler
                 return GenerateB2Instruction(instructionName, arguments);
             }
 
+            if (instructionClass == InstructionClass.B3)
+            {
+                return GenerateB3Instruction(instructionName, arguments);
+            }
+
             return null;
         }
 
@@ -142,8 +147,6 @@ namespace CiscSimulator.Assembler
 
             var destination = arguments[0];
             var source = arguments[1];
-
-            
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 source, 
@@ -200,6 +203,30 @@ namespace CiscSimulator.Assembler
 
             instruction.AddressMode = addressMode;
             instruction.Value = value;
+            instruction.DataExtension = extendedData;
+
+            return instruction;
+        }
+
+        private B3Instruction GenerateB3Instruction(string instructionName, string[] arguments)
+        {
+            if (arguments.Length != Constants.ExpectedArgumentsForInstructionClassB3)
+            {
+                throw new ArgumentException(
+                    $"Expected {Constants.ExpectedArgumentsForInstructionClassB3} arguments, received {arguments.Length}");
+            }
+
+            var argument = arguments[0];
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out var addressMode,
+                out var value,
+                out var extendedData
+            );
+
+            var instruction = new B3Instruction();
+            instruction.InstructionNumber = B3InstructionNumbers[instructionName];
+            instruction.Offset = value;
             instruction.DataExtension = extendedData;
 
             return instruction;

@@ -42,13 +42,13 @@ namespace CiscSimulator.Common.UnitTests
         [TestMethod]
         public void ValuePropertyWorks1()
         {
-            Assert.AreEqual(expectedValue1, data1.Value);
+            Assert.IsTrue(expectedValue1 == data1.Value);
         }
 
         [TestMethod]
         public void ValuePropertyWorks2()
         {
-            Assert.AreEqual(expectedValue2, data2.Value);
+            Assert.IsTrue(expectedValue2 == data2.Value);
         }
 
         [TestMethod]
