@@ -1,8 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CiscSimulator.Common.UnitTests
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class DataUnitTests
     {
         private Data data1;

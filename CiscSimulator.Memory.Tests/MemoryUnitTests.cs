@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using CiscSimulator.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -6,6 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CiscSimulator.Memory.Tests
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class MemoryUnitTests
     {
         private Line lineDataIn;

@@ -51,8 +51,10 @@
   <ItemGroup>
     <Compile Include="ArgumentAnalyzerUnitTests.cs" />
     <Compile Include="AssemblerUnitTests.cs" />
-    <Compile Include="InstructionGeneratorB1UnitTests.cs" />
-    <Compile Include="InstructionGeneratorB2UnitTests.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="InstructionGeneratorUnitTests\InstructionGeneratorB1UnitTests.cs" />
+    <Compile Include="InstructionGeneratorUnitTests\InstructionGeneratorB2UnitTests.cs" />
+    <Compile Include="InstructionGeneratorUnitTests\InstructionGeneratorB3UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.cs" />
   </ItemGroup>
