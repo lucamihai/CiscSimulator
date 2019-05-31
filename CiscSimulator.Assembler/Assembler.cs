@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CiscSimulator.Assembler.Instructions;
 
 namespace CiscSimulator.Assembler
 {
     public class Assembler
     {
-        private InstructionGenerator instructionGenerator;
+        private readonly InstructionGenerator instructionGenerator;
 
         public List<string> Lines { get; set; }
         public int LineCount => Lines.Count;

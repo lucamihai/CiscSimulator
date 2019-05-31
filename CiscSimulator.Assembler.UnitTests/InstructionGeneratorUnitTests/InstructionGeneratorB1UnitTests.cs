@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using CiscSimulator.Assembler.Instructions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
@@ -45,6 +46,8 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
 
             Assert.IsNotNull(b1Instruction);
 
+            Assert.AreEqual(Constants.InstructionB1ExpectedInstructionNumber1, b1Instruction.InstructionNumber);
+
             Assert.AreEqual(Constants.InstructionB1ExpectedDestinationAddressMode1, b1Instruction.DestinationAddressMode);
             Assert.AreEqual(Constants.InstructionB1ExpectedSourceAddressMode1, b1Instruction.SourceAddressMode);
 
@@ -59,7 +62,9 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
             var b1Instruction = instruction as B1Instruction;
 
             Assert.IsNotNull(b1Instruction);
-            
+
+            Assert.AreEqual(Constants.InstructionB1ExpectedInstructionNumber2, b1Instruction.InstructionNumber);
+
             Assert.AreEqual(Constants.InstructionB1ExpectedDestinationAddressMode2, b1Instruction.DestinationAddressMode);
             Assert.AreEqual(Constants.InstructionB1ExpectedSourceAddressMode2, b1Instruction.SourceAddressMode);
 

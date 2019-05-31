@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using CiscSimulator.Assembler.Enums;
+using CiscSimulator.Assembler.Instructions;
 
 namespace CiscSimulator.Assembler
 {
@@ -134,6 +136,11 @@ namespace CiscSimulator.Assembler
                 return GenerateB3Instruction(instructionName, arguments);
             }
 
+            if (instructionClass == InstructionClass.B4)
+            {
+                return GenerateB4Instruction(instructionName, arguments);
+            }
+
             return null;
         }
 
@@ -228,6 +235,20 @@ namespace CiscSimulator.Assembler
             instruction.InstructionNumber = B3InstructionNumbers[instructionName];
             instruction.Offset = value;
             instruction.DataExtension = extendedData;
+
+            return instruction;
+        }
+
+        private B4Instruction GenerateB4Instruction(string instructionName, string[] arguments)
+        {
+            if (arguments.Length != Constants.ExpectedArgumentsForInstructionClassB4)
+            {
+                throw new ArgumentException(
+                    $"Expected {Constants.ExpectedArgumentsForInstructionClassB4} arguments, received {arguments.Length}");
+            }
+
+            var instruction = new B4Instruction();
+            instruction.InstructionNumber = B4InstructionNumbers[instructionName];
 
             return instruction;
         }

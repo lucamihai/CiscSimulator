@@ -41,15 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressMode.cs" />
+    <Compile Include="Enums\AddressMode.cs" />
     <Compile Include="ArgumentAnalyzer.cs" />
     <Compile Include="Assembler.cs" />
-    <Compile Include="B2Instruction.cs" />
-    <Compile Include="B3Instruction.cs" />
-    <Compile Include="InstructionClass.cs" />
-    <Compile Include="B1Instruction.cs" />
+    <Compile Include="Instructions\B2Instruction.cs" />
+    <Compile Include="Instructions\B3Instruction.cs" />
+    <Compile Include="Enums\InstructionClass.cs" />
+    <Compile Include="Instructions\B1Instruction.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Instruction.cs" />
+    <Compile Include="Instructions\B4Instruction.cs" />
+    <Compile Include="Instructions\Instruction.cs" />
     <Compile Include="InstructionGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

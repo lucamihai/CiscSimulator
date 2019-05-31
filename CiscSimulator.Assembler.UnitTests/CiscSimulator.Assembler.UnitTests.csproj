@@ -55,6 +55,7 @@
     <Compile Include="InstructionGeneratorUnitTests\InstructionGeneratorB1UnitTests.cs" />
     <Compile Include="InstructionGeneratorUnitTests\InstructionGeneratorB2UnitTests.cs" />
     <Compile Include="InstructionGeneratorUnitTests\InstructionGeneratorB3UnitTests.cs" />
+    <Compile Include="InstructionGeneratorUnitTests\InstructionGeneratorB4UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.cs" />
   </ItemGroup>

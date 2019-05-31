@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using CiscSimulator.Assembler.Instructions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
@@ -37,6 +38,7 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
             var b3Instruction = instruction as B3Instruction;
 
             Assert.IsNotNull(b3Instruction);
+            Assert.AreEqual(Constants.InstructionB3ExpectedInstructionNumber1, b3Instruction.InstructionNumber);
             Assert.AreEqual(Constants.InstructionB3ExpectedOffset1, b3Instruction.Offset);
         }
     }

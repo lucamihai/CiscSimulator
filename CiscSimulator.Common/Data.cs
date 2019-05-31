@@ -59,7 +59,7 @@ namespace CiscSimulator.Common
 
         public object Clone()
         {
-            return new Data {HiByte = this.HiByte, LoByte = this.LoByte};
+            return new Data {Value = this.Value};
         }
 
         public int CompareTo(object obj)

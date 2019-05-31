@@ -1,4 +1,5 @@
-﻿using CiscSimulator.Common;
+﻿using CiscSimulator.Assembler.Enums;
+using CiscSimulator.Common;
 
 namespace CiscSimulator.Assembler
 {

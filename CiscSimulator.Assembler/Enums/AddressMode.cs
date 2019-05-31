@@ -1,4 +1,4 @@
-﻿namespace CiscSimulator.Assembler
+﻿namespace CiscSimulator.Assembler.Enums
 {
     public enum AddressMode
     {

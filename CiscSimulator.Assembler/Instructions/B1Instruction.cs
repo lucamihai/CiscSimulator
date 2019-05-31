@@ -1,6 +1,7 @@
-﻿using CiscSimulator.Common;
+﻿using CiscSimulator.Assembler.Enums;
+using CiscSimulator.Common;
 
-namespace CiscSimulator.Assembler
+namespace CiscSimulator.Assembler.Instructions
 {
     public class B1Instruction : Instruction
     {

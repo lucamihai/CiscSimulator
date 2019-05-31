@@ -1,6 +1,6 @@
 ﻿using CiscSimulator.Common;
 
-namespace CiscSimulator.Assembler
+namespace CiscSimulator.Assembler.Instructions
 {
     public class B3Instruction : Instruction
     {
