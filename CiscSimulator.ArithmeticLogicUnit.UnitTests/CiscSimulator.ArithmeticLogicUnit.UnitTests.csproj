@@ -53,6 +53,7 @@
     <Compile Include="ArithmeticLogicUnitUnitTests.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="OperationsUnitTests\ArithmeticOperationsUnitTests.cs" />
+    <Compile Include="OperationsUnitTests\BitShiftOperationsUnitTests.cs" />
     <Compile Include="OperationsUnitTests\BitWiseOperationsUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

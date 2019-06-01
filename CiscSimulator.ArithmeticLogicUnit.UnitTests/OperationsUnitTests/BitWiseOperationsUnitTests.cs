@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CiscSimulator.ArithmeticLogicUnit.Operations;
 using CiscSimulator.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -43,6 +44,16 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests.OperationsUnitTests
             BitWiseOperations.ExclusiveOr(result, operand1, operand2);
 
             Assert.AreEqual(Constants.ExpectedResultExclusiveOr.Value, result.Value);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void NegateThrowsNotImplementedException()
+        {
+            var operand = Constants.Operand1;
+            var result = new Data();
+
+            BitWiseOperations.Negate(result, operand);
         }
     }
 }

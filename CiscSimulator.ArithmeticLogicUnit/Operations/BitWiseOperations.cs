@@ -1,4 +1,5 @@
-﻿using CiscSimulator.Common;
+﻿using System;
+using CiscSimulator.Common;
 
 namespace CiscSimulator.ArithmeticLogicUnit.Operations
 {
@@ -17,6 +18,11 @@ namespace CiscSimulator.ArithmeticLogicUnit.Operations
         public static void ExclusiveOr(Data result, Data operand1, Data operand2)
         {
             result.Value = (ushort)(operand1.Value ^ operand2.Value);
+        }
+
+        public static void Negate(Data result, Data operand)
+        {
+            throw new NotImplementedException();
         }
     }
 }

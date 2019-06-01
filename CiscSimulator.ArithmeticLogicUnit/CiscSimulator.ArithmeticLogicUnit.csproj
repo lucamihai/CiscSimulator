@@ -51,6 +51,7 @@
     </Compile>
     <Compile Include="Enums\Operator.cs" />
     <Compile Include="Operations\ArithmeticOperations.cs" />
+    <Compile Include="Operations\BitShiftOperations.cs" />
     <Compile Include="Operations\BitWiseOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
