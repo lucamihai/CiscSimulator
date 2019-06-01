@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscSimulator.Common.UnitTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscSimulator.GeneralRegisters.UnitTests", "CiscSimulator.GeneralRegisters.UnitTests\CiscSimulator.GeneralRegisters.UnitTests.csproj", "{471B92BC-2921-469B-A7D4-2C20938D74E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscSimulator.ArithmeticLogicUnit", "CiscSimulator.ArithmeticLogicUnit\CiscSimulator.ArithmeticLogicUnit.csproj", "{51559E48-A709-4122-839E-1DEB3E51902A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscSimulator.ArithmeticLogicUnit.UnitTests", "CiscSimulator.ArithmeticLogicUnit.UnitTests\CiscSimulator.ArithmeticLogicUnit.UnitTests.csproj", "{C36F934A-9C79-46D6-AB60-0EE55212ADD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +69,14 @@ Global
 		{471B92BC-2921-469B-A7D4-2C20938D74E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{471B92BC-2921-469B-A7D4-2C20938D74E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{471B92BC-2921-469B-A7D4-2C20938D74E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51559E48-A709-4122-839E-1DEB3E51902A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51559E48-A709-4122-839E-1DEB3E51902A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51559E48-A709-4122-839E-1DEB3E51902A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51559E48-A709-4122-839E-1DEB3E51902A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C36F934A-9C79-46D6-AB60-0EE55212ADD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C36F934A-9C79-46D6-AB60-0EE55212ADD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C36F934A-9C79-46D6-AB60-0EE55212ADD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C36F934A-9C79-46D6-AB60-0EE55212ADD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +86,7 @@ Global
 		{26B515BA-039E-4DE2-8A18-1C40C366214E} = {EDEE62CD-39D4-4B24-996C-E0F7B99A6B7D}
 		{639C4291-92AF-4BB7-AA32-FABAAADB39F5} = {EDEE62CD-39D4-4B24-996C-E0F7B99A6B7D}
 		{471B92BC-2921-469B-A7D4-2C20938D74E6} = {EDEE62CD-39D4-4B24-996C-E0F7B99A6B7D}
+		{C36F934A-9C79-46D6-AB60-0EE55212ADD4} = {EDEE62CD-39D4-4B24-996C-E0F7B99A6B7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {74E00157-115F-4876-8327-D4EFFC37780D}
