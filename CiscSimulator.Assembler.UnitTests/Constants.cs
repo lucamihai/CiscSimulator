@@ -127,5 +127,27 @@ namespace CiscSimulator.Assembler.UnitTests
 
         public const string LineInstructionUnrecognized1 = "move r1, r2";
         public const string LineInstructionUnrecognized2 = "addi r1, r2";
+
+        // =====
+
+        public const string ArgumentAddressModeImmediate1 = "10";
+        public const string ArgumentAddressModeImmediate2 = "15";
+
+        public const string ArgumentAddressModeDirect1 = "r5";
+        public const string ArgumentAddressModeDirect2 = "r6";
+
+        public const string ArgumentAddressModeIndirect1 = "(r1)";
+        public const string ArgumentAddressModeIndirect2 = "(r2)";
+
+        public const string ArgumentAddressModeIndexed1 = "(r1)1";
+        public const string ArgumentAddressModeIndexed2 = "(r2)13";
+
+        public const string ArgumentAddressModeNotRecognized1 = "-10";
+        public const string ArgumentAddressModeNotRecognized2 = "rr";
+        public const string ArgumentAddressModeNotRecognized3 = "(10)";
+        public const string ArgumentAddressModeNotRecognized4 = "(r1)r2";
+        public const string ArgumentAddressModeNotRecognized5 = "()10";
+        public const string ArgumentAddressModeNotRecognized6 = "(12)10";
+        public const string ArgumentAddressModeNotRecognized7 = "(rr)";
     }
 }

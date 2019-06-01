@@ -8,28 +8,10 @@ namespace CiscSimulator.Assembler.UnitTests
     [ExcludeFromCodeCoverage]
     public class ArgumentAnalyzerUnitTests
     {
-        private const string ArgumentAddressModeImmediate1 = "10";
-        private const string ArgumentAddressModeImmediate2 = "15";
-
-        private const string ArgumentAddressModeDirect1 = "r5";
-        private const string ArgumentAddressModeDirect2 = "r6";
-
-        private const string ArgumentAddressModeIndirect1 = "(r1)";
-        private const string ArgumentAddressModeIndirect2 = "(r2)";
-
-        private const string ArgumentAddressModeIndexed1 = "(r1)1";
-        private const string ArgumentAddressModeIndexed2 = "(r2)13";
-
-        private const string ArgumentAddressModeNotRecognized1 = "-10";
-        private const string ArgumentAddressModeNotRecognized2 = "rr";
-        private const string ArgumentAddressModeNotRecognized3 = "(10)";
-        private const string ArgumentAddressModeNotRecognized4 = "(r1)r2";
-
-
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeImmediate1()
         {
-            var argument = ArgumentAddressModeImmediate1;
+            var argument = Constants.ArgumentAddressModeImmediate1;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,
@@ -46,7 +28,7 @@ namespace CiscSimulator.Assembler.UnitTests
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeImmediate2()
         {
-            var argument = ArgumentAddressModeImmediate2;
+            var argument = Constants.ArgumentAddressModeImmediate2;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,
@@ -63,7 +45,7 @@ namespace CiscSimulator.Assembler.UnitTests
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeDirect1()
         {
-            var argument = ArgumentAddressModeDirect1;
+            var argument = Constants.ArgumentAddressModeDirect1;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,
@@ -80,7 +62,7 @@ namespace CiscSimulator.Assembler.UnitTests
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeDirect2()
         {
-            var argument = ArgumentAddressModeDirect2;
+            var argument = Constants.ArgumentAddressModeDirect2;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,
@@ -97,7 +79,7 @@ namespace CiscSimulator.Assembler.UnitTests
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeIndirect1()
         {
-            var argument = ArgumentAddressModeIndirect1;
+            var argument = Constants.ArgumentAddressModeIndirect1;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,
@@ -114,7 +96,7 @@ namespace CiscSimulator.Assembler.UnitTests
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeIndirect2()
         {
-            var argument = ArgumentAddressModeIndirect2;
+            var argument = Constants.ArgumentAddressModeIndirect2;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,
@@ -131,7 +113,7 @@ namespace CiscSimulator.Assembler.UnitTests
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeIndexed1()
         {
-            var argument = ArgumentAddressModeIndexed1;
+            var argument = Constants.ArgumentAddressModeIndexed1;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,
@@ -148,7 +130,7 @@ namespace CiscSimulator.Assembler.UnitTests
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeIndexed2()
         {
-            var argument = ArgumentAddressModeIndexed2;
+            var argument = Constants.ArgumentAddressModeIndexed2;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,
@@ -165,7 +147,7 @@ namespace CiscSimulator.Assembler.UnitTests
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized1()
         {
-            var argument = ArgumentAddressModeNotRecognized1;
+            var argument = Constants.ArgumentAddressModeNotRecognized1;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,
@@ -182,7 +164,7 @@ namespace CiscSimulator.Assembler.UnitTests
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized2()
         {
-            var argument = ArgumentAddressModeNotRecognized2;
+            var argument = Constants.ArgumentAddressModeNotRecognized2;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,
@@ -199,7 +181,7 @@ namespace CiscSimulator.Assembler.UnitTests
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized3()
         {
-            var argument = ArgumentAddressModeNotRecognized3;
+            var argument = Constants.ArgumentAddressModeNotRecognized3;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,
@@ -216,7 +198,58 @@ namespace CiscSimulator.Assembler.UnitTests
         [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized4()
         {
-            var argument = ArgumentAddressModeNotRecognized4;
+            var argument = Constants.ArgumentAddressModeNotRecognized4;
+
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out var addressMode,
+                out var value,
+                out var extendedData
+            );
+
+            Assert.AreEqual(AddressMode.NotRecognized, addressMode);
+            Assert.AreEqual(0, value.Value);
+            Assert.AreEqual(0, extendedData.Value);
+        }
+
+        [TestMethod]
+        public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized5()
+        {
+            var argument = Constants.ArgumentAddressModeNotRecognized5;
+
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out var addressMode,
+                out var value,
+                out var extendedData
+            );
+
+            Assert.AreEqual(AddressMode.NotRecognized, addressMode);
+            Assert.AreEqual(0, value.Value);
+            Assert.AreEqual(0, extendedData.Value);
+        }
+
+        [TestMethod]
+        public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized6()
+        {
+            var argument = Constants.ArgumentAddressModeNotRecognized6;
+
+            ArgumentAnalyzer.GetInformationFromArgument(
+                argument,
+                out var addressMode,
+                out var value,
+                out var extendedData
+            );
+
+            Assert.AreEqual(AddressMode.NotRecognized, addressMode);
+            Assert.AreEqual(0, value.Value);
+            Assert.AreEqual(0, extendedData.Value);
+        }
+
+        [TestMethod]
+        public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized7()
+        {
+            var argument = Constants.ArgumentAddressModeNotRecognized7;
 
             ArgumentAnalyzer.GetInformationFromArgument(
                 argument,

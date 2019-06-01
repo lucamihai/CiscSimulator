@@ -1,4 +1,5 @@
-﻿using CiscSimulator.Assembler.Enums;
+﻿using System;
+using CiscSimulator.Assembler.Enums;
 using CiscSimulator.Common;
 
 namespace CiscSimulator.Assembler
@@ -51,18 +52,17 @@ namespace CiscSimulator.Assembler
 
             if (argument.StartsWith("("))
             {
-                var indexOfLastParentheses = argument.LastIndexOf(")");
-                var stuffBetweenParentheses = argument.Slice(1, indexOfLastParentheses);
+                var indexOfLastParentheses = argument.LastIndexOf(")", StringComparison.Ordinal);
+                if (indexOfLastParentheses == argument.Length - 1)
+                {
+                    return;
+                }
 
+                var stuffBetweenParentheses = argument.Slice(1, indexOfLastParentheses);
                 if (stuffBetweenParentheses.StartsWith("r"))
                 {
                     if (int.TryParse(stuffBetweenParentheses.Substring(1), out var registerNumber))
                     {
-                        if (indexOfLastParentheses == argument.Length - 1)
-                        {
-                            return;
-                        }
-
                         var stuffAfterParentheses = argument.Substring(indexOfLastParentheses + 1);
                         if (int.TryParse(stuffAfterParentheses, out var offset))
                         {
