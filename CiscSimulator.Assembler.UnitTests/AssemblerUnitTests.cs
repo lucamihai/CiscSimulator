@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CiscSimulator.Assembler.UnitTests
@@ -16,7 +17,21 @@ namespace CiscSimulator.Assembler.UnitTests
         }
 
         [TestMethod]
-        public void LinesContainingOnlyCommentsAreRemoved()
+        [ExpectedException(typeof(ArgumentException))]
+        public void ParseTextThrowsArgumentExceptionForNullString()
+        {
+            assembler.ParseText(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ParseTextThrowsArgumentExceptionForEmptyString()
+        {
+            assembler.ParseText(string.Empty);
+        }
+
+        [TestMethod]
+        public void ParseTextRemoveLinesContainingOnlyComments()
         {
             assembler.ParseText(Resources.Text1);
 

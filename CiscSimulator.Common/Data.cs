@@ -2,7 +2,7 @@
 
 namespace CiscSimulator.Common
 {
-    public class Data : IComparable, ICloneable
+    public class Data : ICloneable
     {
         private byte _LoByte;
         public byte LoByte
@@ -60,16 +60,6 @@ namespace CiscSimulator.Common
         public object Clone()
         {
             return new Data {Value = this.Value};
-        }
-
-        public int CompareTo(object obj)
-        {
-            if (obj is Data otherData)
-            {
-                return this.Value.CompareTo(otherData.Value);
-            }
-
-            throw new ArgumentException("Object is not a Data");
         }
     }
 }

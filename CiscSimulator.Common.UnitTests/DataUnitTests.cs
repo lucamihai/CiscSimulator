@@ -57,6 +57,12 @@ namespace CiscSimulator.Common.UnitTests
         }
 
         [TestMethod]
+        public void EqualsReturnsFalseForDifferentObject()
+        {
+            Assert.AreEqual(false, Constants.Data1.Equals(new object()));
+        }
+
+        [TestMethod]
         public void Data1IsSmallerThanData2()
         {
             Assert.AreEqual(true, Constants.Data1.Value < Constants.Data2.Value);

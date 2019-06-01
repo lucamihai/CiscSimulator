@@ -96,5 +96,10 @@ namespace CiscSimulator.Assembler.UnitTests
             {
                 new Data {Value = 57358} // 11100000 00001110
             };
+
+        // =====
+
+        public const string LineInstructionUnrecognized1 = "move r1, r2";
+        public const string LineInstructionUnrecognized2 = "addi r1, r2";
     }
 }
