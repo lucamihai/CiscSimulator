@@ -107,5 +107,40 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
             var expectedDataList = Constants.InstructionB2ExpectedDataList2;
             Assert.IsTrue(Methods.DataListsAreTheSame(expectedDataList, b2Instruction.Data));
         }
+
+        [TestMethod]
+        public void GenerateInstructionFromLineReturnsExpectedB2Instruction3()
+        {
+            var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB2Valid3);
+            var b2Instruction = instruction as B2Instruction;
+
+            Assert.IsNotNull(b2Instruction);
+            Assert.AreEqual(Constants.InstructionB2ExpectedInstructionNumber3, b2Instruction.InstructionNumber);
+            Assert.AreEqual(Constants.InstructionB2ExpectedAddressMode3, b2Instruction.AddressMode);
+            Assert.AreEqual(Constants.InstructionB2ExpectedValue3, b2Instruction.Value.Value);
+        }
+
+        [TestMethod]
+        public void GenerateInstructionFromLineReturnsB2InstructionWithExpectedNumberOfDataElements3()
+        {
+            var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB2Valid3);
+            var b2Instruction = instruction as B2Instruction;
+
+            Assert.IsNotNull(b2Instruction);
+
+            Assert.AreEqual(Constants.InstructionB2ExpectedDataList3.Count, instruction.Data.Count);
+        }
+
+        [TestMethod]
+        public void GenerateInstructionFromLineReturnsB2InstructionWithExpectedDataList3()
+        {
+            var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB2Valid3);
+            var b2Instruction = instruction as B2Instruction;
+
+            Assert.IsNotNull(b2Instruction);
+
+            var expectedDataList = Constants.InstructionB2ExpectedDataList3;
+            Assert.IsTrue(Methods.DataListsAreTheSame(expectedDataList, b2Instruction.Data));
+        }
     }
 }
