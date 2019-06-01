@@ -18,6 +18,13 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void GenerateInstructionFromLineThrowsArgumentExceptionForB2InstructionWithImmediateValue()
+        {
+            instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB2WithImmediateValue);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void GenerateInstructionFromLineThrowsArgumentExceptionForB2InstructionWithTooFewArguments()
         {

@@ -34,20 +34,11 @@ namespace CiscSimulator.Assembler.Instructions
 
         private void HandleDataListAndDataInstructionBasedOnAddressMode(List<Data> dataList, Data dataInstruction)
         {
-            if (AddressMode == AddressMode.Immediate || AddressMode == AddressMode.Indexed)
+            if (AddressMode == AddressMode.Indexed)
             {
                 var dataSource = new Data();
-
-                if (AddressMode == AddressMode.Immediate)
-                {
-                    dataSource.Value = Value.Value;
-                }
-
-                if (AddressMode == AddressMode.Indexed)
-                {
-                    dataInstruction.Value += (ushort)(Value.Value);
-                    dataSource.Value = DataExtension.Value;
-                }
+                dataInstruction.Value += (ushort)(Value.Value);
+                dataSource.Value = DataExtension.Value;
 
                 dataList.Add(dataSource);
             }

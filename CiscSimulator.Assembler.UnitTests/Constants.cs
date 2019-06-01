@@ -53,6 +53,7 @@ namespace CiscSimulator.Assembler.UnitTests
 
         // =====
 
+        public const string LineInstructionB2WithImmediateValue = "clr 0";
         public const string LineInstructionB2WithTooFewArguments = "inc";
         public const string LineInstructionB2WithTooManyArguments = "inc r0, r1";
 

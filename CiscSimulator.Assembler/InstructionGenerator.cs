@@ -170,6 +170,11 @@ namespace CiscSimulator.Assembler
                 out var destinationExtendedData
             );
 
+            if (destinationAddressMode == AddressMode.Immediate)
+            {
+                throw new InvalidOperationException("Destination cannot be an immediate value");
+            }
+
             var instruction = new B1Instruction();
             instruction.InstructionNumber = B1InstructionNumbers[instructionName];
 
@@ -181,11 +186,6 @@ namespace CiscSimulator.Assembler
 
             instruction.SourceDataExtension = sourceExtendedData;
             instruction.DestinationDataExtension = destinationExtendedData;
-
-            if (instruction.DestinationAddressMode == AddressMode.Immediate)
-            {
-                throw new InvalidOperationException("Destination cannot be an immediate value");
-            }
 
             return instruction;
         }
@@ -205,6 +205,11 @@ namespace CiscSimulator.Assembler
                 out var value,
                 out var extendedData
             );
+
+            if (addressMode == AddressMode.Immediate)
+            {
+                throw new InvalidOperationException("Destination cannot be an immediate value");
+            }
 
             var instruction = new B2Instruction();
             instruction.InstructionNumber = B2InstructionNumbers[instructionName];

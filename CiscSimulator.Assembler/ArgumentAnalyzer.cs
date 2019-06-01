@@ -35,7 +35,7 @@ namespace CiscSimulator.Assembler
             if (argument.StartsWith("(") && argument.EndsWith(")"))
             {
                 var indexOfLastParentheses = argument.Length - 1;
-                var stuffBetweenParentheses = Utilities.Slice(argument, 1, indexOfLastParentheses);
+                var stuffBetweenParentheses = argument.Slice(1, indexOfLastParentheses);
 
                 if (stuffBetweenParentheses.StartsWith("r"))
                 {
@@ -52,7 +52,7 @@ namespace CiscSimulator.Assembler
             if (argument.StartsWith("("))
             {
                 var indexOfLastParentheses = argument.LastIndexOf(")");
-                var stuffBetweenParentheses = Utilities.Slice(argument, 1, indexOfLastParentheses);
+                var stuffBetweenParentheses = argument.Slice(1, indexOfLastParentheses);
 
                 if (stuffBetweenParentheses.StartsWith("r"))
                 {
