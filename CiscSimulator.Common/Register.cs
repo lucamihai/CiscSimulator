@@ -1,9 +1,11 @@
-﻿using System.Windows.Forms;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows.Forms;
 
 namespace CiscSimulator.Common
 {
     public partial class Register : UserControl
     {
+        [ExcludeFromCodeCoverage]
         public string RegisterName
         {
             get => labelRegisterName.Text;
@@ -21,6 +23,7 @@ namespace CiscSimulator.Common
             Data.OnValueChanged = OnValueChanged;
         }
 
+        [ExcludeFromCodeCoverage]
         private void OnValueChanged()
         {
             textBoxHiByte.Text = Utilities.GetBinaryStringRepresentation(Data.HiByte);

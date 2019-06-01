@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{639C4291-92AF-4BB7-AA32-FABAAADB39F5}</ProjectGuid>
+    <ProjectGuid>{471B92BC-2921-469B-A7D4-2C20938D74E6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CiscSimulator.Common.UnitTests</RootNamespace>
-    <AssemblyName>CiscSimulator.Common.UnitTests</AssemblyName>
+    <RootNamespace>CiscSimulator.GeneralRegisters.UnitTests</RootNamespace>
+    <AssemblyName>CiscSimulator.GeneralRegisters.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -47,20 +47,23 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
-    <Compile Include="DataUnitTests.cs" />
+    <Compile Include="GeneralRegistersUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CiscSimulator.Common\CiscSimulator.Common.csproj">
-      <Project>{1ff97eef-85ab-47ec-93e2-a8fdb8d88f8d}</Project>
+      <Project>{1FF97EEF-85AB-47EC-93E2-A8FDB8D88F8D}</Project>
       <Name>CiscSimulator.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CiscSimulator.GeneralRegisters\CiscSimulator.GeneralRegisters.csproj">
+      <Project>{c62cefa7-2d3d-4acd-a8da-8d1d01c97db0}</Project>
+      <Name>CiscSimulator.GeneralRegisters</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

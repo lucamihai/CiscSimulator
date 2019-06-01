@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscSimulator.Memory.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscSimulator.Common.UnitTests", "CiscSimulator.Common.UnitTests\CiscSimulator.Common.UnitTests.csproj", "{639C4291-92AF-4BB7-AA32-FABAAADB39F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscSimulator.GeneralRegisters.UnitTests", "CiscSimulator.GeneralRegisters.UnitTests\CiscSimulator.GeneralRegisters.UnitTests.csproj", "{471B92BC-2921-469B-A7D4-2C20938D74E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{639C4291-92AF-4BB7-AA32-FABAAADB39F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{639C4291-92AF-4BB7-AA32-FABAAADB39F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{639C4291-92AF-4BB7-AA32-FABAAADB39F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{471B92BC-2921-469B-A7D4-2C20938D74E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{471B92BC-2921-469B-A7D4-2C20938D74E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{471B92BC-2921-469B-A7D4-2C20938D74E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{471B92BC-2921-469B-A7D4-2C20938D74E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{FF6286F1-7597-4268-AA2D-4E498E63EEA2} = {EDEE62CD-39D4-4B24-996C-E0F7B99A6B7D}
 		{26B515BA-039E-4DE2-8A18-1C40C366214E} = {EDEE62CD-39D4-4B24-996C-E0F7B99A6B7D}
 		{639C4291-92AF-4BB7-AA32-FABAAADB39F5} = {EDEE62CD-39D4-4B24-996C-E0F7B99A6B7D}
+		{471B92BC-2921-469B-A7D4-2C20938D74E6} = {EDEE62CD-39D4-4B24-996C-E0F7B99A6B7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {74E00157-115F-4876-8327-D4EFFC37780D}

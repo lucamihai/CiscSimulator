@@ -39,7 +39,7 @@ namespace CiscSimulator.GeneralRegisters
 
         private void ValidateRegisterNumber(int registerNumber)
         {
-            if (registerNumber < 0 || registerNumber > 15)
+            if (registerNumber < Constants.MinimumRegisterNumber || registerNumber > Constants.MaximumRegisterNumber)
             {
                 throw new ArgumentException($"{nameof(registerNumber)} must be at least 0 and at most 15");
             }
