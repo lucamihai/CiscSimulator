@@ -51,8 +51,8 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
             Assert.AreEqual(Constants.InstructionB1ExpectedDestinationAddressMode1, b1Instruction.DestinationAddressMode);
             Assert.AreEqual(Constants.InstructionB1ExpectedSourceAddressMode1, b1Instruction.SourceAddressMode);
 
-            Assert.AreEqual(Constants.InstructionB1ExpectedDestination1, b1Instruction.Destination);
-            Assert.AreEqual(Constants.InstructionB1ExpectedSource1, b1Instruction.Source);
+            Assert.AreEqual(Constants.InstructionB1ExpectedDestination1, b1Instruction.Destination.Value);
+            Assert.AreEqual(Constants.InstructionB1ExpectedSource1, b1Instruction.Source.Value);
         }
 
         [TestMethod]
@@ -68,8 +68,8 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
             Assert.AreEqual(Constants.InstructionB1ExpectedDestinationAddressMode2, b1Instruction.DestinationAddressMode);
             Assert.AreEqual(Constants.InstructionB1ExpectedSourceAddressMode2, b1Instruction.SourceAddressMode);
 
-            Assert.AreEqual(Constants.InstructionB1ExpectedDestination2, b1Instruction.Destination);
-            Assert.AreEqual(Constants.InstructionB1ExpectedSource2, b1Instruction.Source);
+            Assert.AreEqual(Constants.InstructionB1ExpectedDestination2, b1Instruction.Destination.Value);
+            Assert.AreEqual(Constants.InstructionB1ExpectedSource2, b1Instruction.Source.Value);
         }
 
     }

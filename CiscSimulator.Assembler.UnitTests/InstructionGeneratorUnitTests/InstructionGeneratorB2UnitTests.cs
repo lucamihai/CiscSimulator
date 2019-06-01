@@ -40,7 +40,7 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
             Assert.IsNotNull(b2Instruction);
             Assert.AreEqual(Constants.InstructionB2ExpectedInstructionNumber1, b2Instruction.InstructionNumber);
             Assert.AreEqual(Constants.InstructionB2ExpectedAddressMode1, b2Instruction.AddressMode);
-            Assert.AreEqual(Constants.InstructionB2ExpectedValue1, b2Instruction.Value);
+            Assert.AreEqual(Constants.InstructionB2ExpectedValue1, b2Instruction.Value.Value);
         }
 
         [TestMethod]
@@ -52,7 +52,7 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
             Assert.IsNotNull(b2Instruction);
             Assert.AreEqual(Constants.InstructionB2ExpectedInstructionNumber2, b2Instruction.InstructionNumber);
             Assert.AreEqual(Constants.InstructionB2ExpectedAddressMode2, b2Instruction.AddressMode);
-            Assert.AreEqual(Constants.InstructionB2ExpectedValue2, b2Instruction.Value);
+            Assert.AreEqual(Constants.InstructionB2ExpectedValue2, b2Instruction.Value.Value);
         }
     }
 }

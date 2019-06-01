@@ -39,7 +39,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.Immediate, addressMode);
-            Assert.AreEqual(10, value);
+            Assert.AreEqual(10, value.Value);
             Assert.AreEqual(0, extendedData.Value);
         }
 
@@ -56,7 +56,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.Immediate, addressMode);
-            Assert.AreEqual(15, value);
+            Assert.AreEqual(15, value.Value);
             Assert.AreEqual(0, extendedData.Value);
         }
 
@@ -73,7 +73,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.Direct, addressMode);
-            Assert.AreEqual(5, value);
+            Assert.AreEqual(5, value.Value);
             Assert.AreEqual(0, extendedData.Value);
         }
 
@@ -90,7 +90,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.Direct, addressMode);
-            Assert.AreEqual(6, value);
+            Assert.AreEqual(6, value.Value);
             Assert.AreEqual(0, extendedData.Value);
         }
 
@@ -107,7 +107,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.Indirect, addressMode);
-            Assert.AreEqual(1, value);
+            Assert.AreEqual(1, value.Value);
             Assert.AreEqual(0, extendedData.Value);
         }
 
@@ -124,7 +124,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.Indirect, addressMode);
-            Assert.AreEqual(2, value);
+            Assert.AreEqual(2, value.Value);
             Assert.AreEqual(0, extendedData.Value);
         }
 
@@ -141,7 +141,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.Indexed, addressMode);
-            Assert.AreEqual(1, value);
+            Assert.AreEqual(1, value.Value);
             Assert.AreEqual(1, extendedData.Value);
         }
 
@@ -158,7 +158,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.Indexed, addressMode);
-            Assert.AreEqual(2, value);
+            Assert.AreEqual(2, value.Value);
             Assert.AreEqual(13, extendedData.Value);
         }
 
@@ -175,7 +175,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.NotRecognized, addressMode);
-            Assert.AreEqual(0, value);
+            Assert.AreEqual(0, value.Value);
             Assert.AreEqual(0, extendedData.Value);
         }
 
@@ -192,7 +192,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.NotRecognized, addressMode);
-            Assert.AreEqual(0, value);
+            Assert.AreEqual(0, value.Value);
             Assert.AreEqual(0, extendedData.Value);
         }
 
@@ -209,7 +209,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.NotRecognized, addressMode);
-            Assert.AreEqual(0, value);
+            Assert.AreEqual(0, value.Value);
             Assert.AreEqual(0, extendedData.Value);
         }
 
@@ -226,7 +226,7 @@ namespace CiscSimulator.Assembler.UnitTests
             );
 
             Assert.AreEqual(AddressMode.NotRecognized, addressMode);
-            Assert.AreEqual(0, value);
+            Assert.AreEqual(0, value.Value);
             Assert.AreEqual(0, extendedData.Value);
         }
     }
