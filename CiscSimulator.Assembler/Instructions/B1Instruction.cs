@@ -1,4 +1,5 @@
-﻿using CiscSimulator.Assembler.Enums;
+﻿using System.Collections.Generic;
+using CiscSimulator.Assembler.Enums;
 using CiscSimulator.Common;
 
 namespace CiscSimulator.Assembler.Instructions
@@ -8,26 +9,66 @@ namespace CiscSimulator.Assembler.Instructions
         public byte InstructionNumber { get; set; }
 
         public AddressMode SourceAddressMode { get; set; }
-        public byte Source { get; set; }
+        public Data Source { get; set; }
         public Data SourceDataExtension { get; set; }
 
         public AddressMode DestinationAddressMode { get; set; }
-        public byte Destination { get; set; }
+        public Data Destination { get; set; }
         public Data DestinationDataExtension { get; set; }
         
 
-        public override Data Data
+        public override List<Data> Data
         {
             get
             {
-                var data = new Data();
-                data.Value += (ushort)(InstructionNumber << 12);
-                data.Value += (ushort)((ushort)SourceAddressMode << 10);
-                data.Value += (ushort)(Source << 6);
-                data.Value += (ushort)((ushort)DestinationAddressMode << 4);
-                data.Value += (ushort)Destination;
+                var dataList = new List<Data>();
 
-                return data;
+                var dataInstruction = new Data();
+                dataInstruction.Value += (ushort)(InstructionNumber << 12);
+                dataInstruction.Value += (ushort)((ushort)SourceAddressMode << 10);
+                dataInstruction.Value += (ushort)((ushort)DestinationAddressMode << 4);
+                dataInstruction.Value += (ushort)Destination.Value;
+                dataList.Add(dataInstruction);
+
+                HandleDataListAndDataInstructionBasedOnSourceAddressMode(dataList, dataInstruction);
+                HandleDataListAndDataInstructionBasedOnDestinationAddressMode(dataList, dataInstruction);
+
+                return dataList;
+            }
+
+        }
+
+        private void HandleDataListAndDataInstructionBasedOnSourceAddressMode(List<Data> dataList, Data dataInstruction)
+        {
+            if (SourceAddressMode == AddressMode.Immediate || SourceAddressMode == AddressMode.Indexed)
+            {
+                var dataSource = new Data();
+
+                if (SourceAddressMode == AddressMode.Immediate)
+                {
+                    dataSource.Value = Source.Value;
+                }
+
+                if (SourceAddressMode == AddressMode.Indexed)
+                {
+                    dataInstruction.Value += (ushort)(Source.Value << 6);
+                    dataSource.Value = SourceDataExtension.Value;
+                }
+
+                dataList.Add(dataSource);
+            }
+            else
+            {
+                dataInstruction.Value += (ushort)(Source.Value << 6);
+            }
+        }
+
+        private void HandleDataListAndDataInstructionBasedOnDestinationAddressMode(List<Data> dataList, Data dataInstruction)
+        {
+            if (DestinationAddressMode == AddressMode.Indexed)
+            {
+                var dataDestination = new Data { Value = DestinationDataExtension.Value };
+                dataList.Add(dataDestination);
             }
         }
     }

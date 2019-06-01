@@ -5,16 +5,18 @@ namespace CiscSimulator.Assembler
 {
     public static class ArgumentAnalyzer
     {
-        public static void GetInformationFromArgument(string argument, out AddressMode addressMode, out byte value, out Data extendedData)
+        public static void GetInformationFromArgument(string argument, out AddressMode addressMode, out Data value, out Data extendedData)
         {
+            value = new Data();
+
             addressMode = AddressMode.NotRecognized;
-            value = 0;
+            value.Value = 0;
             extendedData = new Data();
 
-            if (int.TryParse(argument, out var immediateValue) && immediateValue >= 0)
+            if (ushort.TryParse(argument, out var immediateValue) && immediateValue >= 0)
             {
                 addressMode = AddressMode.Immediate;
-                value = (byte)immediateValue;
+                value.Value = immediateValue;
 
                 return;
             }
@@ -24,7 +26,7 @@ namespace CiscSimulator.Assembler
                 if (int.TryParse(argument.Substring(1), out var registerNumber))
                 {
                     addressMode = AddressMode.Direct;
-                    value = (byte)registerNumber;
+                    value.Value = (byte)registerNumber;
 
                     return;
                 }
@@ -40,7 +42,7 @@ namespace CiscSimulator.Assembler
                     if (int.TryParse(stuffBetweenParentheses.Substring(1), out var registerNumber))
                     {
                         addressMode = AddressMode.Indirect;
-                        value = (byte) registerNumber;
+                        value.Value = (byte) registerNumber;
 
                         return;
                     }
@@ -65,7 +67,7 @@ namespace CiscSimulator.Assembler
                         if (int.TryParse(stuffAfterParentheses, out var offset))
                         {
                             addressMode = AddressMode.Indexed;
-                            value = (byte)registerNumber;
+                            value.Value = (byte)registerNumber;
                             extendedData.Value = (ushort)offset;
 
                             return;

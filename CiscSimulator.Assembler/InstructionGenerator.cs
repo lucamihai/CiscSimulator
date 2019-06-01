@@ -233,7 +233,7 @@ namespace CiscSimulator.Assembler
 
             var instruction = new B3Instruction();
             instruction.InstructionNumber = B3InstructionNumbers[instructionName];
-            instruction.Offset = value;
+            instruction.Offset = value.LoByte;
             instruction.DataExtension = extendedData;
 
             return instruction;

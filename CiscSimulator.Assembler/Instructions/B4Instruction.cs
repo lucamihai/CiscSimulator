@@ -1,4 +1,5 @@
-﻿using CiscSimulator.Common;
+﻿using System.Collections.Generic;
+using CiscSimulator.Common;
 
 namespace CiscSimulator.Assembler.Instructions
 {
@@ -6,15 +7,18 @@ namespace CiscSimulator.Assembler.Instructions
     {
         public byte InstructionNumber { get; set; }
 
-        public override Data Data
+        public override List<Data> Data
         {
             get
             {
-                var data = new Data();
-                data.Value += (7 << 13);
-                data.Value += (ushort)(InstructionNumber);
+                var dataList = new List<Data>();
 
-                return data;
+                var dataInstruction = new Data();
+                dataInstruction.Value += (7 << 13);
+                dataInstruction.Value += (ushort)(InstructionNumber);
+                dataList.Add(dataInstruction);
+
+                return dataList;
             }
         }
     }

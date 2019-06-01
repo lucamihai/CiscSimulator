@@ -1,4 +1,5 @@
-﻿using CiscSimulator.Assembler.Enums;
+﻿using System.Collections.Generic;
+using CiscSimulator.Assembler.Enums;
 using CiscSimulator.Common;
 
 namespace CiscSimulator.Assembler.Instructions
@@ -8,21 +9,50 @@ namespace CiscSimulator.Assembler.Instructions
         public byte InstructionNumber { get; set; }
 
         public AddressMode AddressMode { get; set; }
-        public byte Value { get; set; }
+        public Data Value { get; set; }
         public Data DataExtension { get; set; }
 
 
-        public override Data Data
+        public override List<Data> Data
         {
             get
             {
-                var data = new Data();
-                data.Value += 4 << 13;
-                data.Value += (ushort)(InstructionNumber << 6);
-                data.Value += (ushort)((ushort)AddressMode << 4);
-                data.Value += Value;
+                var dataList = new List<Data>();
 
-                return data;
+                var dataInstruction = new Data();
+                dataInstruction.Value += 4 << 13;
+                dataInstruction.Value += (ushort)(InstructionNumber << 6);
+                dataInstruction.Value += (ushort)((ushort)AddressMode << 4);
+                dataList.Add(dataInstruction);
+
+                HandleDataListAndDataInstructionBasedOnAddressMode(dataList, dataInstruction);
+
+                return dataList;
+            }
+        }
+
+        private void HandleDataListAndDataInstructionBasedOnAddressMode(List<Data> dataList, Data dataInstruction)
+        {
+            if (AddressMode == AddressMode.Immediate || AddressMode == AddressMode.Indexed)
+            {
+                var dataSource = new Data();
+
+                if (AddressMode == AddressMode.Immediate)
+                {
+                    dataSource.Value = Value.Value;
+                }
+
+                if (AddressMode == AddressMode.Indexed)
+                {
+                    dataInstruction.Value += (ushort)(Value.Value << 6);
+                    dataSource.Value = DataExtension.Value;
+                }
+
+                dataList.Add(dataSource);
+            }
+            else
+            {
+                dataInstruction.Value += (ushort)(Value.Value << 6);
             }
         }
     }
