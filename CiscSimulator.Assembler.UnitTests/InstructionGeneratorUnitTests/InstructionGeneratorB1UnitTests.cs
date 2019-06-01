@@ -117,5 +117,45 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
             var expectedDataList = Constants.InstructionB1ExpectedDataList2;
             Assert.IsTrue(Methods.DataListsAreTheSame(expectedDataList, b1Instruction.Data));
         }
+
+        [TestMethod]
+        public void GenerateInstructionFromLineReturnsExpectedB2Instruction3()
+        {
+            var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB1Valid3);
+            var b1Instruction = instruction as B1Instruction;
+
+            Assert.IsNotNull(b1Instruction);
+
+            Assert.AreEqual(Constants.InstructionB1ExpectedInstructionNumber3, b1Instruction.InstructionNumber);
+
+            Assert.AreEqual(Constants.InstructionB1ExpectedDestinationAddressMode3, b1Instruction.DestinationAddressMode);
+            Assert.AreEqual(Constants.InstructionB1ExpectedSourceAddressMode3, b1Instruction.SourceAddressMode);
+
+            Assert.AreEqual(Constants.InstructionB1ExpectedDestination3, b1Instruction.Destination.Value);
+            Assert.AreEqual(Constants.InstructionB1ExpectedSource3, b1Instruction.Source.Value);
+        }
+
+        [TestMethod]
+        public void GenerateInstructionFromLineReturnsB1InstructionWithExpectedNumberOfDataElements3()
+        {
+            var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB1Valid3);
+            var b1Instruction = instruction as B1Instruction;
+
+            Assert.IsNotNull(b1Instruction);
+
+            Assert.AreEqual(Constants.InstructionB1ExpectedDataList3.Count, instruction.Data.Count);
+        }
+
+        [TestMethod]
+        public void GenerateInstructionFromLineReturnsB1InstructionWithExpectedDataList3()
+        {
+            var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB1Valid3);
+            var b1Instruction = instruction as B1Instruction;
+
+            Assert.IsNotNull(b1Instruction);
+
+            var expectedDataList = Constants.InstructionB1ExpectedDataList3;
+            Assert.IsTrue(Methods.DataListsAreTheSame(expectedDataList, b1Instruction.Data));
+        }
     }
 }

@@ -37,6 +37,20 @@ namespace CiscSimulator.Assembler.UnitTests
                 new Data {Value = 5200} // 00010100 01010000
             };
 
+        public const string LineInstructionB1Valid3 = "and (r3)10, (r4)2";
+        public const byte InstructionB1ExpectedInstructionNumber3 = 4;
+        public const byte InstructionB1ExpectedDestination3 = 3;
+        public const byte InstructionB1ExpectedSource3 = 4;
+        public const AddressMode InstructionB1ExpectedDestinationAddressMode3 = AddressMode.Indexed;
+        public const AddressMode InstructionB1ExpectedSourceAddressMode3 = AddressMode.Indexed;
+        public static List<Data> InstructionB1ExpectedDataList3 =>
+            new List<Data>
+            {
+                new Data {Value = 19763}, // 01001101 00110011
+                new Data {Value = 2},    // 00000000 00000010
+                new Data {Value = 10}    // 00000000 00001010
+            };
+
         // =====
 
         public const string LineInstructionB2WithTooFewArguments = "inc";
