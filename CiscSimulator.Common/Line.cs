@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CiscSimulator.Common
@@ -6,9 +7,11 @@ namespace CiscSimulator.Common
     public class Line
     {
         public Color Color { get; private set; }
+
+        [ExcludeFromCodeCoverage]
         public Point FirstPoint { get; private set; }
+        [ExcludeFromCodeCoverage]
         public Point SecondPoint { get; private set; }
-        public Data Data { get; set; } = new Data();
 
         public bool Active
         {
@@ -23,6 +26,7 @@ namespace CiscSimulator.Common
             SecondPoint = p2;
         }
 
+        [ExcludeFromCodeCoverage]
         public void Draw(PaintEventArgs e)
         {
             using (var pen = new Pen(Color))

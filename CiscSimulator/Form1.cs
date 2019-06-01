@@ -24,12 +24,9 @@ namespace CiscSimulator
             lineDataOut = new Line(new Point(250, 10), new Point(340, 10));
             lineAddress = new Line(new Point(10, 100), new Point(100, 100));
 
-            memory = new Memory.Memory(lineDataIn, lineDataOut, lineAddress);
+            memory = new Memory.Memory();
             memory.Location = new Point(100, 10);
             Controls.Add(memory);
-
-            lineDataIn.Data.LoByte = 10;
-            lineDataIn.Data.HiByte = 15;
 
             registerTest = new Register("R0");
             registerTest.Location = new Point(200, 200);
