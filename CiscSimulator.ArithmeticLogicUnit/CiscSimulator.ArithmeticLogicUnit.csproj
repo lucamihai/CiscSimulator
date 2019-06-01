@@ -50,6 +50,7 @@
       <DependentUpon>ArithmeticLogicUnit.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums\Operator.cs" />
+    <Compile Include="Operations\ArithmeticOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
