@@ -43,7 +43,7 @@ namespace CiscSimulator.Memory.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void GetDataThrowsArgumentExceptionForLineAddressTooBig()
         {
-            var addressTooBig = (Data)Constants.MaximumAddress.Clone();
+            var addressTooBig = (Data)CiscSimulator.Memory.Constants.MaximumAddress.Clone();
             addressTooBig.LoByte++;
             memory.LineAddress.Data = addressTooBig;
 
@@ -54,7 +54,7 @@ namespace CiscSimulator.Memory.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void AddDataFromDataInToSpecifiedAddressThrowsArgumentExceptionForLineAddressDataTooSmall()
         {
-            var addressTooSmall = (Data)Constants.MinimumAddress.Clone();
+            var addressTooSmall = (Data)CiscSimulator.Memory.Constants.MinimumAddress.Clone();
             addressTooSmall.LoByte--;
             memory.LineAddress.Data = addressTooSmall;
 
@@ -66,7 +66,7 @@ namespace CiscSimulator.Memory.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void AddDataFromDataInToSpecifiedAddressThrowsArgumentExceptionForLineAddressDataTooBig()
         {
-            var addressTooBig = (Data)Constants.MaximumAddress.Clone();
+            var addressTooBig = (Data)CiscSimulator.Memory.Constants.MaximumAddress.Clone();
             addressTooBig.LoByte++;
             memory.LineAddress.Data = addressTooBig;
 
@@ -78,7 +78,7 @@ namespace CiscSimulator.Memory.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void PutDataFromSpecifiedAddressInDataOutThrowsArgumentExceptionForLineAddressTooSmall()
         {
-            var addressTooSmall = (Data)Constants.MinimumAddress.Clone();
+            var addressTooSmall = (Data)CiscSimulator.Memory.Constants.MinimumAddress.Clone();
             addressTooSmall.LoByte--;
             memory.LineAddress.Data = addressTooSmall;
             Assert.AreNotEqual(dataToBeInserted1, memory.Data);
@@ -94,7 +94,7 @@ namespace CiscSimulator.Memory.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void PutDataFromSpecifiedAddressInDataOutThrowsArgumentExceptionForLineAddressTooBig()
         {
-            var addressTooSmall = (Data)Constants.MaximumAddress.Clone();
+            var addressTooSmall = (Data)CiscSimulator.Memory.Constants.MaximumAddress.Clone();
             addressTooSmall.LoByte++;
             memory.LineAddress.Data = addressTooSmall;
             Assert.AreNotEqual(dataToBeInserted1, memory.Data);
@@ -109,7 +109,7 @@ namespace CiscSimulator.Memory.Tests
         [TestMethod]
         public void AddDataFromDataInToSpecifiedAddressWorks()
         {
-            memory.LineAddress.Data = (Data)Constants.MinimumAddress.Clone();
+            memory.LineAddress.Data = (Data)CiscSimulator.Memory.Constants.MinimumAddress.Clone();
             Assert.AreNotEqual(dataToBeInserted1, memory.Data);
 
             lineDataIn.Data = dataToBeInserted1;
@@ -121,7 +121,7 @@ namespace CiscSimulator.Memory.Tests
         [TestMethod]
         public void DataIsAddedCorrectlyForDifferentAddresses()
         {
-            lineAddress.Data = (Data)Constants.MinimumAddress.Clone();
+            lineAddress.Data = (Data)CiscSimulator.Memory.Constants.MinimumAddress.Clone();
 
             lineDataIn.Data = dataToBeInserted1;
             memory.AddDataFromDataInToSpecifiedAddress();
@@ -142,7 +142,7 @@ namespace CiscSimulator.Memory.Tests
         [TestMethod]
         public void DataIsOverridenIfSameAddressIsUsed()
         {
-            lineAddress.Data = (Data)Constants.MinimumAddress.Clone();
+            lineAddress.Data = (Data)CiscSimulator.Memory.Constants.MinimumAddress.Clone();
 
             lineDataIn.Data = dataToBeInserted1;
             memory.AddDataFromDataInToSpecifiedAddress();
@@ -160,7 +160,7 @@ namespace CiscSimulator.Memory.Tests
         [TestMethod]
         public void PutDataFromSpecifiedAddressInDataOutWorks()
         {
-            memory.LineAddress.Data = (Data)Constants.MinimumAddress.Clone();
+            memory.LineAddress.Data = (Data)CiscSimulator.Memory.Constants.MinimumAddress.Clone();
             Assert.AreNotEqual(dataToBeInserted1, memory.Data);
 
             lineDataIn.Data = dataToBeInserted1;

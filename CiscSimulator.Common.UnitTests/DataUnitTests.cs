@@ -7,81 +7,59 @@ namespace CiscSimulator.Common.UnitTests
     [ExcludeFromCodeCoverage]
     public class DataUnitTests
     {
-        private Data data1;
-        private Data data2;
-
-        private string expectedDataString1;
-        private string expectedDataString2;
-
-        private short expectedValue1;
-        private short expectedValue2;
-
-        [TestInitialize]
-        public void Initialize()
-        {
-            data1 = new Data {HiByte = 0, LoByte = 5};
-            data2 = new Data {HiByte = 2, LoByte = 4};
-
-            expectedDataString1 = "00000000 00000101";
-            expectedDataString2 = "00000010 00000100";
-
-            expectedValue1 = 5;
-            expectedValue2 = 516;
-        }
-
         [TestMethod]
         public void ToStringWorks1()
         {
-            Assert.AreEqual(expectedDataString1, data1.ToString());
+            Assert.AreEqual(Constants.ExpectedDataString1, Constants.Data1.ToString());
         }
 
         [TestMethod]
         public void ToStringWorks2()
         {
-            Assert.AreEqual(expectedDataString2, data2.ToString());
+            Assert.AreEqual(Constants.ExpectedDataString2, Constants.Data2.ToString());
         }
 
         [TestMethod]
         public void ValuePropertyWorks1()
         {
-            Assert.IsTrue(expectedValue1 == data1.Value);
+            Assert.IsTrue(Constants.ExpectedValue1 == Constants.Data1.Value);
         }
 
         [TestMethod]
         public void ValuePropertyWorks2()
         {
-            Assert.IsTrue(expectedValue2 == data2.Value);
+            Assert.IsTrue(Constants.ExpectedValue2 == Constants.Data2.Value);
         }
 
         [TestMethod]
         public void CloneWorks1()
         {
-            Assert.AreEqual(data1, (Data)data1.Clone());
+            Assert.AreEqual(Constants.Data1, (Data)Constants.Data1.Clone());
         }
 
         [TestMethod]
         public void CloneWorks2()
         {
-            Assert.AreEqual(data2, (Data)data2.Clone());
+            Assert.AreEqual(Constants.Data2, (Data)Constants.Data2.Clone());
         }
 
         [TestMethod]
         public void EqualsReturnsTrueForEqualData()
         {
-            var data1Clone = (Data)data1.Clone();
-            Assert.AreEqual(true, data1.Equals(data1Clone));
+            var data1Clone = (Data)Constants.Data1.Clone();
+            Assert.AreEqual(true, Constants.Data1.Equals(data1Clone));
         }
 
         [TestMethod]
         public void EqualsReturnsFalseForDifferentData()
         {
-            Assert.AreEqual(false, data1.Equals(data2));
+            Assert.AreEqual(false, Constants.Data1.Equals(Constants.Data2));
         }
 
         [TestMethod]
         public void Data1IsSmallerThanData2()
         {
-            Assert.AreEqual(true, data1.Value < data2.Value);
+            Assert.AreEqual(true, Constants.Data1.Value < Constants.Data2.Value);
         }
     }
 }
