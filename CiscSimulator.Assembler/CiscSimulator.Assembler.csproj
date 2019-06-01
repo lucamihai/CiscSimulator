@@ -50,8 +50,8 @@
     <Compile Include="Instructions\B1Instruction.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Instructions\B4Instruction.cs" />
-    <Compile Include="Instructions\Instruction.cs" />
     <Compile Include="InstructionGenerator.cs" />
+    <Compile Include="Interfaces\IInstruction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using CiscSimulator.Assembler.Interfaces;
 using CiscSimulator.Common;
 
 namespace CiscSimulator.Assembler.Instructions
 {
-    public class B4Instruction : Instruction
+    public class B4Instruction : IInstruction
     {
         public byte InstructionNumber { get; set; }
 
-        public override List<Data> Data
+        public List<Data> Data
         {
             get
             {

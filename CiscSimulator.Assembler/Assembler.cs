@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CiscSimulator.Assembler.Instructions;
+using CiscSimulator.Assembler.Interfaces;
 
 namespace CiscSimulator.Assembler
 {
@@ -11,7 +11,7 @@ namespace CiscSimulator.Assembler
 
         public List<string> Lines { get; set; }
         public int LineCount => Lines.Count;
-        public List<Instruction> Instructions { get; set; }
+        public List<IInstruction> Instructions { get; set; }
 
         public Assembler()
         {
@@ -68,7 +68,7 @@ namespace CiscSimulator.Assembler
 
         private void GenerateInstructions()
         {
-            Instructions = new List<Instruction>();
+            Instructions = new List<IInstruction>();
 
             foreach (var line in Lines)
             {

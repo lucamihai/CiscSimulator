@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using CiscSimulator.Assembler.Enums;
+using CiscSimulator.Assembler.Interfaces;
 using CiscSimulator.Common;
 
 namespace CiscSimulator.Assembler.Instructions
 {
-    public class B2Instruction : Instruction
+    public class B2Instruction : IInstruction
     {
         public byte InstructionNumber { get; set; }
 
@@ -13,7 +14,7 @@ namespace CiscSimulator.Assembler.Instructions
         public Data DataExtension { get; set; }
 
 
-        public override List<Data> Data
+        public List<Data> Data
         {
             get
             {

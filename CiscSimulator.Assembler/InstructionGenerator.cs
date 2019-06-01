@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CiscSimulator.Assembler.Enums;
 using CiscSimulator.Assembler.Instructions;
+using CiscSimulator.Assembler.Interfaces;
 
 namespace CiscSimulator.Assembler
 {
@@ -115,7 +116,7 @@ namespace CiscSimulator.Assembler
             };
         }
 
-        public Instruction GenerateInstructionFromLine(string line)
+        public IInstruction GenerateInstructionFromLine(string line)
         {
             var instructionName = line.Split()[0].ToLower();
             var arguments = GetArgumentsFromLine(line);
