@@ -56,6 +56,29 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
         }
 
         [TestMethod]
+        public void GenerateInstructionFromLineReturnsB1InstructionWithExpectedNumberOfDataElements1()
+        {
+            var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB1Valid1);
+            var b1Instruction = instruction as B1Instruction;
+
+            Assert.IsNotNull(b1Instruction);
+
+            Assert.AreEqual(Constants.InstructionB1ExpectedDataList1.Count, instruction.Data.Count);
+        }
+
+        [TestMethod]
+        public void GenerateInstructionFromLineReturnsB1InstructionWithExpectedDataList1()
+        {
+            var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB1Valid1);
+            var b1Instruction = instruction as B1Instruction;
+
+            Assert.IsNotNull(b1Instruction);
+
+            var expectedDataList = Constants.InstructionB1ExpectedDataList1;
+            Assert.IsTrue(Methods.DataListsAreTheSame(expectedDataList, b1Instruction.Data));
+        }
+
+        [TestMethod]
         public void GenerateInstructionFromLineReturnsExpectedB2Instruction2()
         {
             var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB1Valid2);
@@ -72,5 +95,27 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
             Assert.AreEqual(Constants.InstructionB1ExpectedSource2, b1Instruction.Source.Value);
         }
 
+        [TestMethod]
+        public void GenerateInstructionFromLineReturnsB1InstructionWithExpectedNumberOfDataElements2()
+        {
+            var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB1Valid2);
+            var b1Instruction = instruction as B1Instruction;
+
+            Assert.IsNotNull(b1Instruction);
+
+            Assert.AreEqual(Constants.InstructionB1ExpectedDataList2.Count, instruction.Data.Count);
+        }
+
+        [TestMethod]
+        public void GenerateInstructionFromLineReturnsB1InstructionWithExpectedDataList2()
+        {
+            var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB1Valid2);
+            var b1Instruction = instruction as B1Instruction;
+
+            Assert.IsNotNull(b1Instruction);
+
+            var expectedDataList = Constants.InstructionB1ExpectedDataList2;
+            Assert.IsTrue(Methods.DataListsAreTheSame(expectedDataList, b1Instruction.Data));
+        }
     }
 }

@@ -44,7 +44,7 @@ namespace CiscSimulator.Assembler.Instructions
 
                 if (AddressMode == AddressMode.Indexed)
                 {
-                    dataInstruction.Value += (ushort)(Value.Value << 6);
+                    dataInstruction.Value += (ushort)(Value.Value);
                     dataSource.Value = DataExtension.Value;
                 }
 
@@ -52,7 +52,7 @@ namespace CiscSimulator.Assembler.Instructions
             }
             else
             {
-                dataInstruction.Value += (ushort)(Value.Value << 6);
+                dataInstruction.Value += (ushort)(Value.Value);
             }
         }
     }
