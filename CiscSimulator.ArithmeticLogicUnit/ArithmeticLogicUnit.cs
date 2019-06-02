@@ -11,13 +11,11 @@ namespace CiscSimulator.ArithmeticLogicUnit
         public Data Operand1 { get; set; }
         public Data Operand2 { get; set; }
         public Operator Operator { get; set; }
-        public Data Result { get; set; }
+        public Data Result { get; private set; }
 
         public ArithmeticLogicUnit()
         {
             InitializeComponent();
-
-            Result = new Data();
             Operator = Operator.Undefined;
         }
 
@@ -38,6 +36,7 @@ namespace CiscSimulator.ArithmeticLogicUnit
                 throw new InvalidOperationException($"Can't perform operation if {nameof(Operator)} is undefined");
             }
 
+            Result = new Data();
             switch (Operator)
             {
                 case Operator.Add:

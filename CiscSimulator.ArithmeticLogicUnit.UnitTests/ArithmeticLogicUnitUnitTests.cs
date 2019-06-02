@@ -32,9 +32,9 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         }
 
         [TestMethod]
-        public void InitializedArithmeticLogicUnitHasResultNotSetToNull()
+        public void InitializedArithmeticLogicUnitHasResultSetToNull()
         {
-            Assert.IsNotNull(arithmeticLogicUnit.Result);
+            Assert.IsNull(arithmeticLogicUnit.Result);
         }
 
         [TestMethod]
