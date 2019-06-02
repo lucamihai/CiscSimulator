@@ -79,5 +79,164 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
 
             arithmeticLogicUnit.PerformOperation();
         }
+
+        [TestMethod]
+        public void PerformOperationInitializedResultForOperationAdd()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.Add;
+
+            arithmeticLogicUnit.PerformOperation();
+
+            Assert.IsNotNull(arithmeticLogicUnit.Result);
+        }
+
+        [TestMethod]
+        public void PerformOperationInitializedResultForOperationSubtract()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.Subtract;
+
+            arithmeticLogicUnit.PerformOperation();
+
+            Assert.IsNotNull(arithmeticLogicUnit.Result);
+        }
+
+        [TestMethod]
+        public void PerformOperationInitializedResultForOperationAnd()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.And;
+
+            arithmeticLogicUnit.PerformOperation();
+
+            Assert.IsNotNull(arithmeticLogicUnit.Result);
+        }
+
+        [TestMethod]
+        public void PerformOperationInitializedResultForOperationOr()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.Or;
+
+            arithmeticLogicUnit.PerformOperation();
+
+            Assert.IsNotNull(arithmeticLogicUnit.Result);
+        }
+
+        [TestMethod]
+        public void PerformOperationInitializedResultForOperationExclusiveOr()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.ExclusiveOr;
+
+            arithmeticLogicUnit.PerformOperation();
+
+            Assert.IsNotNull(arithmeticLogicUnit.Result);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void PerformOperationThrowsNotImplementedExceptionForOperationNegate()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.Negate;
+
+            arithmeticLogicUnit.PerformOperation();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void PerformOperationThrowsNotImplementedExceptionForOperationArithmeticShiftRight()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.ArithmeticShiftRight;
+
+            arithmeticLogicUnit.PerformOperation();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void PerformOperationThrowsNotImplementedExceptionForOperationArithmeticShiftLeft()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.ArithmeticShiftLeft;
+
+            arithmeticLogicUnit.PerformOperation();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void PerformOperationThrowsNotImplementedExceptionForOperationLogicalShiftRight()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.LogicalShiftRight;
+
+            arithmeticLogicUnit.PerformOperation();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void PerformOperationThrowsNotImplementedExceptionForOperationLogicalShiftLeft()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.LogicalShiftLeft;
+
+            arithmeticLogicUnit.PerformOperation();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void PerformOperationThrowsNotImplementedExceptionForOperationRotateRight()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.RotateRight;
+
+            arithmeticLogicUnit.PerformOperation();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void PerformOperationThrowsNotImplementedExceptionForOperationRotateLeft()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.RotateLeft;
+
+            arithmeticLogicUnit.PerformOperation();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void PerformOperationThrowsNotImplementedExceptionForOperationRotateRightThroughCarry()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.RotateRightThroughCarry;
+
+            arithmeticLogicUnit.PerformOperation();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void PerformOperationThrowsNotImplementedExceptionForOperationRotateLeftThroughCarry()
+        {
+            arithmeticLogicUnit.Operand1 = new Data();
+            arithmeticLogicUnit.Operand2 = new Data();
+            arithmeticLogicUnit.Operator = Operator.RotateLeftThroughCarry;
+
+            arithmeticLogicUnit.PerformOperation();
+        }
     }
 }

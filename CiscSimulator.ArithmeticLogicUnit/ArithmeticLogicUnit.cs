@@ -55,22 +55,31 @@ namespace CiscSimulator.ArithmeticLogicUnit
                     BitWiseOperations.ExclusiveOr(Result, Operand1, Operand2);
                     break;
                 case Operator.Negate:
+                    BitWiseOperations.Negate(Result, Operand1);
                     break;
                 case Operator.ArithmeticShiftRight:
+                    BitShiftOperations.ArithmeticShiftRight(Result, Operand1, Operand2);
                     break;
                 case Operator.ArithmeticShiftLeft:
+                    BitShiftOperations.ArithmeticShiftLeft(Result, Operand1, Operand2);
                     break;
                 case Operator.LogicalShiftRight:
+                    BitShiftOperations.LogicalShiftRight(Result, Operand1, Operand2);
                     break;
                 case Operator.LogicalShiftLeft:
+                    BitShiftOperations.LogicalShiftLeft(Result, Operand1, Operand2);
                     break;
                 case Operator.RotateRight:
+                    BitShiftOperations.RotateRight(Result, Operand1, Operand2);
                     break;
                 case Operator.RotateLeft:
+                    BitShiftOperations.RotateLeft(Result, Operand1, Operand2);
                     break;
                 case Operator.RotateRightThroughCarry:
+                    BitShiftOperations.RotateRightThroughCarry(Result, Operand1, Operand2);
                     break;
                 case Operator.RotateLeftThroughCarry:
+                    BitShiftOperations.RotateLeftThroughCarry(Result, Operand1, Operand2);
                     break;
             }
         }
