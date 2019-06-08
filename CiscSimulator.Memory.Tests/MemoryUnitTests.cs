@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using CiscSimulator.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CiscSimulator.Memory.Tests
@@ -11,39 +10,59 @@ namespace CiscSimulator.Memory.Tests
     {
         private Memory memory;
 
-        [TestInitialize]
-        public void Initialize()
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ConstructorThrowsArgumentExceptionForMinimumAddressEqualToMaximumAddress()
         {
-            memory = new Memory();
+            memory = new Memory(Constants.MinimumAddress, Constants.MinimumAddress);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ConstructorThrowsArgumentExceptionForMinimumAddressBiggerThanMaximumAddress()
+        {
+            memory = new Memory(Constants.MinimumAddress + 1, Constants.MinimumAddress);
+        }
+
+        [TestMethod]
+        public void ConstructorDoesNotThrowArgumentExceptionForMinimumAddressSmallerThanMaximumAddress()
+        {
+            memory = new Memory(Constants.MinimumAddress, Constants.MaximumAddress);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void GetDataThrowsArgumentExceptionForAddressTooSmall()
         {
-            var addressTooSmall = (Data)CiscSimulator.Memory.Constants.MinimumAddress.Clone();
-            addressTooSmall.LoByte--;
+            memory = new Memory(Constants.MinimumAddress, Constants.MaximumAddress);
 
-            var data = memory[addressTooSmall.Value];
+            var addressTooSmall = Constants.MinimumAddress;
+            addressTooSmall--;
+
+            var data = memory[addressTooSmall];
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void GetDataThrowsArgumentExceptionForAddressTooBig()
         {
-            var addressTooBig = (Data)CiscSimulator.Memory.Constants.MaximumAddress.Clone();
-            addressTooBig.LoByte++;
+            memory = new Memory(Constants.MinimumAddress, Constants.MaximumAddress);
 
-            var data = memory[addressTooBig.Value];
+            var addressTooBig = Constants.MaximumAddress;
+            addressTooBig++;
+
+            var data = memory[addressTooBig];
         }
 
         [TestMethod]
         public void GetDataDoesNotThrowAnyExceptionsForValidAddress()
         {
-            var address = (Data)CiscSimulator.Memory.Constants.MinimumAddress.Clone();
-            address.LoByte++;
+            memory = new Memory(Constants.MinimumAddress, Constants.MaximumAddress);
 
-            var data = memory[address.Value];
+            var address = Constants.MinimumAddress;
+            address++;
+
+            var data = memory[address];
         }
     }
 }

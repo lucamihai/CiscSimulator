@@ -24,7 +24,7 @@ namespace CiscSimulator
             lineDataOut = new Line(new Point(250, 10), new Point(340, 10));
             lineAddress = new Line(new Point(10, 100), new Point(100, 100));
 
-            memory = new Memory.Memory();
+            memory = new Memory.Memory(0, 10);
             memory.Location = new Point(100, 10);
             Controls.Add(memory);
 
