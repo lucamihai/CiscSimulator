@@ -31,6 +31,28 @@ namespace CiscSimulator.Memory.Tests
         }
 
         [TestMethod]
+        public void ConstructorWithReadOnlyFalseSetsEachDataReadOnlyToFalse()
+        {
+            memory = new Memory(Constants.MinimumAddress, Constants.MaximumAddress);
+
+            for (var address = Constants.MinimumAddress; address <= Constants.MaximumAddress; address++)
+            {
+                Assert.IsFalse(memory[address].ReadOnly);
+            }
+        }
+
+        [TestMethod]
+        public void ConstructorWithReadOnlyTrueSetsEachDataReadOnlyToTrue()
+        {
+            memory = new Memory(Constants.MinimumAddress, Constants.MaximumAddress, true);
+
+            for (var address = Constants.MinimumAddress; address <= Constants.MaximumAddress; address++)
+            {
+                Assert.IsTrue(memory[address].ReadOnly);
+            }
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void GetDataThrowsArgumentExceptionForAddressTooSmall()
         {

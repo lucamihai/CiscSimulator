@@ -4,12 +4,19 @@ namespace CiscSimulator.Common
 {
     public class Data : ICloneable
     {
+        public bool ReadOnly { get; }
+
         private byte _LoByte;
         public byte LoByte
         {
             get => _LoByte;
             set
             {
+                if (ReadOnly)
+                {
+                    throw new InvalidOperationException("Data is read-only");
+                }
+
                 _LoByte = value;
                 OnValueChanged();
             }
@@ -21,6 +28,11 @@ namespace CiscSimulator.Common
             get => _HiByte;
             set
             {
+                if (ReadOnly)
+                {
+                    throw new InvalidOperationException("Data is read-only");
+                }
+
                 _HiByte = value;
                 OnValueChanged();
             }
@@ -31,6 +43,11 @@ namespace CiscSimulator.Common
             get => BitConverter.ToUInt16(new[] {LoByte, HiByte}, 0);
             set
             {
+                if (ReadOnly)
+                {
+                    throw new InvalidOperationException("Data is read-only");
+                }
+
                 HiByte = (byte) (value >> 8);
                 LoByte = (byte) (value & 255);
             }
@@ -40,6 +57,11 @@ namespace CiscSimulator.Common
         public ValueChanged OnValueChanged { get; set; } = () => { };
 
         public static Data LowestData => new Data { HiByte = byte.MinValue, LoByte = byte.MinValue };
+
+        public Data(bool readOnly = false)
+        {
+            ReadOnly = readOnly;
+        }
 
         public override string ToString()
         {

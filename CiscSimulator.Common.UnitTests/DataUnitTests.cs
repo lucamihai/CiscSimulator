@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CiscSimulator.Common.UnitTests
@@ -7,6 +8,52 @@ namespace CiscSimulator.Common.UnitTests
     [ExcludeFromCodeCoverage]
     public class DataUnitTests
     {
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void LoByteSetterThrowsInvalidOperationExceptionForReadOnlyTrue()
+        {
+            var data = new Data(true);
+            data.LoByte = 1;
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void HiByteSetterThrowsInvalidOperationExceptionForReadOnlyTrue()
+        {
+            var data = new Data(true);
+            data.HiByte = 1;
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void ValueSetterThrowsInvalidOperationExceptionForReadOnlyTrue()
+        {
+            var data = new Data(true);
+            data.Value = 1;
+        }
+
+        [TestMethod]
+        public void LoByteSetterDoesNotThrowAnyExceptionForReadOnlyFalse()
+        {
+            var data = new Data();
+            data.LoByte = 1;
+        }
+
+        [TestMethod]
+        public void HiByteSetterDoesNotThrowAnyExceptionForReadOnlyFalse()
+        {
+            var data = new Data();
+            data.HiByte = 1;
+        }
+
+        [TestMethod]
+        public void ValueSetterDoesNotThrowAnyExceptionForReadOnlyFalse()
+        {
+            var data = new Data();
+            data.Value = 1;
+        }
+
+
         [TestMethod]
         public void ToStringWorks1()
         {

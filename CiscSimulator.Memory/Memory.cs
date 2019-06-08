@@ -7,6 +7,7 @@ namespace CiscSimulator.Memory
 {
     public partial class Memory : UserControl
     {
+        public bool ReadOnly { get; }
         public ushort MinimumAddress { get; }
         public ushort MaximumAddress { get; }
 
@@ -35,11 +36,12 @@ namespace CiscSimulator.Memory
             }
         }
 
-        public Memory(ushort minimumAddress, ushort maximumAddress)
+        public Memory(ushort minimumAddress, ushort maximumAddress, bool readOnly = false)
         {
             InitializeComponent();
             MinimumAddress = minimumAddress;
             MaximumAddress = maximumAddress;
+            ReadOnly = readOnly;
             ValidateAddressLimits();
 
             InitializeDataDictionary();
@@ -65,7 +67,7 @@ namespace CiscSimulator.Memory
             dataDictionary = new Dictionary<ushort, Data>();
             for (var i = MinimumAddress; i <= MaximumAddress; i++)
             {
-                dataDictionary[i] = new Data();
+                dataDictionary[i] = new Data(ReadOnly);
             }
         }
     }
