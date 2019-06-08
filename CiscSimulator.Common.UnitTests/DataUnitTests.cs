@@ -53,7 +53,6 @@ namespace CiscSimulator.Common.UnitTests
             data.Value = 1;
         }
 
-
         [TestMethod]
         public void ToStringWorks1()
         {

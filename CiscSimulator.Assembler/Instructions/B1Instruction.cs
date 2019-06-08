@@ -28,7 +28,7 @@ namespace CiscSimulator.Assembler.Instructions
                 dataInstruction.Value += (ushort)(InstructionNumber << 12);
                 dataInstruction.Value += (ushort)((ushort)SourceAddressMode << 10);
                 dataInstruction.Value += (ushort)((ushort)DestinationAddressMode << 4);
-                dataInstruction.Value += (ushort)Destination.Value;
+                dataInstruction.Value += Destination.Value;
                 dataList.Add(dataInstruction);
 
                 HandleDataListAndDataInstructionBasedOnSourceAddressMode(dataList, dataInstruction);

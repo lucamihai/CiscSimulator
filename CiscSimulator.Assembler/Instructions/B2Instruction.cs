@@ -37,14 +37,14 @@ namespace CiscSimulator.Assembler.Instructions
             if (AddressMode == AddressMode.Indexed)
             {
                 var dataSource = new Data();
-                dataInstruction.Value += (ushort)(Value.Value);
+                dataInstruction.Value += Value.Value;
                 dataSource.Value = DataExtension.Value;
 
                 dataList.Add(dataSource);
             }
             else
             {
-                dataInstruction.Value += (ushort)(Value.Value);
+                dataInstruction.Value += Value.Value;
             }
         }
     }
