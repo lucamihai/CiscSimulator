@@ -14,11 +14,15 @@ namespace CiscSimulator.Common.UnitTests
         public const ushort ExpectedValue1 = 5;
         public const ushort ExpectedValue2 = 516;
 
-        public const byte Byte1 = 10;
-        public const byte Byte2 = 123;
+        public const byte Value1 = 10;
+        public const byte Value2 = 123;
+        public const int Value3 = 891;
+        public const long Value4 = 99999999;
 
-        public const string ByteStringRepresentation1 = "00001010";
-        public const string ByteStringRepresentation2 = "01111011";
+        public const string BinaryStringRepresentation1 = "00001010";
+        public const string BinaryStringRepresentation2 = "01111011";
+        public const string BinaryStringRepresentation3 = "001101111011";
+        public const string BinaryStringRepresentation4 = "101111101011110000011111111";
 
         public const string String1 = "something";
         public const int StringSliceBegin1 = 4;
@@ -36,6 +40,22 @@ namespace CiscSimulator.Common.UnitTests
         public const string SlicedString3 = "IDE";
 
         public const string BinaryStringContainingOtherCharacters = "101e10001m";
-        public const string BinaryStringTooLong = "1010100101010101001010101001010100101010010101001";
+        public const string BinaryStringTooLong = "101010010101010100101010100101010010101001010100101010010101010010101001010101001";
+
+        public const int HighPosition1 = 4;
+        public const int LowPosition1 = 3;
+        public const string ExpectedBits1 = "01";
+
+        public const int HighPosition2 = 6;
+        public const int LowPosition2 = 5;
+        public const string ExpectedBits2 = "11";
+
+        public const int HighPosition3 = 11;
+        public const int LowPosition3 = 5;
+        public const string ExpectedBits3 = "0011011";
+
+        public const int HighPosition4 = 2;
+        public const int LowPosition4 = 2;
+        public const string ExpectedBits4 = "1";
     }
 }

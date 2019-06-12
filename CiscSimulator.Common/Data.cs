@@ -66,7 +66,7 @@ namespace CiscSimulator.Common
         public override string ToString()
         {
             return
-                $"{Utilities.GetBinaryStringRepresentationFromByte(HiByte)} {Utilities.GetBinaryStringRepresentationFromByte(LoByte)}";
+                $"{Utilities.GetBinaryStringRepresentation(HiByte)} {Utilities.GetBinaryStringRepresentation(LoByte)}";
         }
 
         public override bool Equals(object obj)

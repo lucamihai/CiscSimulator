@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 
 namespace CiscSimulator.Common
 {
     public static class Utilities
     {
-        public static string GetBinaryStringRepresentationFromByte(long value, int maxLength = 8)
+        public static string GetBinaryStringRepresentation(long value, int stringMaxLength = 8)
         {
-            return Convert.ToString(value, 2).PadLeft(maxLength, '0');
+            return Convert.ToString(value, 2).PadLeft(stringMaxLength, '0');
         }
 
         public static string Slice(this string source, int start, int end)
@@ -23,6 +22,14 @@ namespace CiscSimulator.Common
 
         public static string GetBitsFromSpecifiedPositions(this string binaryRepresentation, int highPosition, int lowPosition)
         {
+            ValidateBinaryStringRepresentation(binaryRepresentation);
+
+            if (highPosition < lowPosition)
+            {
+                var message = $"{nameof(highPosition)} must be higher than {nameof(lowPosition)}";
+                throw new InvalidOperationException(message);
+            }
+
             var difference = highPosition - lowPosition;
             var begin = binaryRepresentation.Length - highPosition - 1;
 
@@ -57,9 +64,9 @@ namespace CiscSimulator.Common
                 throw new InvalidOperationException("Binary string representation should contain only whitespaces + 1s and 0s");
             }
 
-            if (binaryStringRepresentation.Length > 16)
+            if (binaryStringRepresentation.Length > 64)
             {
-                throw new InvalidOperationException("Maximum 16 bits are allowed");
+                throw new InvalidOperationException("Maximum 64 bits are allowed");
             }
         }
     }
