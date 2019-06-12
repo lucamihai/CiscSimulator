@@ -34,5 +34,8 @@ namespace CiscSimulator.Common.UnitTests
         public const int StringSliceBegin3 = 0;
         public const int StringSliceEnd3 = -1;
         public const string SlicedString3 = "IDE";
+
+        public const string BinaryStringContainingOtherCharacters = "101e10001m";
+        public const string BinaryStringTooLong = "1010100101010101001010101001010100101010010101001";
     }
 }

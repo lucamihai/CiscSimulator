@@ -26,8 +26,8 @@ namespace CiscSimulator.Common
         [ExcludeFromCodeCoverage]
         private void OnValueChanged()
         {
-            textBoxHiByte.Text = Utilities.GetBinaryStringRepresentation(Data.HiByte);
-            textBoxLoByte.Text = Utilities.GetBinaryStringRepresentation(Data.LoByte);
+            textBoxHiByte.Text = Utilities.GetBinaryStringRepresentationFromByte(Data.HiByte);
+            textBoxLoByte.Text = Utilities.GetBinaryStringRepresentationFromByte(Data.LoByte);
         }
     }
 }
