@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 
 namespace CiscSimulator.Common
 {
     public static class Utilities
     {
-        public static string GetBinaryStringRepresentationFromByte(byte value)
+        public static string GetBinaryStringRepresentationFromByte(long value, int maxLength = 8)
         {
-            return Convert.ToString(value, 2).PadLeft(8, '0');
+            return Convert.ToString(value, 2).PadLeft(maxLength, '0');
         }
 
         public static string Slice(this string source, int start, int end)
@@ -20,19 +21,27 @@ namespace CiscSimulator.Common
             return source.Substring(start, len); // Return Substring of length
         }
 
-        public static int GetValueFromBinaryStringRepresentation(string binaryStringRepresentation)
+        public static string GetBitsFromSpecifiedPositions(this string binaryRepresentation, int highPosition, int lowPosition)
+        {
+            var difference = highPosition - lowPosition;
+            var begin = binaryRepresentation.Length - highPosition - 1;
+
+            return binaryRepresentation.Substring(begin, difference + 1);
+        }
+
+        public static long GetValueFromBinaryStringRepresentation(string binaryStringRepresentation)
         {
             var trimmedString = binaryStringRepresentation.Trim();
             ValidateBinaryStringRepresentation(trimmedString);
 
-            int value = 0;
+            long value = 0;
             for (int index = 0; index < trimmedString.Length; index++)
             {
                 if (trimmedString[index] == '0')
                     continue;
 
                 int power = trimmedString.Length - 1 - index;
-                value += (int)Math.Pow(2, power);
+                value += (long)Math.Pow(2, power);
             }
 
             return value;
