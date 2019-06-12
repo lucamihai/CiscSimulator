@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscSimulator.ArithmeticLog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscSimulator.ArithmeticLogicUnit.UnitTests", "CiscSimulator.ArithmeticLogicUnit.UnitTests\CiscSimulator.ArithmeticLogicUnit.UnitTests.csproj", "{C36F934A-9C79-46D6-AB60-0EE55212ADD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscSimulator.Sequencer", "CiscSimulator.Sequencer\CiscSimulator.Sequencer.csproj", "{04390198-76C3-46AF-B750-0DD82646E5E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{C36F934A-9C79-46D6-AB60-0EE55212ADD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C36F934A-9C79-46D6-AB60-0EE55212ADD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C36F934A-9C79-46D6-AB60-0EE55212ADD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04390198-76C3-46AF-B750-0DD82646E5E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04390198-76C3-46AF-B750-0DD82646E5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04390198-76C3-46AF-B750-0DD82646E5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04390198-76C3-46AF-B750-0DD82646E5E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
