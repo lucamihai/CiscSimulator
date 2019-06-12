@@ -128,7 +128,21 @@ namespace CiscSimulator.Common.UnitTests
         [ExpectedException(typeof(InvalidOperationException))]
         public void GetBitsFromSpecifiedPositionsThrowsInvalidOperationExceptionForHighPositionSmallerThanLowPosition()
         {
-            var bits = Constants.BinaryStringTooLong.GetBitsFromSpecifiedPositions(3, 4);
+            var bits = Constants.BinaryStringRepresentation1.GetBitsFromSpecifiedPositions(3, 4);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void GetBitsFromSpecifiedPositionsThrowsInvalidOperationExceptionForHighPositionBiggerThanStringBounds()
+        {
+            var bits = Constants.BinaryStringRepresentation1.GetBitsFromSpecifiedPositions(Constants.BinaryStringRepresentation1.Length + 1, 4);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void GetBitsFromSpecifiedPositionsThrowsInvalidOperationExceptionForLowPositionSmallerThanZero()
+        {
+            var bits = Constants.BinaryStringRepresentation1.GetBitsFromSpecifiedPositions(3, -1);
         }
 
         [TestMethod]

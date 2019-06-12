@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using CiscSimulator.Sequencer.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CiscSimulator.Sequencer.UnitTests
@@ -13,16 +12,18 @@ namespace CiscSimulator.Sequencer.UnitTests
         [TestInitialize]
         public void Setup()
         {
-            mpmData = new MpmData();
-            mpmData.SBusOperation = Constants.SBusOperation;
-            mpmData.DBusOperation = Constants.DBusOperation;
-            mpmData.AluOperator = Constants.AluOperator;
-            mpmData.RBusOperation = Constants.RBusOperation;
-            mpmData.OtherOperation = Constants.OtherOperation;
-            mpmData.MemoryOperation = Constants.MemoryOperation;
-            mpmData.JumpOperation = Constants.JumpOperation;
-            mpmData.JumpLocation = Constants.JumpLocation;
-            mpmData.JumpIndex = Constants.JumpIndex;
+            mpmData = new MpmData
+            {
+                SBusOperation = Constants.SBusOperation,
+                DBusOperation = Constants.DBusOperation,
+                AluOperator = Constants.AluOperator,
+                RBusOperation = Constants.RBusOperation,
+                OtherOperation = Constants.OtherOperation,
+                MemoryOperation = Constants.MemoryOperation,
+                JumpOperation = Constants.JumpOperation,
+                JumpLocation = Constants.JumpLocation,
+                JumpIndex = Constants.JumpIndex
+            };
         }
 
         [TestMethod]

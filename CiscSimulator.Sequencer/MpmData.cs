@@ -109,6 +109,7 @@ namespace CiscSimulator.Sequencer
         }
 
         public long Value { get; set; }
+
         public override string ToString()
         {
             return Utilities.GetBinaryStringRepresentation(Value, 39);

@@ -20,22 +20,6 @@ namespace CiscSimulator.Common
             return source.Substring(start, len); // Return Substring of length
         }
 
-        public static string GetBitsFromSpecifiedPositions(this string binaryRepresentation, int highPosition, int lowPosition)
-        {
-            ValidateBinaryStringRepresentation(binaryRepresentation);
-
-            if (highPosition < lowPosition)
-            {
-                var message = $"{nameof(highPosition)} must be higher than {nameof(lowPosition)}";
-                throw new InvalidOperationException(message);
-            }
-
-            var difference = highPosition - lowPosition;
-            var begin = binaryRepresentation.Length - highPosition - 1;
-
-            return binaryRepresentation.Substring(begin, difference + 1);
-        }
-
         public static long GetValueFromBinaryStringRepresentation(string binaryStringRepresentation)
         {
             var trimmedString = binaryStringRepresentation.Trim();
@@ -54,6 +38,17 @@ namespace CiscSimulator.Common
             return value;
         }
 
+        public static string GetBitsFromSpecifiedPositions(this string binaryRepresentation, int highPosition, int lowPosition)
+        {
+            ValidateBinaryStringRepresentation(binaryRepresentation);
+            ValidatePositionsForBinaryRepresentation(binaryRepresentation, highPosition, lowPosition);
+
+            var difference = highPosition - lowPosition;
+            var begin = binaryRepresentation.Length - highPosition - 1;
+
+            return binaryRepresentation.Substring(begin, difference + 1);
+        }
+
         private static void ValidateBinaryStringRepresentation(string binaryStringRepresentation)
         {
             var regex = new Regex("^[0-1]+$");
@@ -67,6 +62,27 @@ namespace CiscSimulator.Common
             if (binaryStringRepresentation.Length > 64)
             {
                 throw new InvalidOperationException("Maximum 64 bits are allowed");
+            }
+        }
+
+        private static void ValidatePositionsForBinaryRepresentation(string binaryRepresentation, int highPosition, int lowPosition)
+        {
+            if (highPosition < lowPosition)
+            {
+                var message = $"{nameof(highPosition)} must be higher than {nameof(lowPosition)}";
+                throw new InvalidOperationException(message);
+            }
+
+            if (highPosition > binaryRepresentation.Length - 1)
+            {
+                var message = $"{nameof(highPosition)} can't be higher than the representation's bounds ({binaryRepresentation.Length - 1})";
+                throw new InvalidOperationException(message);
+            }
+
+            if (lowPosition < 0)
+            {
+                var message = $"{nameof(lowPosition)} must be higher than 0";
+                throw new InvalidOperationException(message);
             }
         }
     }
