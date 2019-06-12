@@ -79,5 +79,21 @@ namespace CiscSimulator.Sequencer.UnitTests
         {
             Assert.AreEqual(Constants.JumpIndex, mpmData.JumpIndex);
         }
+
+        [TestMethod]
+        public void ValueIsExpectedValue1()
+        {
+            var mpmData = Constants.MpmData1;
+
+            Assert.AreEqual(Constants.ExpectedValue1, mpmData.Value);
+        }
+
+        [TestMethod]
+        public void ValueIsExpectedValue2()
+        {
+            var mpmData = Constants.MpmData2;
+
+            Assert.AreEqual(Constants.ExpectedValue2, mpmData.Value);
+        }
     }
 }

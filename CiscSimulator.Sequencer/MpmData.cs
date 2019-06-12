@@ -108,7 +108,7 @@ namespace CiscSimulator.Sequencer
             set => Value += (long)value;
         }
 
-        public long Value { get; set; }
+        public long Value { get; private set; }
 
         public override string ToString()
         {
