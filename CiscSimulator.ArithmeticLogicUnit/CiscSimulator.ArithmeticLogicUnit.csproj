@@ -49,7 +49,7 @@
     <Compile Include="ArithmeticLogicUnit.Designer.cs">
       <DependentUpon>ArithmeticLogicUnit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Enums\Operator.cs" />
+    <Compile Include="Enums\AluOperator.cs" />
     <Compile Include="Operations\ArithmeticOperations.cs" />
     <Compile Include="Operations\BitShiftOperations.cs" />
     <Compile Include="Operations\BitWiseOperations.cs" />

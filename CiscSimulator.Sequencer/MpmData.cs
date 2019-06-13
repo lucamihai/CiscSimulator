@@ -29,14 +29,14 @@ namespace CiscSimulator.Sequencer
             set => Value += (long)value << 31;
         }
 
-        public Operator AluOperator
+        public AluOperator AluOperator
         {
             get
             {
                 var binaryRepresentation = this.ToString();
                 var stringValue = binaryRepresentation.GetBitsFromSpecifiedPositions(30, 27);
 
-                return (Operator)Utilities.GetValueFromBinaryStringRepresentation(stringValue);
+                return (AluOperator)Utilities.GetValueFromBinaryStringRepresentation(stringValue);
             }
             set => Value += (long)value << 27;
         }

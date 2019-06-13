@@ -8,15 +8,15 @@ namespace CiscSimulator.Assembler
 {
     public class InstructionGenerator
     {
-        private List<string> B1InstructionNames;
-        private List<string> B2InstructionNames;
-        private List<string> B3InstructionNames;
-        private List<string> B4InstructionNames;
+        private List<string> b1InstructionNames;
+        private List<string> b2InstructionNames;
+        private List<string> b3InstructionNames;
+        private List<string> b4InstructionNames;
 
-        private Dictionary<string, byte> B1InstructionNumbers;
-        private Dictionary<string, byte> B2InstructionNumbers;
-        private Dictionary<string, byte> B3InstructionNumbers;
-        private Dictionary<string, byte> B4InstructionNumbers;
+        private Dictionary<string, byte> b1InstructionNumbers;
+        private Dictionary<string, byte> b2InstructionNumbers;
+        private Dictionary<string, byte> b3InstructionNumbers;
+        private Dictionary<string, byte> b4InstructionNumbers;
 
         public InstructionGenerator()
         {
@@ -26,22 +26,22 @@ namespace CiscSimulator.Assembler
 
         private void InitializeInstructionNames()
         {
-            B1InstructionNames = new List<string>
+            b1InstructionNames = new List<string>
             {
                 "mov", "add", "sub", "cmp", "and", "or", "xor"
             };
 
-            B2InstructionNames = new List<string>
+            b2InstructionNames = new List<string>
             {
                 "clr", "neg", "inc", "dec", "asl", "asr", "lsr", "rol", "ror", "rlc", "rrc", "jmp", "call", "push", "pop"
             };
 
-            B3InstructionNames = new List<string>
+            b3InstructionNames = new List<string>
             {
                 "br", "bne", "beq", "bpl", "bmi", "bcs", "bcc", "bvs", "bvc"
             };
 
-            B4InstructionNames = new List<string>
+            b4InstructionNames = new List<string>
             {
                 "clc", "clv", "clz", "cls", "ccc", "sec", "sev", "sez", "ses", "scc", "nop", "ret", "reti", "halt", "wait", "push pc", "pop pc", "push flag", "pop flag"
             };
@@ -49,7 +49,7 @@ namespace CiscSimulator.Assembler
 
         private void InitializeInstructionNumbers()
         {
-            B1InstructionNumbers = new Dictionary<string, byte>
+            b1InstructionNumbers = new Dictionary<string, byte>
             {
                 ["mov"] = 0,
                 ["add"] = 1,
@@ -60,7 +60,7 @@ namespace CiscSimulator.Assembler
                 ["xor"] = 6
             };
 
-            B2InstructionNumbers = new Dictionary<string, byte>
+            b2InstructionNumbers = new Dictionary<string, byte>
             {
                 ["clr"] = 0,
                 ["neg"] = 1,
@@ -79,7 +79,7 @@ namespace CiscSimulator.Assembler
                 ["pop"] = 14
             };
 
-            B3InstructionNumbers = new Dictionary<string, byte>
+            b3InstructionNumbers = new Dictionary<string, byte>
             {
                 ["br"] = 0,
                 ["bne"] = 1,
@@ -92,7 +92,7 @@ namespace CiscSimulator.Assembler
                 ["bvc"] = 8
             };
 
-            B4InstructionNumbers = new Dictionary<string, byte>
+            b4InstructionNumbers = new Dictionary<string, byte>
             {
                 ["clc"] = 0,
                 ["clv"] = 1,
@@ -176,7 +176,7 @@ namespace CiscSimulator.Assembler
             }
 
             var instruction = new B1Instruction();
-            instruction.InstructionNumber = B1InstructionNumbers[instructionName];
+            instruction.InstructionNumber = b1InstructionNumbers[instructionName];
 
             instruction.SourceAddressMode = sourceAddressMode;
             instruction.Source = sourceValue;
@@ -212,8 +212,7 @@ namespace CiscSimulator.Assembler
             }
 
             var instruction = new B2Instruction();
-            instruction.InstructionNumber = B2InstructionNumbers[instructionName];
-
+            instruction.InstructionNumber = b2InstructionNumbers[instructionName];
             instruction.AddressMode = addressMode;
             instruction.Value = value;
             instruction.DataExtension = extendedData;
@@ -238,7 +237,7 @@ namespace CiscSimulator.Assembler
             );
 
             var instruction = new B3Instruction();
-            instruction.InstructionNumber = B3InstructionNumbers[instructionName];
+            instruction.InstructionNumber = b3InstructionNumbers[instructionName];
             instruction.Offset = value.LoByte;
             instruction.DataExtension = extendedData;
 
@@ -254,7 +253,7 @@ namespace CiscSimulator.Assembler
             }
 
             var instruction = new B4Instruction();
-            instruction.InstructionNumber = B4InstructionNumbers[instructionName];
+            instruction.InstructionNumber = b4InstructionNumbers[instructionName];
 
             return instruction;
         }
@@ -279,22 +278,22 @@ namespace CiscSimulator.Assembler
 
         private InstructionClass DetermineInstructionClassByInstructionName(string instructionName)
         {
-            if (B1InstructionNames.Contains(instructionName))
+            if (b1InstructionNames.Contains(instructionName))
             {
                 return InstructionClass.B1;
             }
 
-            if (B2InstructionNames.Contains(instructionName))
+            if (b2InstructionNames.Contains(instructionName))
             {
                 return InstructionClass.B2;
             }
 
-            if (B3InstructionNames.Contains(instructionName))
+            if (b3InstructionNames.Contains(instructionName))
             {
                 return InstructionClass.B3;
             }
 
-            if (B4InstructionNames.Contains(instructionName))
+            if (b4InstructionNames.Contains(instructionName))
             {
                 return InstructionClass.B4;
             }

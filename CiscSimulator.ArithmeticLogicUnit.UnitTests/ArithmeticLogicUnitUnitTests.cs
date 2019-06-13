@@ -28,7 +28,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         [TestMethod]
         public void InitializedArithmeticLogicUnitHasOperatorSetToUndefined()
         {
-            Assert.AreEqual(Operator.Undefined, arithmeticLogicUnit.Operator);
+            Assert.AreEqual(AluOperator.Undefined, arithmeticLogicUnit.Operator);
         }
 
         [TestMethod]
@@ -43,7 +43,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = null;
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.Add;
+            arithmeticLogicUnit.Operator = AluOperator.Add;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -54,7 +54,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = null;
-            arithmeticLogicUnit.Operator = Operator.Add;
+            arithmeticLogicUnit.Operator = AluOperator.Add;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -65,7 +65,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.Undefined;
+            arithmeticLogicUnit.Operator = AluOperator.Undefined;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -75,7 +75,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.Add;
+            arithmeticLogicUnit.Operator = AluOperator.Add;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -85,7 +85,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.Add;
+            arithmeticLogicUnit.Operator = AluOperator.Add;
 
             arithmeticLogicUnit.PerformOperation();
 
@@ -97,7 +97,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.Subtract;
+            arithmeticLogicUnit.Operator = AluOperator.Subtract;
 
             arithmeticLogicUnit.PerformOperation();
 
@@ -109,7 +109,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.And;
+            arithmeticLogicUnit.Operator = AluOperator.And;
 
             arithmeticLogicUnit.PerformOperation();
 
@@ -121,7 +121,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.Or;
+            arithmeticLogicUnit.Operator = AluOperator.Or;
 
             arithmeticLogicUnit.PerformOperation();
 
@@ -133,7 +133,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.ExclusiveOr;
+            arithmeticLogicUnit.Operator = AluOperator.ExclusiveOr;
 
             arithmeticLogicUnit.PerformOperation();
 
@@ -146,7 +146,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.Negate;
+            arithmeticLogicUnit.Operator = AluOperator.Negate;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -157,7 +157,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.ArithmeticShiftRight;
+            arithmeticLogicUnit.Operator = AluOperator.ArithmeticShiftRight;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -168,7 +168,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.ArithmeticShiftLeft;
+            arithmeticLogicUnit.Operator = AluOperator.ArithmeticShiftLeft;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -179,7 +179,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.LogicalShiftRight;
+            arithmeticLogicUnit.Operator = AluOperator.LogicalShiftRight;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -190,7 +190,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.LogicalShiftLeft;
+            arithmeticLogicUnit.Operator = AluOperator.LogicalShiftLeft;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -201,7 +201,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.RotateRight;
+            arithmeticLogicUnit.Operator = AluOperator.RotateRight;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -212,7 +212,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.RotateLeft;
+            arithmeticLogicUnit.Operator = AluOperator.RotateLeft;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -223,7 +223,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.RotateRightThroughCarry;
+            arithmeticLogicUnit.Operator = AluOperator.RotateRightThroughCarry;
 
             arithmeticLogicUnit.PerformOperation();
         }
@@ -234,7 +234,7 @@ namespace CiscSimulator.ArithmeticLogicUnit.UnitTests
         {
             arithmeticLogicUnit.Operand1 = new Data();
             arithmeticLogicUnit.Operand2 = new Data();
-            arithmeticLogicUnit.Operator = Operator.RotateLeftThroughCarry;
+            arithmeticLogicUnit.Operator = AluOperator.RotateLeftThroughCarry;
 
             arithmeticLogicUnit.PerformOperation();
         }

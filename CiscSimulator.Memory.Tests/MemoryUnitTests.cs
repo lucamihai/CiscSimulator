@@ -33,7 +33,7 @@ namespace CiscSimulator.Memory.Tests
         [TestMethod]
         public void ConstructorWithReadOnlyFalseSetsEachDataReadOnlyToFalse()
         {
-            memory = new Memory(Constants.MinimumAddress, Constants.MaximumAddress);
+            memory = new Memory(Constants.MinimumAddress, Constants.MaximumAddress, Constants.ReadOnlyFalse);
 
             for (var address = Constants.MinimumAddress; address <= Constants.MaximumAddress; address++)
             {
@@ -44,7 +44,7 @@ namespace CiscSimulator.Memory.Tests
         [TestMethod]
         public void ConstructorWithReadOnlyTrueSetsEachDataReadOnlyToTrue()
         {
-            memory = new Memory(Constants.MinimumAddress, Constants.MaximumAddress, true);
+            memory = new Memory(Constants.MinimumAddress, Constants.MaximumAddress, Constants.ReadOnlyTrue);
 
             for (var address = Constants.MinimumAddress; address <= Constants.MaximumAddress; address++)
             {

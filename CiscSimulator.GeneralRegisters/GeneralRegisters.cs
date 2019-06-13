@@ -32,7 +32,6 @@ namespace CiscSimulator.GeneralRegisters
             get
             {
                 ValidateRegisterNumber(registerNumber);
-
                 return registers[registerNumber];
             }
         }
@@ -49,7 +48,7 @@ namespace CiscSimulator.GeneralRegisters
         {
             InitializeComponent();
             InitializeRegisters();
-            InitializeProperties();
+            InitializeRegisterProperties();
 
             AddRegistersToControls();
         }
@@ -61,20 +60,23 @@ namespace CiscSimulator.GeneralRegisters
             {
                 var register = new Register($"R{registerNumber}");
                 register.Location = GetRegisterLocationBasedOnRegisterNumber(registerNumber);
+
                 registers.Add(register);
             }
         }
 
         private Point GetRegisterLocationBasedOnRegisterNumber(int registerNumber)
         {
-            var location = new Point();
-            location.X = 0;
-            location.Y = registerNumber * 25;
+            var location = new Point
+            {
+                X = 0,
+                Y = registerNumber * 25
+            };
 
             return location;
         }
 
-        private void InitializeProperties()
+        private void InitializeRegisterProperties()
         {
             R0 = registers[0];
             R1 = registers[1];

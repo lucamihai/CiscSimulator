@@ -19,7 +19,7 @@ namespace CiscSimulator.Common
             InitializeComponent();
 
             RegisterName = registerName;
-            Data = data != null ? data : Data.LowestData;
+            Data = data ?? Data.LowestData;
             Data.OnValueChanged = OnValueChanged;
         }
 

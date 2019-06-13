@@ -83,7 +83,7 @@ namespace CiscSimulator.Sequencer.UnitTests
         [TestMethod]
         public void ValueIsExpectedValue1()
         {
-            var mpmData = Constants.MpmData1;
+            mpmData = Constants.MpmData1;
 
             Assert.AreEqual(Constants.ExpectedValue1, mpmData.Value);
         }
@@ -91,7 +91,7 @@ namespace CiscSimulator.Sequencer.UnitTests
         [TestMethod]
         public void ValueIsExpectedValue2()
         {
-            var mpmData = Constants.MpmData2;
+            mpmData = Constants.MpmData2;
 
             Assert.AreEqual(Constants.ExpectedValue2, mpmData.Value);
         }

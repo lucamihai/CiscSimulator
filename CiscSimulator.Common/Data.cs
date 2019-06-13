@@ -6,10 +6,10 @@ namespace CiscSimulator.Common
     {
         public bool ReadOnly { get; }
 
-        private byte _LoByte;
+        private byte loByte;
         public byte LoByte
         {
-            get => _LoByte;
+            get => loByte;
             set
             {
                 if (ReadOnly)
@@ -17,15 +17,15 @@ namespace CiscSimulator.Common
                     throw new InvalidOperationException("Data is read-only");
                 }
 
-                _LoByte = value;
+                loByte = value;
                 OnValueChanged();
             }
         }
 
-        private byte _HiByte;
+        private byte hiByte;
         public byte HiByte
         {
-            get => _HiByte;
+            get => hiByte;
             set
             {
                 if (ReadOnly)
@@ -33,7 +33,7 @@ namespace CiscSimulator.Common
                     throw new InvalidOperationException("Data is read-only");
                 }
 
-                _HiByte = value;
+                hiByte = value;
                 OnValueChanged();
             }
         }
@@ -65,8 +65,7 @@ namespace CiscSimulator.Common
 
         public override string ToString()
         {
-            return
-                $"{Utilities.GetBinaryStringRepresentation(HiByte)} {Utilities.GetBinaryStringRepresentation(LoByte)}";
+            return $"{Utilities.GetBinaryStringRepresentation(HiByte)} {Utilities.GetBinaryStringRepresentation(LoByte)}";
         }
 
         public override bool Equals(object obj)

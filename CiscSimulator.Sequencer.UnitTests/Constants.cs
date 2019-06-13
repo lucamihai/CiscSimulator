@@ -9,7 +9,7 @@ namespace CiscSimulator.Sequencer.UnitTests
     {
         public static SBusDBusOperations SBusOperation => SBusDBusOperations.PD0;
         public static SBusDBusOperations DBusOperation => SBusDBusOperations.PdAdr;
-        public static Operator AluOperator => Operator.Add;
+        public static AluOperator AluOperator => AluOperator.Add;
         public static RBusOperations RBusOperation => RBusOperations.PmIVR;
         public static OtherOperations OtherOperation => OtherOperations.CLS;
         public static MemoryOperations MemoryOperation => MemoryOperations.Read;
@@ -23,7 +23,7 @@ namespace CiscSimulator.Sequencer.UnitTests
         {
             SBusOperation = SBusDBusOperations.PdPc,
             DBusOperation = SBusDBusOperations.PD0,
-            AluOperator = Operator.Add,
+            AluOperator = AluOperator.Add,
             RBusOperation = RBusOperations.PmAdr,
             OtherOperation = OtherOperations.IncrementPC,
             MemoryOperation = MemoryOperations.IfCh,
@@ -38,7 +38,7 @@ namespace CiscSimulator.Sequencer.UnitTests
         {
             SBusOperation = SBusDBusOperations.PdRG,
             DBusOperation = SBusDBusOperations.PD0,
-            AluOperator = Operator.Add,
+            AluOperator = AluOperator.Add,
             RBusOperation = RBusOperations.PmT,
             OtherOperation = OtherOperations.None,
             MemoryOperation = MemoryOperations.None,

@@ -1,6 +1,6 @@
 ﻿namespace CiscSimulator.ArithmeticLogicUnit.Enums
 {
-    public enum Operator
+    public enum AluOperator
     {
         Undefined,
         Add,

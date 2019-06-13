@@ -54,37 +54,37 @@ namespace CiscSimulator.Common.UnitTests
         }
 
         [TestMethod]
-        public void ToStringWorks1()
+        public void ToStringReturnsExpectedString1()
         {
             Assert.AreEqual(Constants.ExpectedDataString1, Constants.Data1.ToString());
         }
 
         [TestMethod]
-        public void ToStringWorks2()
+        public void ToStringReturnsExpectedString2()
         {
             Assert.AreEqual(Constants.ExpectedDataString2, Constants.Data2.ToString());
         }
 
         [TestMethod]
-        public void ValuePropertyWorks1()
+        public void ValuePropertyReturnsExpectedValue1()
         {
             Assert.IsTrue(Constants.ExpectedValue1 == Constants.Data1.Value);
         }
 
         [TestMethod]
-        public void ValuePropertyWorks2()
+        public void ValuePropertyReturnsExpectedValue2()
         {
             Assert.IsTrue(Constants.ExpectedValue2 == Constants.Data2.Value);
         }
 
         [TestMethod]
-        public void CloneWorks1()
+        public void CloneReturnsExpectedObject1()
         {
             Assert.AreEqual(Constants.Data1, (Data)Constants.Data1.Clone());
         }
 
         [TestMethod]
-        public void CloneWorks2()
+        public void CloneReturnsExpectedObject2()
         {
             Assert.AreEqual(Constants.Data2, (Data)Constants.Data2.Clone());
         }

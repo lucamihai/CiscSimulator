@@ -10,13 +10,13 @@ namespace CiscSimulator.ArithmeticLogicUnit
     {
         public Data Operand1 { get; set; }
         public Data Operand2 { get; set; }
-        public Operator Operator { get; set; }
+        public AluOperator Operator { get; set; }
         public Data Result { get; private set; }
 
         public ArithmeticLogicUnit()
         {
             InitializeComponent();
-            Operator = Operator.Undefined;
+            Operator = AluOperator.Undefined;
         }
 
         public void PerformOperation()
@@ -31,7 +31,7 @@ namespace CiscSimulator.ArithmeticLogicUnit
                 throw new InvalidOperationException($"Can't perform operation if {nameof(Operand2)} is null");
             }
 
-            if (Operator == Operator.Undefined)
+            if (Operator == AluOperator.Undefined)
             {
                 throw new InvalidOperationException($"Can't perform operation if {nameof(Operator)} is undefined");
             }
@@ -39,46 +39,46 @@ namespace CiscSimulator.ArithmeticLogicUnit
             Result = new Data();
             switch (Operator)
             {
-                case Operator.Add:
+                case AluOperator.Add:
                     ArithmeticOperations.Add(Result, Operand1, Operand2);
                     break;
-                case Operator.Subtract:
+                case AluOperator.Subtract:
                     ArithmeticOperations.Subtract(Result, Operand1, Operand2);
                     break;
-                case Operator.And:
+                case AluOperator.And:
                     BitWiseOperations.And(Result, Operand1, Operand2);
                     break;
-                case Operator.Or:
+                case AluOperator.Or:
                     BitWiseOperations.Or(Result, Operand1, Operand2);
                     break;
-                case Operator.ExclusiveOr:
+                case AluOperator.ExclusiveOr:
                     BitWiseOperations.ExclusiveOr(Result, Operand1, Operand2);
                     break;
-                case Operator.Negate:
+                case AluOperator.Negate:
                     BitWiseOperations.Negate(Result, Operand1);
                     break;
-                case Operator.ArithmeticShiftRight:
+                case AluOperator.ArithmeticShiftRight:
                     BitShiftOperations.ArithmeticShiftRight(Result, Operand1, Operand2);
                     break;
-                case Operator.ArithmeticShiftLeft:
+                case AluOperator.ArithmeticShiftLeft:
                     BitShiftOperations.ArithmeticShiftLeft(Result, Operand1, Operand2);
                     break;
-                case Operator.LogicalShiftRight:
+                case AluOperator.LogicalShiftRight:
                     BitShiftOperations.LogicalShiftRight(Result, Operand1, Operand2);
                     break;
-                case Operator.LogicalShiftLeft:
+                case AluOperator.LogicalShiftLeft:
                     BitShiftOperations.LogicalShiftLeft(Result, Operand1, Operand2);
                     break;
-                case Operator.RotateRight:
+                case AluOperator.RotateRight:
                     BitShiftOperations.RotateRight(Result, Operand1, Operand2);
                     break;
-                case Operator.RotateLeft:
+                case AluOperator.RotateLeft:
                     BitShiftOperations.RotateLeft(Result, Operand1, Operand2);
                     break;
-                case Operator.RotateRightThroughCarry:
+                case AluOperator.RotateRightThroughCarry:
                     BitShiftOperations.RotateRightThroughCarry(Result, Operand1, Operand2);
                     break;
-                case Operator.RotateLeftThroughCarry:
+                case AluOperator.RotateLeftThroughCarry:
                     BitShiftOperations.RotateLeftThroughCarry(Result, Operand1, Operand2);
                     break;
             }

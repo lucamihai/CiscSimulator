@@ -16,7 +16,7 @@ namespace CiscSimulator.Assembler.Instructions
         public AddressMode DestinationAddressMode { get; set; }
         public Data Destination { get; set; }
         public Data DestinationDataExtension { get; set; }
-        
+
 
         public List<Data> Data
         {
@@ -36,7 +36,6 @@ namespace CiscSimulator.Assembler.Instructions
 
                 return dataList;
             }
-
         }
 
         private void HandleDataListAndDataInstructionBasedOnSourceAddressMode(List<Data> dataList, Data dataInstruction)
