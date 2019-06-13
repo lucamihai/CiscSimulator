@@ -6,6 +6,11 @@ namespace CiscSimulator.Sequencer
 {
     public class MpmData
     {
+        public MpmData(long value = 0)
+        {
+            Value = value;
+        }
+
         public SBusDBusOperations SBusOperation
         {
             get => (SBusDBusOperations)(Value >> 35);

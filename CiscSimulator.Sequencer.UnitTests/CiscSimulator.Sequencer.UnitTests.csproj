@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="MpmDataUnitTests.cs" />
+    <Compile Include="MpmMemoryUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
