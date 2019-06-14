@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="Enums\Indexes.cs" />
     <Compile Include="Enums\JumpOperations.cs" />
     <Compile Include="Enums\MemoryOperations.cs" />

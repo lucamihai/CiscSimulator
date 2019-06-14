@@ -50,6 +50,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusUnitTests.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DataUnitTests.cs" />
     <Compile Include="LineUnitTests.cs" />

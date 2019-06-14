@@ -56,8 +56,6 @@ namespace CiscSimulator.Common
         public delegate void ValueChanged();
         public ValueChanged OnValueChanged { get; set; } = () => { };
 
-        public static Data LowestData => new Data { HiByte = byte.MinValue, LoByte = byte.MinValue };
-
         public Data(bool readOnly = false)
         {
             ReadOnly = readOnly;
