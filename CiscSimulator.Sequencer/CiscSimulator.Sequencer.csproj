@@ -50,6 +50,7 @@
     <Compile Include="Enums\OtherOperations.cs" />
     <Compile Include="Enums\RBusOperations.cs" />
     <Compile Include="Enums\SBusDBusOperations.cs" />
+    <Compile Include="Enums\Step.cs" />
     <Compile Include="MpmData.cs" />
     <Compile Include="MpmMemory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using CiscSimulator.Sequencer.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CiscSimulator.Sequencer.UnitTests
@@ -67,6 +68,33 @@ namespace CiscSimulator.Sequencer.UnitTests
         public void ArithmeticLogicUnitIsInitialized()
         {
             Assert.IsNotNull(sequencer.ArithmeticLogicUnit);
+        }
+
+        [TestMethod]
+        public void StepIsInitialedToFetch()
+        {
+            Assert.AreEqual(Step.Fetch, sequencer.Step);
+        }
+
+        [TestMethod]
+        public void NextStepSetsStepToExecuteIfItWasSetToFetch()
+        {
+            Assert.AreEqual(Step.Fetch, sequencer.Step);
+
+            sequencer.NextStep();
+
+            Assert.AreEqual(Step.Execute, sequencer.Step);
+        }
+
+        [TestMethod]
+        public void NextStepSetsStepToFetchIfItWasSetToExecute()
+        {
+            sequencer.NextStep();
+            Assert.AreEqual(Step.Execute, sequencer.Step);
+
+            sequencer.NextStep();
+
+            Assert.AreEqual(Step.Fetch, sequencer.Step);
         }
     }
 }

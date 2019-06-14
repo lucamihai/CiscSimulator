@@ -1,10 +1,13 @@
 ﻿using System.Windows.Forms;
 using CiscSimulator.Common;
+using CiscSimulator.Sequencer.Enums;
 
 namespace CiscSimulator.Sequencer
 {
     public partial class Sequencer : UserControl
     {
+        public Step Step { get; private set; } = Step.Fetch;
+
         public Memory.Memory Memory { get; private set; }
         public MpmMemory MpmMemory { get; private set; }
         public GeneralRegisters.GeneralRegisters GeneralRegisters { get; private set; }
@@ -25,6 +28,25 @@ namespace CiscSimulator.Sequencer
             InitializeArithmeticLogicUnit();
 
             //TODO: Add controls to this.Controls
+        }
+
+        public void NextStep()
+        {
+            if (Step == Step.Fetch)
+            {
+                Fetch();
+
+                Step = Step.Execute;
+                return;
+            }
+
+            if (Step == Step.Execute)
+            {
+                Execute();
+
+                Step = Step.Fetch;
+                return;
+            }
         }
 
         private void InitializeMemory()
@@ -98,6 +120,16 @@ namespace CiscSimulator.Sequencer
             ArithmeticLogicUnit = new ArithmeticLogicUnit.ArithmeticLogicUnit();
 
             //TODO: Generate location in design
+        }
+
+        private void Fetch()
+        {
+            //TODO
+        }
+
+        private void Execute()
+        {
+            //TODO
         }
     }
 }
