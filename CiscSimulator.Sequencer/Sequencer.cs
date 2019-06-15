@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using CiscSimulator.Assembler.Interfaces;
 using CiscSimulator.Common;
 using CiscSimulator.Sequencer.Enums;
 
@@ -30,6 +33,21 @@ namespace CiscSimulator.Sequencer
             //TODO: Add controls to this.Controls
         }
 
+        public void LoadInstructionsInMemory(List<IInstruction> instructions)
+        {
+            ValidateInstructionList(instructions);
+            ClearInstructionDataFromMemory();
+
+            var currentAddress = Constants.MemoryInstructionStartAddress;
+            foreach (var instruction in instructions)
+            {
+                foreach (var data in instruction.Data)
+                {
+                    Memory[currentAddress++].Value = data.Value;
+                }
+            }
+        }
+
         public void NextStep()
         {
             if (Step == Step.Fetch)
@@ -46,6 +64,27 @@ namespace CiscSimulator.Sequencer
 
                 Step = Step.Fetch;
                 return;
+            }
+        }
+
+        private void ValidateInstructionList(List<IInstruction> instructions)
+        {
+            if (instructions == null)
+            {
+                throw new ArgumentNullException($"{nameof(instructions)} can't be null");
+            }
+
+            if (instructions.Count == 0)
+            {
+                throw new ArgumentException($"{nameof(instructions)} can't be empty");
+            }
+        }
+
+        private void ClearInstructionDataFromMemory()
+        {
+            for (var address = Constants.MemoryInstructionStartAddress; address <= Constants.MemoryInstructionEndAddress; address++)
+            {
+                Memory[address].Value = 0;
             }
         }
 

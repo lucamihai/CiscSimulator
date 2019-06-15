@@ -1,5 +1,10 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using CiscSimulator.ArithmeticLogicUnit.Enums;
+using CiscSimulator.Assembler.Enums;
+using CiscSimulator.Assembler.Instructions;
+using CiscSimulator.Assembler.Interfaces;
+using CiscSimulator.Common;
 using CiscSimulator.Sequencer.Enums;
 
 namespace CiscSimulator.Sequencer.UnitTests
@@ -46,5 +51,39 @@ namespace CiscSimulator.Sequencer.UnitTests
             JumpLocation = 13,
             JumpIndex = Indexes.Index3
         };
+
+        public static List<IInstruction> InstructionList1 =>
+            new List<IInstruction>
+            {
+                B1Instruction1,
+                B1Instruction2
+            };
+
+        public static List<IInstruction> InstructionList2 =>
+            new List<IInstruction>
+            {
+                B1Instruction1
+            };
+
+        private static B1Instruction B1Instruction1 =>
+            new B1Instruction
+            {
+                Destination = new Data {Value = 10 },
+                DestinationAddressMode = AddressMode.Direct,
+                Source = new Data {Value = 2},
+                SourceAddressMode = AddressMode.Direct,
+                InstructionNumber = 1
+            };
+
+        private static B1Instruction B1Instruction2 =>
+            new B1Instruction
+            {
+                Destination = new Data { Value = 10 },
+                DestinationAddressMode = AddressMode.Direct,
+                Source = new Data { Value = 0 },
+                SourceAddressMode = AddressMode.Immediate,
+                SourceDataExtension = new Data { Value = 200 },
+                InstructionNumber = 1
+            };
     }
 }

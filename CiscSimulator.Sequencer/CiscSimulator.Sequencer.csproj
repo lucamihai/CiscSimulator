@@ -66,6 +66,10 @@
       <Project>{51559e48-a709-4122-839e-1deb3e51902a}</Project>
       <Name>CiscSimulator.ArithmeticLogicUnit</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CiscSimulator.Assembler\CiscSimulator.Assembler.csproj">
+      <Project>{500618a2-93a6-4bb0-b531-b73da3968b14}</Project>
+      <Name>CiscSimulator.Assembler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CiscSimulator.Common\CiscSimulator.Common.csproj">
       <Project>{1ff97eef-85ab-47ec-93e2-a8fdb8d88f8d}</Project>
       <Name>CiscSimulator.Common</Name>
