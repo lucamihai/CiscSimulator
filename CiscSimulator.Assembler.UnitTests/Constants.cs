@@ -142,7 +142,6 @@ namespace CiscSimulator.Assembler.UnitTests
         public const string ArgumentAddressModeIndexed1 = "(r1)1";
         public const string ArgumentAddressModeIndexed2 = "(r2)13";
 
-        public const string ArgumentAddressModeNotRecognized1 = "-10";
         public const string ArgumentAddressModeNotRecognized2 = "rr";
         public const string ArgumentAddressModeNotRecognized3 = "(10)";
         public const string ArgumentAddressModeNotRecognized4 = "(r1)r2";

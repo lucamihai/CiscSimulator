@@ -58,7 +58,7 @@ namespace CiscSimulator.Assembler.UnitTests.InstructionGeneratorUnitTests
         }
 
         [TestMethod]
-        public void GenerateInstructionFromLineReturnExpectedB4Instruction2()
+        public void GenerateInstructionFromLineReturnsExpectedB4Instruction2()
         {
             var instruction = instructionGenerator.GenerateInstructionFromLine(Constants.LineInstructionB4Valid2);
             var b4Instruction = instruction as B4Instruction;

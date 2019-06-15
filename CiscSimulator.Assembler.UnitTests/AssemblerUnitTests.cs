@@ -37,5 +37,13 @@ namespace CiscSimulator.Assembler.UnitTests
 
             Assert.AreEqual(6, assembler.LineCount);
         }
+
+        [TestMethod]
+        public void ParseTextSetsInstructionsPropertyWithExpectedInstructionList()
+        {
+            assembler.ParseText(Resources.Text1);
+
+            Assert.IsTrue(Methods.InstructionListsAreTheSame(Resources.ExpectedInstructionList, assembler.Instructions));
+        }
     }
 }

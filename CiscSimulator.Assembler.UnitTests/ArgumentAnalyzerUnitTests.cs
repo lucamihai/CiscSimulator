@@ -145,23 +145,6 @@ namespace CiscSimulator.Assembler.UnitTests
         }
 
         [TestMethod]
-        public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized1()
-        {
-            var argument = Constants.ArgumentAddressModeNotRecognized1;
-
-            ArgumentAnalyzer.GetInformationFromArgument(
-                argument,
-                out var addressMode,
-                out var value,
-                out var extendedData
-            );
-
-            Assert.AreEqual(AddressMode.NotRecognized, addressMode);
-            Assert.AreEqual(0, value.Value);
-            Assert.AreEqual(0, extendedData.Value);
-        }
-
-        [TestMethod]
         public void GetInformationFromArgumentWorksOkForAddressModeNotRecognized2()
         {
             var argument = Constants.ArgumentAddressModeNotRecognized2;
