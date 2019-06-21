@@ -16,6 +16,9 @@ namespace CiscSimulator.Sequencer
         public GeneralRegisters.GeneralRegisters GeneralRegisters { get; private set; }
         public Register MemoryAddressRegister { get; private set; }
         public Register MemoryInstructionRegister { get; private set; }
+        public Register FlagRegister { get; private set; }
+        public Register TemporaryRegister { get; private set; }
+        public Register IVR { get; private set; }
         public ArithmeticLogicUnit.ArithmeticLogicUnit ArithmeticLogicUnit { get; private set; }
         public Bus SBus { get; private set; }
         public Bus DBus { get; private set; }
@@ -78,6 +81,27 @@ namespace CiscSimulator.Sequencer
             {
                 throw new ArgumentException($"{nameof(instructions)} can't be empty");
             }
+
+            if (!InstructionsCanBeAddedToMemory(instructions))
+            {
+                throw new ArgumentException($"{nameof(instructions)} can't fit into memory");
+            }
+        }
+
+        private bool InstructionsCanBeAddedToMemory(List<IInstruction> instructions)
+        {
+            var memoryEntryCount = 0;
+            foreach (var instruction in instructions)
+            {
+                foreach (var data in instruction.Data)
+                {
+                    memoryEntryCount++;
+                }
+            }
+
+            var allowedMemoryEntryCount = 1 + Constants.MemoryInstructionEndAddress - Constants.MemoryInstructionStartAddress;
+
+            return memoryEntryCount <= allowedMemoryEntryCount;
         }
 
         private void ClearInstructionDataFromMemory()
@@ -105,6 +129,9 @@ namespace CiscSimulator.Sequencer
             InitializeGeneralRegisters();
             InitializeMemoryAddressRegister();
             InitializeMemoryInstructionRegister();
+            InitializeFlagRegister();
+            InitializeTemporaryRegister();
+            InitializeIVR();
         }
 
         private void InitializeGeneralRegisters()
@@ -122,6 +149,27 @@ namespace CiscSimulator.Sequencer
         private void InitializeMemoryInstructionRegister()
         {
             MemoryInstructionRegister = new Register("MIR");
+
+            //TODO: Generate location in design
+        }
+
+        private void InitializeFlagRegister()
+        {
+            FlagRegister = new Register("FLAG");
+
+            //TODO: Generate location in design
+        }
+
+        private void InitializeTemporaryRegister()
+        {
+            TemporaryRegister = new Register("T");
+
+            //TODO: Generate location in design
+        }
+
+        private void InitializeIVR()
+        {
+            IVR = new Register("IVR");
 
             //TODO: Generate location in design
         }

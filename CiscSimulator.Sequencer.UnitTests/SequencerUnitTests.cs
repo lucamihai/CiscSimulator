@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using CiscSimulator.Assembler.Instructions;
 using CiscSimulator.Assembler.Interfaces;
 using CiscSimulator.Sequencer.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -50,6 +51,24 @@ namespace CiscSimulator.Sequencer.UnitTests
         }
 
         [TestMethod]
+        public void FlagRegisterIsInitialized()
+        {
+            Assert.IsNotNull(sequencer.FlagRegister);
+        }
+
+        [TestMethod]
+        public void TemporaryRegisterIsInitialized()
+        {
+            Assert.IsNotNull(sequencer.TemporaryRegister);
+        }
+
+        [TestMethod]
+        public void IVRIsInitialized()
+        {
+            Assert.IsNotNull(sequencer.IVR);
+        }
+
+        [TestMethod]
         public void SBusIsInitialized()
         {
             Assert.IsNotNull(sequencer.SBus);
@@ -91,6 +110,20 @@ namespace CiscSimulator.Sequencer.UnitTests
         public void LoadInstructionsInMemoryThrowsArgumentExceptionForEmptyInstructionList()
         {
             sequencer.LoadInstructionsInMemory(new List<IInstruction>());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void LoadInstructionsInMemoryThrowsArgumentExceptionForInstructionListWithTooManyDataEntries()
+        {
+            var instructionList = new List<IInstruction>();
+            var memoryEntryLimit = 1 + CiscSimulator.Sequencer.Constants.MemoryInstructionEndAddress - CiscSimulator.Sequencer.Constants.MemoryInstructionStartAddress;
+            for (int i = 0; i < memoryEntryLimit + 1; i++)
+            {
+                instructionList.Add(new B4Instruction());
+            }
+
+            sequencer.LoadInstructionsInMemory(instructionList);
         }
 
         [TestMethod]
