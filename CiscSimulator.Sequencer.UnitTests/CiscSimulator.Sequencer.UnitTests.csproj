@@ -54,7 +54,8 @@
     <Compile Include="MpmDataUnitTests.cs" />
     <Compile Include="MpmMemoryUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SequencerUnitTests.cs" />
+    <Compile Include="SequencerUnitTests\SequencerInitializationUnitTests.cs" />
+    <Compile Include="SequencerUnitTests\SequencerPublicMethodsUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

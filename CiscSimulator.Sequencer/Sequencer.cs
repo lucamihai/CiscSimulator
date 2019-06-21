@@ -33,7 +33,7 @@ namespace CiscSimulator.Sequencer
             InitializeBuses();
             InitializeArithmeticLogicUnit();
 
-            //TODO: Add controls to this.Controls
+            AddControls();
         }
 
         public void LoadInstructionsInMemory(List<IInstruction> instructions)
@@ -111,6 +111,8 @@ namespace CiscSimulator.Sequencer
                 Memory[address].Value = 0;
             }
         }
+
+        #region Controls initialization
 
         private void InitializeMemory()
         {
@@ -207,6 +209,13 @@ namespace CiscSimulator.Sequencer
             ArithmeticLogicUnit = new ArithmeticLogicUnit.ArithmeticLogicUnit();
 
             //TODO: Generate location in design
+        }
+
+        #endregion
+
+        private void AddControls()
+        {
+            //TODO
         }
 
         private void Fetch()
