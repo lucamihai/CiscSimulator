@@ -93,10 +93,7 @@ namespace CiscSimulator.Sequencer
             var memoryEntryCount = 0;
             foreach (var instruction in instructions)
             {
-                foreach (var data in instruction.Data)
-                {
-                    memoryEntryCount++;
-                }
+                memoryEntryCount += instruction.Data.Count;
             }
 
             var allowedMemoryEntryCount = 1 + Constants.MemoryInstructionEndAddress - Constants.MemoryInstructionStartAddress;
