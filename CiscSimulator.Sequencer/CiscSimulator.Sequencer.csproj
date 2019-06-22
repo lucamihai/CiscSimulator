@@ -51,7 +51,9 @@
     <Compile Include="Enums\RBusOperations.cs" />
     <Compile Include="Enums\SBusDBusOperations.cs" />
     <Compile Include="Enums\Step.cs" />
+    <Compile Include="Methods\DBusOperationsMethods.cs" />
     <Compile Include="Methods\MemoryOperationsMethods.cs" />
+    <Compile Include="Methods\SBusOperationsMethods.cs" />
     <Compile Include="MpmData.cs" />
     <Compile Include="MpmDataRegister.cs">
       <SubType>UserControl</SubType>

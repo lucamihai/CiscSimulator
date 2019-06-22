@@ -65,6 +65,12 @@ namespace CiscSimulator.Sequencer.UnitTests.SequencerUnitTests
         }
 
         [TestMethod]
+        public void StackPointerRegisterIsInitialized()
+        {
+            Assert.IsNotNull(sequencer.StackPointerRegister);
+        }
+
+        [TestMethod]
         public void TemporaryRegisterIsInitialized()
         {
             Assert.IsNotNull(sequencer.TemporaryRegister);

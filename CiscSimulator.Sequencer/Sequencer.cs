@@ -19,6 +19,7 @@ namespace CiscSimulator.Sequencer
         public Register MpmInstruction { get; private set; }
         public Register MemoryAddressRegister { get; private set; }
         public Register MemoryDataRegister { get; private set; }
+        public Register StackPointerRegister { get; private set; }
         public Register TemporaryRegister { get; private set; }
         public Register ProgramCounterRegister { get; private set; }
         public Register InterruptVectorRegister { get; private set; }
@@ -136,6 +137,7 @@ namespace CiscSimulator.Sequencer
             InitializeMemoryDataRegister();
             InitializeMemoryInstructionRegister();
             InitializeFlagRegister();
+            InitializeStackPointerRegister();
             InitializeTemporaryRegister();
             InitializeInterruptVectorRegister();
             InitializeProgramCounterRegister();
@@ -177,6 +179,13 @@ namespace CiscSimulator.Sequencer
         private void InitializeFlagRegister()
         {
             FlagRegister = new Register("FLAG");
+
+            //TODO: Generate location in design
+        }
+
+        private void InitializeStackPointerRegister()
+        {
+            StackPointerRegister = new Register("SP");
 
             //TODO: Generate location in design
         }

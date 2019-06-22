@@ -5,8 +5,8 @@ namespace CiscSimulator.Sequencer.UnitTests.MethodsUnitTests
     [ExcludeFromCodeCoverage]
     public static class Constants
     {
-        public const ushort ValueToWrite1 = 100;
-        public const ushort ValueToWrite2 = 101;
+        public const ushort Value1 = 100;
+        public const ushort Value2 = 101;
 
         public const ushort MemoryValue1 = 3;
         public const ushort MemoryAddress1 = CiscSimulator.Sequencer.Constants.MemoryInstructionStartAddress + 40;
