@@ -35,6 +35,12 @@ namespace CiscSimulator.Sequencer.UnitTests.SequencerUnitTests
         }
 
         [TestMethod]
+        public void InstructionRegisterIsInitialized()
+        {
+            Assert.IsNotNull(sequencer.InstructionRegister);
+        }
+
+        [TestMethod]
         public void MemoryAddressRegisterIsInitialized()
         {
             Assert.IsNotNull(sequencer.MemoryAddressRegister);

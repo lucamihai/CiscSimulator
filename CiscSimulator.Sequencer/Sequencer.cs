@@ -15,6 +15,7 @@ namespace CiscSimulator.Sequencer
         public MpmMemory MpmMemory { get; private set; }
 
         public GeneralRegisters.GeneralRegisters GeneralRegisters { get; private set; }
+        public Register InstructionRegister { get; private set; }
         public Register MpmInstruction { get; private set; }
         public Register MemoryAddressRegister { get; private set; }
         public Register MemoryDataRegister { get; private set; }
@@ -130,6 +131,7 @@ namespace CiscSimulator.Sequencer
         private void InitializeRegisters()
         {
             InitializeGeneralRegisters();
+            InitializeInstructionRegister();
             InitializeMemoryAddressRegister();
             InitializeMemoryDataRegister();
             InitializeMemoryInstructionRegister();
@@ -142,6 +144,13 @@ namespace CiscSimulator.Sequencer
         private void InitializeGeneralRegisters()
         {
             GeneralRegisters = new GeneralRegisters.GeneralRegisters();
+        }
+
+        private void InitializeInstructionRegister()
+        {
+            InstructionRegister = new Register("IR");
+
+            //TODO: Generate location in design
         }
 
         private void InitializeMemoryAddressRegister()

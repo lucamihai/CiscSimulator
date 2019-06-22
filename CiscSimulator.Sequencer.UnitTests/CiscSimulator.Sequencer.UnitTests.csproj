@@ -51,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="MethodsUnitTests\Constants.cs" />
+    <Compile Include="MethodsUnitTests\MemoryOperationsMethodsUnitTests.cs" />
     <Compile Include="MpmDataRegisterUnitTests.cs" />
     <Compile Include="MpmDataUnitTests.cs" />
     <Compile Include="MpmMemoryUnitTests.cs" />
