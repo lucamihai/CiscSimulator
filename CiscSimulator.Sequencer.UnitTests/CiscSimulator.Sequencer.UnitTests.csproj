@@ -54,6 +54,7 @@
     <Compile Include="MethodsUnitTests\Constants.cs" />
     <Compile Include="MethodsUnitTests\DBusOperationsMethodsUnitTests.cs" />
     <Compile Include="MethodsUnitTests\MemoryOperationsMethodsUnitTests.cs" />
+    <Compile Include="MethodsUnitTests\OtherOperationsMethodsUnitTests.cs" />
     <Compile Include="MethodsUnitTests\RBusOperationsMethodsUnitTests.cs" />
     <Compile Include="MethodsUnitTests\SBusOperationsMethodsUnitTests.cs" />
     <Compile Include="MpmDataRegisterUnitTests.cs" />
