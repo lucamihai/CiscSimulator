@@ -32,26 +32,18 @@ namespace CiscSimulator.Common
         [ExcludeFromCodeCoverage]
         private void InitializeComponent()
         {
-            this.textBoxLoByte = new System.Windows.Forms.TextBox();
-            this.textBoxHiByte = new System.Windows.Forms.TextBox();
+            this.textBoxValue = new System.Windows.Forms.TextBox();
             this.labelRegisterName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBoxLoByte
+            // textBoxValue
             // 
-            this.textBoxLoByte.Location = new System.Drawing.Point(120, 1);
-            this.textBoxLoByte.Name = "textBoxLoByte";
-            this.textBoxLoByte.ReadOnly = true;
-            this.textBoxLoByte.Size = new System.Drawing.Size(65, 20);
-            this.textBoxLoByte.TabIndex = 6;
-            // 
-            // textBoxHiByte
-            // 
-            this.textBoxHiByte.Location = new System.Drawing.Point(49, 1);
-            this.textBoxHiByte.Name = "textBoxHiByte";
-            this.textBoxHiByte.ReadOnly = true;
-            this.textBoxHiByte.Size = new System.Drawing.Size(65, 20);
-            this.textBoxHiByte.TabIndex = 5;
+            this.textBoxValue.Location = new System.Drawing.Point(49, 1);
+            this.textBoxValue.Name = "textBoxValue";
+            this.textBoxValue.ReadOnly = true;
+            this.textBoxValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxValue.Size = new System.Drawing.Size(148, 20);
+            this.textBoxValue.TabIndex = 5;
             // 
             // labelRegisterName
             // 
@@ -66,8 +58,7 @@ namespace CiscSimulator.Common
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBoxLoByte);
-            this.Controls.Add(this.textBoxHiByte);
+            this.Controls.Add(this.textBoxValue);
             this.Controls.Add(this.labelRegisterName);
             this.Name = "Register";
             this.Size = new System.Drawing.Size(200, 23);
@@ -77,9 +68,7 @@ namespace CiscSimulator.Common
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBoxLoByte;
-        private System.Windows.Forms.TextBox textBoxHiByte;
+        private System.Windows.Forms.TextBox textBoxValue;
         private System.Windows.Forms.Label labelRegisterName;
     }
 }

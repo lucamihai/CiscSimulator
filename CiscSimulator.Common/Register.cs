@@ -1,5 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows.Forms;
+using CiscSimulator.Common.Enums;
 
 namespace CiscSimulator.Common
 {
@@ -13,6 +15,7 @@ namespace CiscSimulator.Common
         }
 
         public Data Data { get; set; }
+        public ValueDisplayMode ValueDisplayMode { get; [ExcludeFromCodeCoverage]set; } = ValueDisplayMode.Binary;
 
         public Register(string registerName, Data data = null)
         {
@@ -26,8 +29,20 @@ namespace CiscSimulator.Common
         [ExcludeFromCodeCoverage]
         private void OnValueChanged()
         {
-            textBoxHiByte.Text = Utilities.GetBinaryStringRepresentation(Data.HiByte);
-            textBoxLoByte.Text = Utilities.GetBinaryStringRepresentation(Data.LoByte);
+            if (ValueDisplayMode == ValueDisplayMode.Binary)
+            {
+                textBoxValue.Text = Utilities.GetBinaryStringRepresentation(Data.Value, 16);
+            }
+
+            if (ValueDisplayMode == ValueDisplayMode.Decimal)
+            {
+                textBoxValue.Text = Data.Value.ToString();
+            }
+
+            if (ValueDisplayMode == ValueDisplayMode.Hexadecimal)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

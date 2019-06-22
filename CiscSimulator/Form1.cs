@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 using CiscSimulator.Common;
+using CiscSimulator.Common.Enums;
 
 namespace CiscSimulator
 {
@@ -13,7 +14,8 @@ namespace CiscSimulator
         private Line lineAddress;
         private Memory.Memory memory;
 
-        private Register registerTest;
+        private Register registerBinaryTest;
+        private Register registerDecimalTest;
 
         public Form1()
         {
@@ -28,9 +30,15 @@ namespace CiscSimulator
             memory.Location = new Point(100, 10);
             Controls.Add(memory);
 
-            registerTest = new Register("R0");
-            registerTest.Location = new Point(200, 200);
-            Controls.Add(registerTest);
+            registerBinaryTest = new Register("R0");
+            registerBinaryTest.ValueDisplayMode = ValueDisplayMode.Binary;
+            registerBinaryTest.Location = new Point(200, 200);
+            Controls.Add(registerBinaryTest);
+
+            registerDecimalTest = new Register("R1");
+            registerDecimalTest.ValueDisplayMode = ValueDisplayMode.Decimal;
+            registerDecimalTest.Location = new Point(200, 225);
+            Controls.Add(registerDecimalTest);
 
             timerDraw.Start();
         }
@@ -45,7 +53,8 @@ namespace CiscSimulator
         private void TimerDrawTick(object sender, System.EventArgs e)
         {
             Refresh();
-            registerTest.Data.Value++;
+            registerBinaryTest.Data.Value++;
+            registerDecimalTest.Data.Value++;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)

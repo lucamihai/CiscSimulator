@@ -33,8 +33,7 @@ namespace CiscSimulator.Common
         private void InitializeComponent()
         {
             this.labelBusName = new System.Windows.Forms.Label();
-            this.textBoxLoByte = new System.Windows.Forms.TextBox();
-            this.textBoxHiByte = new System.Windows.Forms.TextBox();
+            this.textBoxValue = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelBusName
@@ -46,28 +45,20 @@ namespace CiscSimulator.Common
             this.labelBusName.TabIndex = 0;
             this.labelBusName.Text = "Bus name";
             // 
-            // textBoxLoByte
+            // textBoxValue
             // 
-            this.textBoxLoByte.Location = new System.Drawing.Point(82, 22);
-            this.textBoxLoByte.Name = "textBoxLoByte";
-            this.textBoxLoByte.ReadOnly = true;
-            this.textBoxLoByte.Size = new System.Drawing.Size(65, 20);
-            this.textBoxLoByte.TabIndex = 8;
-            // 
-            // textBoxHiByte
-            // 
-            this.textBoxHiByte.Location = new System.Drawing.Point(11, 22);
-            this.textBoxHiByte.Name = "textBoxHiByte";
-            this.textBoxHiByte.ReadOnly = true;
-            this.textBoxHiByte.Size = new System.Drawing.Size(65, 20);
-            this.textBoxHiByte.TabIndex = 7;
+            this.textBoxValue.Location = new System.Drawing.Point(12, 22);
+            this.textBoxValue.Name = "textBoxValue";
+            this.textBoxValue.ReadOnly = true;
+            this.textBoxValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxValue.Size = new System.Drawing.Size(137, 20);
+            this.textBoxValue.TabIndex = 7;
             // 
             // Bus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBoxLoByte);
-            this.Controls.Add(this.textBoxHiByte);
+            this.Controls.Add(this.textBoxValue);
             this.Controls.Add(this.labelBusName);
             this.Name = "Bus";
             this.Size = new System.Drawing.Size(164, 53);
@@ -79,7 +70,6 @@ namespace CiscSimulator.Common
         #endregion
 
         private System.Windows.Forms.Label labelBusName;
-        private System.Windows.Forms.TextBox textBoxLoByte;
-        private System.Windows.Forms.TextBox textBoxHiByte;
+        private System.Windows.Forms.TextBox textBoxValue;
     }
 }
