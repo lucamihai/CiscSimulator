@@ -53,6 +53,7 @@
     <Compile Include="Enums\Step.cs" />
     <Compile Include="Methods\DBusOperationsMethods.cs" />
     <Compile Include="Methods\MemoryOperationsMethods.cs" />
+    <Compile Include="Methods\RBusOperationsMethods.cs" />
     <Compile Include="Methods\SBusOperationsMethods.cs" />
     <Compile Include="MpmData.cs" />
     <Compile Include="MpmDataRegister.cs">
