@@ -41,9 +41,15 @@ namespace CiscSimulator.Sequencer.UnitTests.SequencerUnitTests
         }
 
         [TestMethod]
+        public void MemoryDataRegisterIsInitialized()
+        {
+            Assert.IsNotNull(sequencer.MemoryDataRegister);
+        }
+
+        [TestMethod]
         public void MpmMemoryInstructionRegisterIsInitialized()
         {
-            Assert.IsNotNull(sequencer.MemoryInstructionRegister);
+            Assert.IsNotNull(sequencer.MpmInstruction);
         }
 
         [TestMethod]
@@ -59,9 +65,15 @@ namespace CiscSimulator.Sequencer.UnitTests.SequencerUnitTests
         }
 
         [TestMethod]
-        public void IVRIsInitialized()
+        public void InterruptVectorRegisterIsInitialized()
         {
-            Assert.IsNotNull(sequencer.IVR);
+            Assert.IsNotNull(sequencer.InterruptVectorRegister);
+        }
+
+        [TestMethod]
+        public void ProgramCounterRegisterIsInitialized()
+        {
+            Assert.IsNotNull(sequencer.ProgramCounterRegister);
         }
 
         [TestMethod]

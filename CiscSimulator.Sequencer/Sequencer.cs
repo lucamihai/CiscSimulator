@@ -13,12 +13,16 @@ namespace CiscSimulator.Sequencer
 
         public Memory.Memory Memory { get; private set; }
         public MpmMemory MpmMemory { get; private set; }
+
         public GeneralRegisters.GeneralRegisters GeneralRegisters { get; private set; }
+        public Register MpmInstruction { get; private set; }
         public Register MemoryAddressRegister { get; private set; }
-        public Register MemoryInstructionRegister { get; private set; }
-        public Register FlagRegister { get; private set; }
+        public Register MemoryDataRegister { get; private set; }
         public Register TemporaryRegister { get; private set; }
-        public Register IVR { get; private set; }
+        public Register ProgramCounterRegister { get; private set; }
+        public Register InterruptVectorRegister { get; private set; }
+        public Register FlagRegister { get; private set; }
+
         public ArithmeticLogicUnit.ArithmeticLogicUnit ArithmeticLogicUnit { get; private set; }
         public Bus SBus { get; private set; }
         public Bus DBus { get; private set; }
@@ -127,10 +131,12 @@ namespace CiscSimulator.Sequencer
         {
             InitializeGeneralRegisters();
             InitializeMemoryAddressRegister();
+            InitializeMemoryDataRegister();
             InitializeMemoryInstructionRegister();
             InitializeFlagRegister();
             InitializeTemporaryRegister();
-            InitializeIVR();
+            InitializeInterruptVectorRegister();
+            InitializeProgramCounterRegister();
         }
 
         private void InitializeGeneralRegisters()
@@ -145,9 +151,16 @@ namespace CiscSimulator.Sequencer
             //TODO: Generate location in design
         }
 
+        private void InitializeMemoryDataRegister()
+        {
+            MemoryDataRegister = new Register("MDR");
+
+            //TODO: Generate location in design
+        }
+
         private void InitializeMemoryInstructionRegister()
         {
-            MemoryInstructionRegister = new Register("MIR");
+            MpmInstruction = new Register("MIR");
 
             //TODO: Generate location in design
         }
@@ -166,9 +179,16 @@ namespace CiscSimulator.Sequencer
             //TODO: Generate location in design
         }
 
-        private void InitializeIVR()
+        private void InitializeInterruptVectorRegister()
         {
-            IVR = new Register("IVR");
+            InterruptVectorRegister = new Register("IVR");
+
+            //TODO: Generate location in design
+        }
+
+        private void InitializeProgramCounterRegister()
+        {
+            ProgramCounterRegister = new Register("PC");
 
             //TODO: Generate location in design
         }
