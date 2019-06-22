@@ -113,7 +113,19 @@ namespace CiscSimulator.Sequencer
             set => Value += (long)value;
         }
 
-        public long Value { get; private set; }
+        public delegate void ValueChanged();
+        public ValueChanged OnValueChanged { get; set; } = () => { };
+
+        private long value;
+        public long Value
+        {
+            get => value;
+            set
+            {
+                this.value = value;
+                OnValueChanged();
+            }
+        }
 
         public override string ToString()
         {

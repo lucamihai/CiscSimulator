@@ -2,10 +2,11 @@
 using System.Windows.Forms;
 using CiscSimulator.Common;
 using CiscSimulator.Common.Enums;
+using CiscSimulator.Sequencer;
 
 namespace CiscSimulator
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
         private Timer timerDraw;
 
@@ -16,8 +17,10 @@ namespace CiscSimulator
 
         private Register registerBinaryTest;
         private Register registerDecimalTest;
+        private MpmDataRegister mpmDataRegisterBinaryTest;
+        private MpmDataRegister mpmDataRegisterDecimalTest;
 
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
             InitializeTimer();
@@ -40,6 +43,16 @@ namespace CiscSimulator
             registerDecimalTest.Location = new Point(200, 225);
             Controls.Add(registerDecimalTest);
 
+            mpmDataRegisterBinaryTest = new MpmDataRegister();
+            mpmDataRegisterBinaryTest.ValueDisplayMode = ValueDisplayMode.Binary;
+            mpmDataRegisterBinaryTest.Location = new Point(200, 300);
+            Controls.Add(mpmDataRegisterBinaryTest);
+
+            mpmDataRegisterDecimalTest = new MpmDataRegister();
+            mpmDataRegisterDecimalTest.ValueDisplayMode = ValueDisplayMode.Decimal;
+            mpmDataRegisterDecimalTest.Location = new Point(200, 325);
+            Controls.Add(mpmDataRegisterDecimalTest);
+
             timerDraw.Start();
         }
 
@@ -55,6 +68,8 @@ namespace CiscSimulator
             Refresh();
             registerBinaryTest.Data.Value++;
             registerDecimalTest.Data.Value++;
+            mpmDataRegisterBinaryTest.MpmData.Value++;
+            mpmDataRegisterDecimalTest.MpmData.Value++;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
