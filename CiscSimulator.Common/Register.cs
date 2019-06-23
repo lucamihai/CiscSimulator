@@ -41,7 +41,7 @@ namespace CiscSimulator.Common
 
             if (ValueDisplayMode == ValueDisplayMode.Hexadecimal)
             {
-                throw new NotImplementedException();
+                textBoxValue.Text = $"0x{Convert.ToString(Data.Value, 16).ToUpper()}";
             }
         }
     }

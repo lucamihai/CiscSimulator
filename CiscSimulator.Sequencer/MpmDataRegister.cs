@@ -41,7 +41,7 @@ namespace CiscSimulator.Sequencer
 
             if (ValueDisplayMode == ValueDisplayMode.Hexadecimal)
             {
-                throw new NotImplementedException();
+                textBoxValue.Text = $"0x{Convert.ToString(MpmData.Value, 16).ToUpper()}";
             }
         }
     }

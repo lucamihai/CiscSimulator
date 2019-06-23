@@ -17,8 +17,10 @@ namespace CiscSimulator
 
         private Register registerBinaryTest;
         private Register registerDecimalTest;
+        private Register registerHexadecimalTest;
         private MpmDataRegister mpmDataRegisterBinaryTest;
         private MpmDataRegister mpmDataRegisterDecimalTest;
+        private MpmDataRegister mpmDataRegisterHexadecimalTest;
 
         public MainWindow()
         {
@@ -43,6 +45,11 @@ namespace CiscSimulator
             registerDecimalTest.Location = new Point(200, 225);
             Controls.Add(registerDecimalTest);
 
+            registerHexadecimalTest = new Register("R2");
+            registerHexadecimalTest.ValueDisplayMode = ValueDisplayMode.Hexadecimal;
+            registerHexadecimalTest.Location = new Point(200, 250);
+            Controls.Add(registerHexadecimalTest);
+
             mpmDataRegisterBinaryTest = new MpmDataRegister();
             mpmDataRegisterBinaryTest.ValueDisplayMode = ValueDisplayMode.Binary;
             mpmDataRegisterBinaryTest.Location = new Point(200, 300);
@@ -52,6 +59,11 @@ namespace CiscSimulator
             mpmDataRegisterDecimalTest.ValueDisplayMode = ValueDisplayMode.Decimal;
             mpmDataRegisterDecimalTest.Location = new Point(200, 325);
             Controls.Add(mpmDataRegisterDecimalTest);
+
+            mpmDataRegisterHexadecimalTest = new MpmDataRegister();
+            mpmDataRegisterHexadecimalTest.ValueDisplayMode = ValueDisplayMode.Hexadecimal;
+            mpmDataRegisterHexadecimalTest.Location = new Point(200, 350);
+            Controls.Add(mpmDataRegisterHexadecimalTest);
 
             timerDraw.Start();
         }
@@ -68,8 +80,10 @@ namespace CiscSimulator
             Refresh();
             registerBinaryTest.Data.Value++;
             registerDecimalTest.Data.Value++;
+            registerHexadecimalTest.Data.Value++;
             mpmDataRegisterBinaryTest.MpmData.Value++;
             mpmDataRegisterDecimalTest.MpmData.Value++;
+            mpmDataRegisterHexadecimalTest.MpmData.Value++;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
