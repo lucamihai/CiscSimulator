@@ -25,5 +25,97 @@ namespace CiscSimulator.Sequencer.UnitTests
 
             Assert.AreEqual(mpmDataRegister.ValueDisplayMode, ValueDisplayMode.Binary);
         }
+
+        [TestMethod]
+        public void ValueDisplayedReturnsExceptedStringForValueDisplayModeBinary1()
+        {
+            mpmDataRegister = new MpmDataRegister();
+            mpmDataRegister.MpmData.Value = Constants.Value1;
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Binary;
+
+            Assert.AreEqual(Constants.DisplayedValueBinary1, mpmDataRegister.DisplayedValue);
+        }
+
+        [TestMethod]
+        public void ValueDisplayedReturnsExceptedStringForValueDisplayModeBinary2()
+        {
+            mpmDataRegister = new MpmDataRegister();
+            mpmDataRegister.MpmData.Value = Constants.Value2;
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Binary;
+
+            Assert.AreEqual(Constants.DisplayedValueBinary2, mpmDataRegister.DisplayedValue);
+        }
+
+        [TestMethod]
+        public void ValueDisplayedReturnsExceptedStringForValueDisplayModeDecimal1()
+        {
+            mpmDataRegister = new MpmDataRegister();
+            mpmDataRegister.MpmData.Value = Constants.Value1;
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Decimal;
+
+            Assert.AreEqual(Constants.DisplayedValueDecimal1, mpmDataRegister.DisplayedValue);
+        }
+
+        [TestMethod]
+        public void ValueDisplayedReturnsExceptedStringForValueDisplayModeDecimal2()
+        {
+            mpmDataRegister = new MpmDataRegister();
+            mpmDataRegister.MpmData.Value = Constants.Value2;
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Decimal;
+
+            Assert.AreEqual(Constants.DisplayedValueDecimal2, mpmDataRegister.DisplayedValue);
+        }
+
+        [TestMethod]
+        public void ValueDisplayedReturnsExceptedStringForValueDisplayModeHexadecimal1()
+        {
+            mpmDataRegister = new MpmDataRegister();
+            mpmDataRegister.MpmData.Value = Constants.Value1;
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Hexadecimal;
+
+            Assert.AreEqual(Constants.DisplayedValueHexadecimal1, mpmDataRegister.DisplayedValue);
+        }
+
+        [TestMethod]
+        public void ValueDisplayedReturnsExceptedStringForValueDisplayModeHexadecimal2()
+        {
+            mpmDataRegister = new MpmDataRegister();
+            mpmDataRegister.MpmData.Value = Constants.Value2;
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Hexadecimal;
+
+            Assert.AreEqual(Constants.DisplayedValueHexadecimal2, mpmDataRegister.DisplayedValue);
+        }
+
+        [TestMethod]
+        public void ChangingValueDisplayModeWillUpdateDisplayedValue1()
+        {
+            mpmDataRegister = new MpmDataRegister();
+            mpmDataRegister.MpmData.Value = Constants.Value1;
+
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Binary;
+            Assert.AreEqual(Constants.DisplayedValueBinary1, mpmDataRegister.DisplayedValue);
+
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Decimal;
+            Assert.AreEqual(Constants.DisplayedValueDecimal1, mpmDataRegister.DisplayedValue);
+
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Hexadecimal;
+            Assert.AreEqual(Constants.DisplayedValueHexadecimal1, mpmDataRegister.DisplayedValue);
+        }
+
+        [TestMethod]
+        public void ChangingValueDisplayModeWillUpdateDisplayedValue2()
+        {
+            mpmDataRegister = new MpmDataRegister();
+            mpmDataRegister.MpmData.Value = Constants.Value2;
+
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Binary;
+            Assert.AreEqual(Constants.DisplayedValueBinary2, mpmDataRegister.DisplayedValue);
+
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Decimal;
+            Assert.AreEqual(Constants.DisplayedValueDecimal2, mpmDataRegister.DisplayedValue);
+
+            mpmDataRegister.ValueDisplayMode = ValueDisplayMode.Hexadecimal;
+            Assert.AreEqual(Constants.DisplayedValueHexadecimal2, mpmDataRegister.DisplayedValue);
+        }
     }
 }

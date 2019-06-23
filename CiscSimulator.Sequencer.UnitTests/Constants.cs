@@ -85,5 +85,17 @@ namespace CiscSimulator.Sequencer.UnitTests
                 SourceDataExtension = new Data { Value = 200 },
                 InstructionNumber = 1
             };
+
+        public const byte Value1 = 10;
+        public const byte Value2 = 123;
+
+        public const string DisplayedValueBinary1 = "000000000000000000000000000000000001010";
+        public const string DisplayedValueBinary2 = "000000000000000000000000000000001111011";
+
+        public const string DisplayedValueDecimal1 = "10";
+        public const string DisplayedValueDecimal2 = "123";
+
+        public const string DisplayedValueHexadecimal1 = "0xA";
+        public const string DisplayedValueHexadecimal2 = "0x7B";
     }
 }

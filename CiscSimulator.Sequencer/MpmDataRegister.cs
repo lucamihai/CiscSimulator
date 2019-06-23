@@ -16,18 +16,28 @@ namespace CiscSimulator.Sequencer
         }
 
         public MpmData MpmData { get; set; }
-        public ValueDisplayMode ValueDisplayMode { get; [ExcludeFromCodeCoverage]set; } = ValueDisplayMode.Binary;
+        public string DisplayedValue => textBoxValue.Text;
+
+        private ValueDisplayMode valueDisplayMode = ValueDisplayMode.Binary;
+        public ValueDisplayMode ValueDisplayMode
+        {
+            get => valueDisplayMode;
+            set
+            {
+                valueDisplayMode = value;
+                DisplayValue();
+            }
+        }
 
         public MpmDataRegister()
         {
             InitializeComponent();
 
             MpmData = new MpmData();
-            MpmData.OnValueChanged = OnValueChanged;
+            MpmData.OnValueChanged = DisplayValue;
         }
 
-        [ExcludeFromCodeCoverage]
-        private void OnValueChanged()
+        private void DisplayValue()
         {
             if (ValueDisplayMode == ValueDisplayMode.Binary)
             {

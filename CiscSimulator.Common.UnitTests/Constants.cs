@@ -24,6 +24,15 @@ namespace CiscSimulator.Common.UnitTests
         public const string BinaryStringRepresentation3 = "001101111011";
         public const string BinaryStringRepresentation4 = "101111101011110000011111111";
 
+        public const string DisplayedValueBinary1 = "0000000000001010";
+        public const string DisplayedValueBinary2 = "0000000001111011";
+
+        public const string DisplayedValueDecimal1 = "10";
+        public const string DisplayedValueDecimal2 = "123";
+
+        public const string DisplayedValueHexadecimal1 = "0xA";
+        public const string DisplayedValueHexadecimal2 = "0x7B";
+
         public const string String1 = "something";
         public const int StringSliceBegin1 = 4;
         public const int StringSliceEnd1 = 9;

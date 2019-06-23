@@ -15,7 +15,18 @@ namespace CiscSimulator.Common
         }
 
         public Data Data { get; set; }
-        public ValueDisplayMode ValueDisplayMode { get; [ExcludeFromCodeCoverage]set; } = ValueDisplayMode.Binary;
+        public string DisplayedValue => textBoxValue.Text;
+
+        private ValueDisplayMode valueDisplayMode = ValueDisplayMode.Binary;
+        public ValueDisplayMode ValueDisplayMode
+        {
+            get => valueDisplayMode;
+            set
+            {
+                valueDisplayMode = value;
+                DisplayValue();
+            }
+        }
 
         public Register(string registerName, Data data = null)
         {
@@ -23,11 +34,10 @@ namespace CiscSimulator.Common
 
             RegisterName = registerName;
             Data = data ?? new Data();
-            Data.OnValueChanged = OnValueChanged;
+            Data.OnValueChanged = DisplayValue;
         }
 
-        [ExcludeFromCodeCoverage]
-        private void OnValueChanged()
+        private void DisplayValue()
         {
             if (ValueDisplayMode == ValueDisplayMode.Binary)
             {
