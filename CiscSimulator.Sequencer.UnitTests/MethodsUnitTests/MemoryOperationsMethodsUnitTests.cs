@@ -45,7 +45,7 @@ namespace CiscSimulator.Sequencer.UnitTests.MethodsUnitTests
         [TestMethod]
         public void ReadLoadsMemoryDataRegisterWithValueFoundInMemoryAtMemoryAddressRegister1()
         {
-            sequencer.MemoryAddressRegister.Data.Value = Constants.MemoryAddress1;
+            sequencer.MpmAddressRegister.Data.Value = Constants.MemoryAddress1;
 
             MemoryOperationsMethods.Read(sequencer);
 
@@ -55,7 +55,7 @@ namespace CiscSimulator.Sequencer.UnitTests.MethodsUnitTests
         [TestMethod]
         public void ReadLoadsMemoryDataRegisterWithValueFoundInMemoryAtMemoryAddressRegister2()
         {
-            sequencer.MemoryAddressRegister.Data.Value = Constants.MemoryAddress2;
+            sequencer.MpmAddressRegister.Data.Value = Constants.MemoryAddress2;
 
             MemoryOperationsMethods.Read(sequencer);
 
@@ -65,23 +65,23 @@ namespace CiscSimulator.Sequencer.UnitTests.MethodsUnitTests
         [TestMethod]
         public void WriteLoadsInMemoryAtMemoryAddressRegisterValueFoundInMemoryDataRegister1()
         {
-            sequencer.MemoryAddressRegister.Data.Value = Constants.MemoryAddress1;
+            sequencer.MpmAddressRegister.Data.Value = Constants.MemoryAddress1;
             sequencer.MemoryDataRegister.Data.Value = Constants.Value1;
 
             MemoryOperationsMethods.Write(sequencer);
 
-            Assert.AreEqual(Constants.Value1, sequencer.Memory[sequencer.MemoryAddressRegister.Data.Value].Value);
+            Assert.AreEqual(Constants.Value1, sequencer.Memory[sequencer.MpmAddressRegister.Data.Value].Value);
         }
 
         [TestMethod]
         public void WriteLoadsInMemoryAtMemoryAddressRegisterValueFoundInMemoryDataRegister2()
         {
-            sequencer.MemoryAddressRegister.Data.Value = Constants.MemoryAddress2;
+            sequencer.MpmAddressRegister.Data.Value = Constants.MemoryAddress2;
             sequencer.MemoryDataRegister.Data.Value = Constants.Value2;
 
             MemoryOperationsMethods.Write(sequencer);
 
-            Assert.AreEqual(Constants.Value2, sequencer.Memory[sequencer.MemoryAddressRegister.Data.Value].Value);
+            Assert.AreEqual(Constants.Value2, sequencer.Memory[sequencer.MpmAddressRegister.Data.Value].Value);
         }
     }
 }

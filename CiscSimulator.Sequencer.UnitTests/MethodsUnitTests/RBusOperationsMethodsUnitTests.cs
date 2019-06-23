@@ -54,7 +54,7 @@ namespace CiscSimulator.Sequencer.UnitTests.MethodsUnitTests
         {
             RBusOperationsMethods.PmAdr(sequencer);
 
-            Assert.AreEqual(Constants.Value1, sequencer.MemoryAddressRegister.Data.Value);
+            Assert.AreEqual(Constants.Value1, sequencer.MpmAddressRegister.Data.Value);
         }
 
         [TestMethod]

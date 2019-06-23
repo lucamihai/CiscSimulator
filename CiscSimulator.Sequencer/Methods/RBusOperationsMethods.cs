@@ -27,7 +27,7 @@ namespace CiscSimulator.Sequencer.Methods
 
         public static void PmAdr(Sequencer sequencer)
         {
-            sequencer.MemoryAddressRegister.Data.Value = sequencer.RBus.Data.Value;
+            sequencer.MpmAddressRegister.Data.Value = sequencer.RBus.Data.Value;
         }
 
         public static void PmT(Sequencer sequencer)

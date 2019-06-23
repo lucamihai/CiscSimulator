@@ -32,7 +32,7 @@ namespace CiscSimulator.Sequencer.Methods
 
         public static void PdAdr(Sequencer sequencer)
         {
-            sequencer.DBus.Data.Value = sequencer.MemoryAddressRegister.Data.Value;
+            sequencer.DBus.Data.Value = sequencer.MpmAddressRegister.Data.Value;
         }
 
         public static void PdT(Sequencer sequencer)

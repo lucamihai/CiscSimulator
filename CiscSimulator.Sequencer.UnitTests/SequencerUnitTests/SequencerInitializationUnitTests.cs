@@ -41,6 +41,12 @@ namespace CiscSimulator.Sequencer.UnitTests.SequencerUnitTests
         }
 
         [TestMethod]
+        public void MpmAddressRegisterIsInitialized()
+        {
+            Assert.IsNotNull(sequencer.MpmAddressRegister);
+        }
+
+        [TestMethod]
         public void MemoryAddressRegisterIsInitialized()
         {
             Assert.IsNotNull(sequencer.MemoryAddressRegister);
@@ -53,9 +59,9 @@ namespace CiscSimulator.Sequencer.UnitTests.SequencerUnitTests
         }
 
         [TestMethod]
-        public void MpmMemoryInstructionRegisterIsInitialized()
+        public void MpmInstructionRegisterIsInitialized()
         {
-            Assert.IsNotNull(sequencer.MpmInstruction);
+            Assert.IsNotNull(sequencer.MpmInstructionRegister);
         }
 
         [TestMethod]

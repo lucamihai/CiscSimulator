@@ -16,7 +16,8 @@ namespace CiscSimulator.Sequencer
 
         public GeneralRegisters.GeneralRegisters GeneralRegisters { get; private set; }
         public Register InstructionRegister { get; private set; }
-        public Register MpmInstruction { get; private set; }
+        public MpmDataRegister MpmInstructionRegister { get; private set; }
+        public Register MpmAddressRegister { get; private set; }
         public Register MemoryAddressRegister { get; private set; }
         public Register MemoryDataRegister { get; private set; }
         public Register StackPointerRegister { get; private set; }
@@ -133,9 +134,10 @@ namespace CiscSimulator.Sequencer
         {
             InitializeGeneralRegisters();
             InitializeInstructionRegister();
+            InitializeMpmAddressRegister();
             InitializeMemoryAddressRegister();
             InitializeMemoryDataRegister();
-            InitializeMemoryInstructionRegister();
+            InitializeMpmInstructionRegister();
             InitializeFlagRegister();
             InitializeStackPointerRegister();
             InitializeTemporaryRegister();
@@ -155,9 +157,16 @@ namespace CiscSimulator.Sequencer
             //TODO: Generate location in design
         }
 
+        private void InitializeMpmAddressRegister()
+        {
+            MpmAddressRegister = new Register("MAR");
+
+            //TODO: Generate location in design
+        }
+
         private void InitializeMemoryAddressRegister()
         {
-            MemoryAddressRegister = new Register("MAR");
+            MemoryAddressRegister = new Register("ADR");
 
             //TODO: Generate location in design
         }
@@ -169,9 +178,9 @@ namespace CiscSimulator.Sequencer
             //TODO: Generate location in design
         }
 
-        private void InitializeMemoryInstructionRegister()
+        private void InitializeMpmInstructionRegister()
         {
-            MpmInstruction = new Register("MIR");
+            MpmInstructionRegister = new MpmDataRegister();
 
             //TODO: Generate location in design
         }

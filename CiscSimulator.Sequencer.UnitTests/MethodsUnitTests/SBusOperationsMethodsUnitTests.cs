@@ -65,7 +65,7 @@ namespace CiscSimulator.Sequencer.UnitTests.MethodsUnitTests
         [TestMethod]
         public void PdAdrPutsValueFromMemoryAddressRegisterToSBus()
         {
-            sequencer.MemoryAddressRegister.Data.Value = Constants.Value1;
+            sequencer.MpmAddressRegister.Data.Value = Constants.Value1;
 
             SBusOperationsMethods.PdAdr(sequencer);
 
