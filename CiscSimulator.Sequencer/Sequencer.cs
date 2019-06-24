@@ -264,7 +264,7 @@ namespace CiscSimulator.Sequencer
 
         private void Fetch()
         {
-            //TODO
+            MpmInstructionRegister.MpmData.Value = MpmMemory[MpmAddressRegister.Data.Value].Value;
         }
 
         private void Execute()

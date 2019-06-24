@@ -119,7 +119,7 @@ namespace CiscSimulator.Sequencer.UnitTests.SequencerUnitTests
         }
 
         [TestMethod]
-        public void StepIsInitialedToFetch()
+        public void StepIsInitializedToFetch()
         {
             Assert.AreEqual(Step.Fetch, sequencer.Step);
         }

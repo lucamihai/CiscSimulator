@@ -14,7 +14,7 @@ namespace CiscSimulator.Common
             private set => labelRegisterName.Text = value;
         }
 
-        public Data Data { get; set; }
+        public Data Data { get; }
         public string DisplayedValue => textBoxValue.Text;
 
         private ValueDisplayMode valueDisplayMode = ValueDisplayMode.Binary;

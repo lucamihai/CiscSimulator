@@ -106,5 +106,16 @@ namespace CiscSimulator.Sequencer.UnitTests.SequencerUnitTests
 
             Assert.AreEqual(Step.Fetch, sequencer.Step);
         }
+
+        [TestMethod]
+        public void NextStepPutsMpmDataFoundInMpmMemoryAtAddressFromMpmAddressRegisterInMpmInstructionRegisterIfStepIsFetch()
+        {
+            Assert.AreEqual(Step.Fetch, sequencer.Step);
+
+            var expectedMpmData = sequencer.MpmMemory[sequencer.MpmAddressRegister.Data.Value];
+            sequencer.NextStep();
+
+            Assert.AreEqual(expectedMpmData.Value, sequencer.MpmInstructionRegister.MpmData.Value);
+        }
     }
 }

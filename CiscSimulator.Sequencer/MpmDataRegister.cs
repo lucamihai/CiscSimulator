@@ -15,7 +15,7 @@ namespace CiscSimulator.Sequencer
             private set => labelRegisterName.Text = value;
         }
 
-        public MpmData MpmData { get; set; }
+        public MpmData MpmData { get; }
         public string DisplayedValue => textBoxValue.Text;
 
         private ValueDisplayMode valueDisplayMode = ValueDisplayMode.Binary;
