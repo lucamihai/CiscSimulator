@@ -53,6 +53,7 @@
     <Compile Include="BusUnitTests.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DataUnitTests.cs" />
+    <Compile Include="FlagRegisterUnitTests.cs" />
     <Compile Include="LineUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterUnitTests.cs" />
