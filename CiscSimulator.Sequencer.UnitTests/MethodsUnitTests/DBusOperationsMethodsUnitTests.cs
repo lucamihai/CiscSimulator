@@ -26,10 +26,32 @@ namespace CiscSimulator.Sequencer.UnitTests.MethodsUnitTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(NotImplementedException))]
-        public void PdRgThrowsNotImplementedException()
+        [ExpectedException(typeof(ArgumentException))]
+        public void PdRgThrowsArgumentExceptionForSelectedRegisterTooSmall()
         {
+            sequencer.SelectedRegister = GeneralRegisters.Constants.MinimumRegisterNumber - 1;
+
             DBusOperationsMethods.PdRg(sequencer);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void PdRgThrowsArgumentExceptionForSelectedRegisterTooBig()
+        {
+            sequencer.SelectedRegister = GeneralRegisters.Constants.MaximumRegisterNumber + 1;
+
+            DBusOperationsMethods.PdRg(sequencer);
+        }
+
+        [TestMethod]
+        public void PdRgPutsValueFromGeneralRegisters1ToDBus()
+        {
+            sequencer.GeneralRegisters[1].Data.Value = 10;
+            sequencer.SelectedRegister = 1;
+
+            DBusOperationsMethods.PdRg(sequencer);
+
+            Assert.AreEqual(sequencer.GeneralRegisters[1].Data.Value, sequencer.DBus.Data.Value);
         }
 
         [TestMethod]

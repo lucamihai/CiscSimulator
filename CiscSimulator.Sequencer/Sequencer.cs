@@ -14,6 +14,7 @@ namespace CiscSimulator.Sequencer
         public Memory.Memory Memory { get; private set; }
         public MpmMemory MpmMemory { get; private set; }
 
+        public int SelectedRegister { get; set; }
         public GeneralRegisters.GeneralRegisters GeneralRegisters { get; private set; }
         public Register InstructionRegister { get; private set; }
         public MpmDataRegister MpmInstructionRegister { get; private set; }
@@ -24,7 +25,7 @@ namespace CiscSimulator.Sequencer
         public Register TemporaryRegister { get; private set; }
         public Register ProgramCounterRegister { get; private set; }
         public Register InterruptVectorRegister { get; private set; }
-        public Register FlagRegister { get; private set; }
+        public FlagRegister FlagRegister { get; private set; }
 
         public ArithmeticLogicUnit.ArithmeticLogicUnit ArithmeticLogicUnit { get; private set; }
         public Bus SBus { get; private set; }
@@ -187,7 +188,7 @@ namespace CiscSimulator.Sequencer
 
         private void InitializeFlagRegister()
         {
-            FlagRegister = new Register("FLAG");
+            FlagRegister = new FlagRegister();
 
             //TODO: Generate location in design
         }

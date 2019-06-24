@@ -1,13 +1,10 @@
-﻿using System;
-
-namespace CiscSimulator.Sequencer.Methods
+﻿namespace CiscSimulator.Sequencer.Methods
 {
     public static class RBusOperationsMethods
     {
         public static void PmRg(Sequencer sequencer)
         {
-            // Which register should be selected?
-            throw new NotImplementedException();
+            sequencer.GeneralRegisters[sequencer.SelectedRegister].Data.Value = sequencer.RBus.Data.Value;
         }
 
         public static void PmIr(Sequencer sequencer)

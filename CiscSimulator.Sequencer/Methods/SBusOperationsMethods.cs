@@ -11,8 +11,7 @@ namespace CiscSimulator.Sequencer.Methods
 
         public static void PdRg(Sequencer sequencer)
         {
-            // Which register should be selected?
-            throw new NotImplementedException();
+            sequencer.SBus.Data.Value = sequencer.GeneralRegisters[sequencer.SelectedRegister].Data.Value;
         }
 
         public static void PdIr(Sequencer sequencer)
