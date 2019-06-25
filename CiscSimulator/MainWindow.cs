@@ -42,7 +42,7 @@ namespace CiscSimulator
             sequencer.BorderStyle = BorderStyle.FixedSingle;
         }
 
-        private void LoadAsmFile(object sender, System.EventArgs e)
+        private void LoadAsmFile(object sender, EventArgs e)
         {
             using (var openFileDialog = new OpenFileDialog())
             {
@@ -57,14 +57,31 @@ namespace CiscSimulator
                     using (var streamReader = new StreamReader(fileStream))
                     {
                         var fileContents = streamReader.ReadToEnd();
-                        textBoxLoadedAsmFile.Text = fileContents;
-
+                        UpdateTextBoxLoadedAsmFile(fileContents);
                         assembler.ParseText(fileContents);
                     }
                 }
             }
 
             UpdateTextBoxParsedFile();
+        }
+
+        private void UpdateTextBoxLoadedAsmFile(string fileContents)
+        {
+            var lines = fileContents.Split(
+                new[] { Environment.NewLine },
+                StringSplitOptions.None
+            );
+
+            textBoxLoadedAsmFile.Text = string.Empty;
+
+            for (int index = 0; index < lines.Length; index++)
+            {
+                var line = lines[index];
+                var lineNumber = index + 1;
+
+                textBoxLoadedAsmFile.Text += $"{lineNumber}. {line}{Environment.NewLine}";
+            }
         }
 
         private void UpdateTextBoxParsedFile()
@@ -74,13 +91,15 @@ namespace CiscSimulator
                 textBoxParsedCode.Text = "File couldn't be parsed";
             }
 
-            var text = string.Empty;
-            foreach (var line in assembler.Lines)
-            {
-                text += $"{line}{Environment.NewLine}";
-            }
+            textBoxParsedCode.Text = string.Empty;
 
-            textBoxParsedCode.Text = text;
+            for (int index = 0; index < assembler.Lines.Count; index++)
+            {
+                var line = assembler.Lines[index].ToUpper();
+                var lineNumber = index + 1;
+
+                textBoxParsedCode.Text += $"{lineNumber}. {line}{Environment.NewLine}";
+            }
         }
 
         private void ObserveInstructions(object sender, EventArgs e)

@@ -50,6 +50,7 @@
             // 
             // textBoxLoadedAsmFile
             // 
+            this.textBoxLoadedAsmFile.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxLoadedAsmFile.Location = new System.Drawing.Point(12, 67);
             this.textBoxLoadedAsmFile.Multiline = true;
             this.textBoxLoadedAsmFile.Name = "textBoxLoadedAsmFile";
@@ -60,6 +61,7 @@
             // 
             // textBoxParsedCode
             // 
+            this.textBoxParsedCode.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxParsedCode.Location = new System.Drawing.Point(272, 67);
             this.textBoxParsedCode.Multiline = true;
             this.textBoxParsedCode.Name = "textBoxParsedCode";
