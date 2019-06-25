@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using CiscSimulator.Assembler.Interfaces;
 using CiscSimulator.Common;
+using CiscSimulator.Common.Enums;
 using CiscSimulator.Sequencer.Enums;
 
 namespace CiscSimulator.Sequencer
@@ -12,16 +13,26 @@ namespace CiscSimulator.Sequencer
     {
         public Step Step { get; private set; } = Step.Fetch;
 
-        public Memory.Memory Memory { get; private set; }
-        public MpmMemory MpmMemory { get; private set; }
+        private ValueDisplayMode valueDisplayMode;
 
-        public int SelectedRegister { get; set; }
+        public ValueDisplayMode ValueDisplayMode
+        {
+            get => valueDisplayMode;
+            set
+            {
+                valueDisplayMode = value;
+                UpdateValueDisplayModeForControls();
+            }
+        }
+
         public GeneralRegisters.GeneralRegisters GeneralRegisters { get; private set; }
-        public Register InstructionRegister { get; private set; }
-        public MpmDataRegister MpmInstructionRegister { get; private set; }
-        public Register MpmAddressRegister { get; private set; }
+        public int SelectedRegister { get; set; }
+
+        public Memory.Memory Memory { get; private set; }
+
         public Register MemoryAddressRegister { get; private set; }
         public Register MemoryDataRegister { get; private set; }
+        public Register InstructionRegister { get; private set; }
         public Register StackPointerRegister { get; private set; }
         public Register TemporaryRegister { get; private set; }
         public Register ProgramCounterRegister { get; private set; }
@@ -41,6 +52,10 @@ namespace CiscSimulator.Sequencer
         private TextBox textBoxDisplayedValueRBus;
         private Label labelRBus;
         public Bus RBus { get; private set; }
+
+        public MpmDataRegister MpmInstructionRegister { get; private set; }
+        public Register MpmAddressRegister { get; private set; }
+        public MpmMemory MpmMemory { get; private set; }
 
         public Sequencer()
         {
@@ -341,6 +356,25 @@ namespace CiscSimulator.Sequencer
 
             Controls.Add(MpmAddressRegister);
             Controls.Add(MpmInstructionRegister);
+        }
+
+        private void UpdateValueDisplayModeForControls()
+        {
+            GeneralRegisters.ValueDisplayMode = ValueDisplayMode;
+            MemoryAddressRegister.ValueDisplayMode = ValueDisplayMode;
+            MemoryDataRegister.ValueDisplayMode = ValueDisplayMode;
+            InstructionRegister.ValueDisplayMode = ValueDisplayMode;
+            StackPointerRegister.ValueDisplayMode = ValueDisplayMode;
+            TemporaryRegister.ValueDisplayMode = ValueDisplayMode;
+            ProgramCounterRegister.ValueDisplayMode = ValueDisplayMode;
+            InterruptVectorRegister.ValueDisplayMode = ValueDisplayMode;
+            FlagRegister.ValueDisplayMode = ValueDisplayMode;
+
+            SBus.ValueDisplayMode = ValueDisplayMode;
+            DBus.ValueDisplayMode = ValueDisplayMode;
+            RBus.ValueDisplayMode = ValueDisplayMode;
+
+            MpmAddressRegister.ValueDisplayMode = ValueDisplayMode;
         }
 
         private void Fetch()

@@ -3,11 +3,26 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using CiscSimulator.Common;
+using CiscSimulator.Common.Enums;
 
 namespace CiscSimulator.GeneralRegisters
 {
     public partial class GeneralRegisters : UserControl
     {
+        private ValueDisplayMode valueDisplayMode;
+        public ValueDisplayMode ValueDisplayMode
+        {
+            get => valueDisplayMode;
+            set
+            {
+                valueDisplayMode = value;
+                foreach (var register in registers)
+                {
+                    register.ValueDisplayMode = ValueDisplayMode;
+                }
+            }
+        }
+
         public Register R0 { get; private set; }
         public Register R1 { get; private set; }
         public Register R2 { get; private set; }

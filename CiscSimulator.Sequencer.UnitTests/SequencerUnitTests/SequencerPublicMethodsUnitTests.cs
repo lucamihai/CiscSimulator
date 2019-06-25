@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using CiscSimulator.Assembler.Instructions;
 using CiscSimulator.Assembler.Interfaces;
+using CiscSimulator.Common.Enums;
 using CiscSimulator.Sequencer.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -116,6 +117,28 @@ namespace CiscSimulator.Sequencer.UnitTests.SequencerUnitTests
             sequencer.NextStep();
 
             Assert.AreEqual(expectedMpmData.Value, sequencer.MpmInstructionRegister.MpmData.Value);
+        }
+
+        [TestMethod]
+        public void UpdatingValueDisplayModeWillUpdateValueDisplayModeForExpectedControls()
+        {
+            sequencer.ValueDisplayMode = ValueDisplayMode.Decimal;
+
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.GeneralRegisters.ValueDisplayMode);
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.MemoryAddressRegister.ValueDisplayMode);
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.MemoryDataRegister.ValueDisplayMode);
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.InstructionRegister.ValueDisplayMode);
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.StackPointerRegister.ValueDisplayMode);
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.TemporaryRegister.ValueDisplayMode);
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.ProgramCounterRegister.ValueDisplayMode);
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.InterruptVectorRegister.ValueDisplayMode);
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.FlagRegister.ValueDisplayMode);
+
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.SBus.ValueDisplayMode);
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.DBus.ValueDisplayMode);
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.RBus.ValueDisplayMode);
+
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.MpmAddressRegister.ValueDisplayMode);
         }
     }
 }

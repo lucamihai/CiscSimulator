@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using CiscSimulator.Common.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CiscSimulator.GeneralRegisters.UnitTests
@@ -74,6 +75,17 @@ namespace CiscSimulator.GeneralRegisters.UnitTests
             Assert.AreEqual(generalRegisters.R13, generalRegisters[13]);
             Assert.AreEqual(generalRegisters.R14, generalRegisters[14]);
             Assert.AreEqual(generalRegisters.R15, generalRegisters[15]);
+        }
+
+        [TestMethod]
+        public void UpdatingValueDisplayModeWillUpdateValueDisplayModeForEveryRegister()
+        {
+            generalRegisters.ValueDisplayMode = ValueDisplayMode.Hexadecimal;
+
+            for (int registerNumber = Constants.MinimumRegisterNumber; registerNumber <= Constants.MaximumRegisterNumber; registerNumber++)
+            {
+                Assert.AreEqual(ValueDisplayMode.Hexadecimal, generalRegisters[registerNumber].ValueDisplayMode);
+            }
         }
     }
 }
