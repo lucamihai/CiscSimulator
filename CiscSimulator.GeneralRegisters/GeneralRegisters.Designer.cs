@@ -39,7 +39,7 @@ namespace CiscSimulator.GeneralRegisters
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "GeneralRegisters";
-            this.Size = new System.Drawing.Size(200, 398);
+            this.Size = new System.Drawing.Size(200, 390);
             this.ResumeLayout(false);
 
         }

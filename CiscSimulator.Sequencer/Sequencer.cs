@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using CiscSimulator.Assembler.Interfaces;
 using CiscSimulator.Common;
@@ -151,8 +152,8 @@ namespace CiscSimulator.Sequencer
         private void InitializeGeneralRegisters()
         {
             GeneralRegisters = new GeneralRegisters.GeneralRegisters();
-
-            //TODO: Generate location in design
+            GeneralRegisters.Location = new Point(500,300);
+            GeneralRegisters.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void InitializeInstructionRegister()

@@ -108,6 +108,7 @@ namespace CiscSimulator
             Controls.Add(buttonCloseExtenstion);
 
             Controls.Add(panelExtension);
+            panelExtension.Size = sequencer.Size;
             panelExtension.Location = new Point(590, 67);
             panelExtension.Controls.Add(sequencer);
             sequencer.BorderStyle = BorderStyle.Fixed3D;

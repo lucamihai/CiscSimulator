@@ -38,7 +38,7 @@ namespace CiscSimulator.Common
             // 
             // textBoxValue
             // 
-            this.textBoxValue.Location = new System.Drawing.Point(49, 1);
+            this.textBoxValue.Location = new System.Drawing.Point(36, 0);
             this.textBoxValue.Name = "textBoxValue";
             this.textBoxValue.ReadOnly = true;
             this.textBoxValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -61,7 +61,7 @@ namespace CiscSimulator.Common
             this.Controls.Add(this.textBoxValue);
             this.Controls.Add(this.labelRegisterName);
             this.Name = "Register";
-            this.Size = new System.Drawing.Size(200, 23);
+            this.Size = new System.Drawing.Size(190, 20);
             this.ResumeLayout(false);
             this.PerformLayout();
 

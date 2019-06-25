@@ -70,7 +70,7 @@ namespace CiscSimulator.GeneralRegisters
             var location = new Point
             {
                 X = 0,
-                Y = registerNumber * 25
+                Y = 2 + registerNumber * 24
             };
 
             return location;
