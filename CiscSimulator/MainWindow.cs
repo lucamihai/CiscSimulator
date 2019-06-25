@@ -104,15 +104,45 @@ namespace CiscSimulator
 
         private void ObserveInstructions(object sender, EventArgs e)
         {
-            this.Size = new Size(1024, 1024);
+            this.Size = new Size(1024, Constants.MainWindowInitialSize.Height);
             DisableExtensionButtons();
 
             Controls.Add(buttonCloseExtenstion);
 
+            var textBoxInstructionData = new TextBox();
+            textBoxInstructionData.Size = new Size(250, 375);
+            textBoxInstructionData.ReadOnly = true;
+            textBoxInstructionData.Multiline = true;
+            textBoxInstructionData.Font = new Font(FontFamily.GenericSerif, 11f);
+            textBoxInstructionData.Text = GetInstructionDataStringRepresentation();
+            textBoxInstructionData.ScrollBars = ScrollBars.Both;
+
             Controls.Add(panelExtension);
             panelExtension.Location = new Point(590, 67);
+            panelExtension.Size = textBoxInstructionData.Size;
 
-            //TODO
+            panelExtension.Controls.Add(textBoxInstructionData);
+        }
+
+        private string GetInstructionDataStringRepresentation()
+        {
+            var stringRepresentation = string.Empty;
+
+            for (var index = 0; index < assembler.Instructions.Count; index++)
+            {
+                var instruction = assembler.Instructions[index];
+                var instructionNumber = index + 1;
+                stringRepresentation += $"{instructionNumber}-----------------------{Environment.NewLine}";
+
+                foreach (var data in instruction.Data)
+                {
+                    stringRepresentation += $"{data}{Environment.NewLine}";
+                }
+
+                stringRepresentation += $"{Environment.NewLine}";
+            }
+
+            return stringRepresentation;
         }
 
         private void LoadInstructionsInSequencer(object sender, EventArgs e)

@@ -24,6 +24,7 @@ namespace CiscSimulator.Assembler
 
             Lines = SplitTextByNewline(text).ToList();
             RemoveCommentsFromLines();
+            RemoveWhiteSpacesFromLinesEnd();
             GenerateInstructions();
         }
 
@@ -64,6 +65,19 @@ namespace CiscSimulator.Assembler
             }
 
             Lines = linesAfterCommentRemoval;
+        }
+
+        private void RemoveWhiteSpacesFromLinesEnd()
+        {
+            for (var index = 0; index < Lines.Count; index++)
+            {
+                if (Lines[index].EndsWith(" "))
+                {
+                    var lastNonWhiteSpaceCharacter = Lines[index].Last(x => x != ' ');
+                    var indexOfLastNonWhiteCharacter = Lines[index].LastIndexOf(lastNonWhiteSpaceCharacter);
+                    Lines[index] = Lines[index].Remove(indexOfLastNonWhiteCharacter + 1);
+                }
+            }
         }
 
         private void GenerateInstructions()
