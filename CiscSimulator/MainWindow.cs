@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using CiscSimulator.Common.Enums;
 
 namespace CiscSimulator
 {
@@ -13,7 +14,6 @@ namespace CiscSimulator
         private Sequencer.Sequencer sequencer;
 
         private readonly Panel panelExtension;
-
         private readonly Button buttonCloseExtenstion;
 
         public MainWindow()
@@ -112,6 +112,49 @@ namespace CiscSimulator
             panelExtension.Size = sequencer.Size;
             panelExtension.Location = new Point(590, 67);
             panelExtension.Controls.Add(sequencer);
+
+            var panelForSelectingValueDisplayModeForSequencer = GetPanelForSelectingValueDisplayModeForSequencer();
+            panelForSelectingValueDisplayModeForSequencer.Location = new Point(panelExtension.Location.X + panelExtension.Width, panelExtension.Location.Y);
+            this.Controls.Add(panelForSelectingValueDisplayModeForSequencer);
+        }
+
+        private Panel GetPanelForSelectingValueDisplayModeForSequencer()
+        {
+            var panel = new Panel();
+
+            var radioButtonValueDisplayModeBinary = new RadioButton();
+            radioButtonValueDisplayModeBinary.Text = "Binary";
+            radioButtonValueDisplayModeBinary.Location = new Point(0, 0);
+            radioButtonValueDisplayModeBinary.Checked = true;
+            radioButtonValueDisplayModeBinary.CheckedChanged += (sender, args) =>
+            {
+                if (radioButtonValueDisplayModeBinary.Checked)
+                    sequencer.ValueDisplayMode = ValueDisplayMode.Binary;
+            };
+
+            var radioButtonValueDisplayModeDecimal = new RadioButton();
+            radioButtonValueDisplayModeDecimal.Text = "Decimal";
+            radioButtonValueDisplayModeDecimal.Location = new Point(0, 20);
+            radioButtonValueDisplayModeDecimal.CheckedChanged += (sender, args) =>
+            {
+                if (radioButtonValueDisplayModeDecimal.Checked)
+                    sequencer.ValueDisplayMode = ValueDisplayMode.Decimal;
+            };
+
+            var radioButtonValueDisplayModeHexadecimal = new RadioButton();
+            radioButtonValueDisplayModeHexadecimal.Text = "Hexadecimal";
+            radioButtonValueDisplayModeHexadecimal.Location = new Point(0, 40);
+            radioButtonValueDisplayModeHexadecimal.CheckedChanged += (sender, args) =>
+            {
+                if (radioButtonValueDisplayModeHexadecimal.Checked)
+                    sequencer.ValueDisplayMode = ValueDisplayMode.Hexadecimal;
+            };
+
+            panel.Controls.Add(radioButtonValueDisplayModeBinary);
+            panel.Controls.Add(radioButtonValueDisplayModeDecimal);
+            panel.Controls.Add(radioButtonValueDisplayModeHexadecimal);
+
+            return panel;
         }
 
         private void CloseExtension(object sender, EventArgs e)
