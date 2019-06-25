@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using CiscSimulator.Assembler.Enums;
 using CiscSimulator.Assembler.Instructions;
 using CiscSimulator.Assembler.Interfaces;
@@ -6,6 +7,7 @@ using CiscSimulator.Common;
 
 namespace CiscSimulator.Assembler.UnitTests
 {
+    [ExcludeFromCodeCoverage]
     public static class Resources
     {
         public const string Text1 =

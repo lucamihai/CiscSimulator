@@ -12,6 +12,8 @@ namespace CiscSimulator.Common
         public Point FirstPoint { get; private set; }
         [ExcludeFromCodeCoverage]
         public Point SecondPoint { get; private set; }
+        [ExcludeFromCodeCoverage]
+        public float Width { get; set; }
 
         public bool Active
         {
@@ -31,6 +33,7 @@ namespace CiscSimulator.Common
         {
             using (var pen = new Pen(Color))
             {
+                pen.Width = Width;
                 e.Graphics.DrawLine(pen, FirstPoint, SecondPoint);
             }
         }

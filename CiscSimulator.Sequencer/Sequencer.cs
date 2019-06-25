@@ -29,8 +29,17 @@ namespace CiscSimulator.Sequencer
         public FlagRegister FlagRegister { get; private set; }
 
         public ArithmeticLogicUnit.ArithmeticLogicUnit ArithmeticLogicUnit { get; private set; }
+
+        private TextBox textBoxDisplayedValueSBus;
+        private Label labelSBus;
         public Bus SBus { get; private set; }
+
+        private TextBox textBoxDisplayedValueDBus;
+        private Label labelDBus;
         public Bus DBus { get; private set; }
+
+        private TextBox textBoxDisplayedValueRBus;
+        private Label labelRBus;
         public Bus RBus { get; private set; }
 
         public Sequencer()
@@ -233,32 +242,67 @@ namespace CiscSimulator.Sequencer
             InitializeSBus();
             InitializeDBus();
             InitializeRBus();
-
-            //TODO: Generate locations in design
         }
 
         private void InitializeSBus()
         {
             SBus = new Bus("SBus");
 
-            //TODO: Generate location in design
+            var x = (GeneralRegisters.Location.X + GeneralRegisters.Size.Width + Locations.SecondColumn) / 2 - 10;
+            SBus.Location = new Point(x, 0);
+
+            textBoxDisplayedValueSBus = new TextBox();
+            textBoxDisplayedValueSBus.Size = new Size(125, textBoxDisplayedValueSBus.Height);
+            textBoxDisplayedValueSBus.TextAlign = HorizontalAlignment.Right;
+            textBoxDisplayedValueSBus.ReadOnly = true;
+            textBoxDisplayedValueSBus.Location = new Point(SBus.Location.X - 125 - 4, SBus.Location.Y + SBus.Height - textBoxDisplayedValueSBus.Height);
+
+            labelSBus = new Label();
+            labelSBus.Text = SBus.BusName;
+            labelSBus.Location = new Point(SBus.Location.X - 125, SBus.Location.Y + SBus.Height - textBoxDisplayedValueSBus.Height - labelSBus.Height);
+
+            SBus.TextBoxDisplayValue = textBoxDisplayedValueSBus;
         }
 
         private void InitializeDBus()
         {
             DBus = new Bus("DBus");
 
-            //TODO: Generate location in design
+            var x = (GeneralRegisters.Location.X + GeneralRegisters.Size.Width + Locations.SecondColumn) / 2 + 10;
+            DBus.Location = new Point(x, 0);
+
+            textBoxDisplayedValueDBus = new TextBox();
+            textBoxDisplayedValueDBus.Size = new Size(125, textBoxDisplayedValueDBus.Height);
+            textBoxDisplayedValueDBus.TextAlign = HorizontalAlignment.Right;
+            textBoxDisplayedValueDBus.ReadOnly = true;
+            textBoxDisplayedValueDBus.Location = new Point(DBus.Location.X + DBus.Width + 4, DBus.Location.Y + DBus.Height - textBoxDisplayedValueDBus.Height);
+
+            labelDBus = new Label();
+            labelDBus.Text = DBus.BusName;
+            labelDBus.Location = new Point(DBus.Location.X + DBus.Width, DBus.Location.Y + DBus.Height - textBoxDisplayedValueDBus.Height - labelDBus.Height);
+
+            DBus.TextBoxDisplayValue = textBoxDisplayedValueDBus;
         }
 
         private void InitializeRBus()
         {
             RBus = new Bus("RBus");
 
-            //TODO: Generate location in design
-        }
+            var x = (Memory.Location.X + Memory.Size.Width + Locations.ThirdColumn) / 2 - RBus.Width / 2 + 10;
+            RBus.Location = new Point(x, 0);
 
-        
+            textBoxDisplayedValueRBus = new TextBox();
+            textBoxDisplayedValueRBus.Size = new Size(125, textBoxDisplayedValueRBus.Height);
+            textBoxDisplayedValueRBus.TextAlign = HorizontalAlignment.Right;
+            textBoxDisplayedValueRBus.ReadOnly = true;
+            textBoxDisplayedValueRBus.Location = new Point(RBus.Location.X - 125 - 4, RBus.Location.Y + RBus.Height - textBoxDisplayedValueRBus.Height);
+
+            labelRBus = new Label();
+            labelRBus.Text = RBus.BusName;
+            labelRBus.Location = new Point(RBus.Location.X - 125, RBus.Location.Y + RBus.Height - textBoxDisplayedValueRBus.Height - labelRBus.Height);
+
+            RBus.TextBoxDisplayValue = textBoxDisplayedValueRBus;
+        }
 
         private void InitializeMpmMemory()
         {
@@ -282,9 +326,18 @@ namespace CiscSimulator.Sequencer
             Controls.Add(FlagRegister);
 
             Controls.Add(ArithmeticLogicUnit);
+            
             Controls.Add(SBus);
+            Controls.Add(textBoxDisplayedValueSBus);
+            Controls.Add(labelSBus);
+
             Controls.Add(DBus);
+            Controls.Add(textBoxDisplayedValueDBus);
+            Controls.Add(labelDBus);
+
             Controls.Add(RBus);
+            Controls.Add(textBoxDisplayedValueRBus);
+            Controls.Add(labelRBus);
 
             Controls.Add(MpmAddressRegister);
             Controls.Add(MpmInstructionRegister);

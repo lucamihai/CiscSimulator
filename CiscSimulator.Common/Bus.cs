@@ -8,14 +8,23 @@ namespace CiscSimulator.Common
     public partial class Bus : UserControl
     {
         [ExcludeFromCodeCoverage]
-        public string BusName
-        {
-            get => labelBusName.Text;
-            private set => labelBusName.Text = value;
-        }
+        public string BusName { get; private set; }
 
         public Data Data { get; }
-        public string DisplayedValue => textBoxValue.Text;
+        public string DisplayedValue => TextBoxDisplayValue.Text;
+
+        private TextBox textBoxDisplayValue;
+        public TextBox TextBoxDisplayValue
+        {
+            get => textBoxDisplayValue;
+            set
+            {
+                textBoxDisplayValue = value;
+
+                if (textBoxDisplayValue != null)
+                    DisplayValue();
+            }
+        }
 
         private ValueDisplayMode valueDisplayMode = ValueDisplayMode.Binary;
         public ValueDisplayMode ValueDisplayMode
@@ -28,29 +37,33 @@ namespace CiscSimulator.Common
             }
         }
 
-        public Bus(string busName)
+        public Bus(string busName, TextBox textBoxDisplayValue = null)
         {
             InitializeComponent();
-
             BusName = busName;
-            Data = new Data {OnValueChanged = DisplayValue};
+
+            Data = new Data { OnValueChanged = DisplayValue };
+
+            this.TextBoxDisplayValue = textBoxDisplayValue != null
+                ? textBoxDisplayValue
+                : new TextBox();
         }
 
         private void DisplayValue()
         {
             if (ValueDisplayMode == ValueDisplayMode.Binary)
             {
-                textBoxValue.Text = Utilities.GetBinaryStringRepresentation(Data.Value, 16);
+                TextBoxDisplayValue.Text = Utilities.GetBinaryStringRepresentation(Data.Value, 16);
             }
 
             if (ValueDisplayMode == ValueDisplayMode.Decimal)
             {
-                textBoxValue.Text = Data.Value.ToString();
+                TextBoxDisplayValue.Text = Data.Value.ToString();
             }
 
             if (ValueDisplayMode == ValueDisplayMode.Hexadecimal)
             {
-                textBoxValue.Text = $"0x{Convert.ToString(Data.Value, 16).ToUpper()}";
+                TextBoxDisplayValue.Text = $"0x{Convert.ToString(Data.Value, 16).ToUpper()}";
             }
         }
     }
