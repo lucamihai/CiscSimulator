@@ -61,5 +61,10 @@
       <Name>CiscSimulator.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ArithmeticLogicUnit.resx">
+      <DependentUpon>ArithmeticLogicUnit.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -120,110 +120,112 @@ namespace CiscSimulator.Sequencer
 
         #region Controls initialization
 
+        private void InitializeGeneralRegisters()
+        {
+            GeneralRegisters = new GeneralRegisters.GeneralRegisters();
+            GeneralRegisters.Location = new Point(Locations.FirstColumn, 0);
+            GeneralRegisters.BorderStyle = BorderStyle.FixedSingle;
+        }
+
         private void InitializeMemory()
         {
             Memory = new Memory.Memory(Constants.MemoryMinimumAddress, Constants.MemoryMaximumAddress);
-
-            //TODO: Generate location in design
-        }
-
-        private void InitializeMpmMemory()
-        {
-            MpmMemory = new MpmMemory();
-
-            //TODO: Generate location in design
+            Memory.Location = new Point(Locations.SecondColumn, 0);
+            Memory.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void InitializeRegisters()
         {
             InitializeGeneralRegisters();
-            InitializeInstructionRegister();
-            InitializeMpmAddressRegister();
+            
             InitializeMemoryAddressRegister();
             InitializeMemoryDataRegister();
-            InitializeMpmInstructionRegister();
-            InitializeFlagRegister();
+            InitializeInstructionRegister();
             InitializeStackPointerRegister();
             InitializeTemporaryRegister();
-            InitializeInterruptVectorRegister();
             InitializeProgramCounterRegister();
+            InitializeInterruptVectorRegister();
+            InitializeFlagRegister();
+
+            InitializeMpmAddressRegister();
+            InitializeMpmInstructionRegister();
         }
 
-        private void InitializeGeneralRegisters()
+        private void InitializeArithmeticLogicUnit()
         {
-            GeneralRegisters = new GeneralRegisters.GeneralRegisters();
-            GeneralRegisters.Location = new Point(500,300);
-            GeneralRegisters.BorderStyle = BorderStyle.Fixed3D;
-        }
-
-        private void InitializeInstructionRegister()
-        {
-            InstructionRegister = new Register("IR");
-
-            //TODO: Generate location in design
-        }
-
-        private void InitializeMpmAddressRegister()
-        {
-            MpmAddressRegister = new Register("MAR");
-
-            //TODO: Generate location in design
+            ArithmeticLogicUnit = new ArithmeticLogicUnit.ArithmeticLogicUnit();
+            ArithmeticLogicUnit.Location = new Point(Locations.SecondColumn, FlagRegister.Location.Y + FlagRegister.Size.Height + 40);
+            ArithmeticLogicUnit.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void InitializeMemoryAddressRegister()
         {
             MemoryAddressRegister = new Register("ADR");
-
-            //TODO: Generate location in design
+            MemoryAddressRegister.Location = new Point(Locations.SecondColumn, Memory.Location.Y + Memory.Size.Height + 40);
+            MemoryAddressRegister.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void InitializeMemoryDataRegister()
         {
             MemoryDataRegister = new Register("MDR");
-
-            //TODO: Generate location in design
+            MemoryDataRegister.Location = new Point(Locations.SecondColumn, MemoryAddressRegister.Location.Y + MemoryAddressRegister.Size.Height + 10);
+            MemoryDataRegister.BorderStyle = BorderStyle.FixedSingle;
         }
 
-        private void InitializeMpmInstructionRegister()
+        private void InitializeInstructionRegister()
         {
-            MpmInstructionRegister = new MpmDataRegister();
-
-            //TODO: Generate location in design
-        }
-
-        private void InitializeFlagRegister()
-        {
-            FlagRegister = new FlagRegister();
-
-            //TODO: Generate location in design
+            InstructionRegister = new Register("IR");
+            InstructionRegister.Location = new Point(Locations.SecondColumn, MemoryDataRegister.Location.Y + MemoryDataRegister.Size.Height + 10);
+            InstructionRegister.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void InitializeStackPointerRegister()
         {
             StackPointerRegister = new Register("SP");
-
-            //TODO: Generate location in design
+            StackPointerRegister.Location = new Point(Locations.SecondColumn, InstructionRegister.Location.Y + InstructionRegister.Size.Height + 10);
+            StackPointerRegister.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void InitializeTemporaryRegister()
         {
             TemporaryRegister = new Register("T");
-
-            //TODO: Generate location in design
-        }
-
-        private void InitializeInterruptVectorRegister()
-        {
-            InterruptVectorRegister = new Register("IVR");
-
-            //TODO: Generate location in design
+            TemporaryRegister.Location = new Point(Locations.SecondColumn, StackPointerRegister.Location.Y + StackPointerRegister.Size.Height + 10);
+            TemporaryRegister.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void InitializeProgramCounterRegister()
         {
             ProgramCounterRegister = new Register("PC");
+            ProgramCounterRegister.Location = new Point(Locations.SecondColumn, TemporaryRegister.Location.Y + TemporaryRegister.Size.Height + 10);
+            ProgramCounterRegister.BorderStyle = BorderStyle.FixedSingle;
+        }
 
-            //TODO: Generate location in design
+        private void InitializeInterruptVectorRegister()
+        {
+            InterruptVectorRegister = new Register("IVR");
+            InterruptVectorRegister.Location = new Point(Locations.SecondColumn, ProgramCounterRegister.Location.Y + ProgramCounterRegister.Size.Height + 10);
+            InterruptVectorRegister.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void InitializeFlagRegister()
+        {
+            FlagRegister = new FlagRegister();
+            FlagRegister.Location = new Point(Locations.SecondColumn, InterruptVectorRegister.Location.Y + InterruptVectorRegister.Size.Height + 10);
+            FlagRegister.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void InitializeMpmAddressRegister()
+        {
+            MpmAddressRegister = new Register("MAR");
+            MpmAddressRegister.Location = new Point(Locations.FirstColumn, GeneralRegisters.Location.Y + GeneralRegisters.Size.Height + 250);
+            MpmAddressRegister.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void InitializeMpmInstructionRegister()
+        {
+            MpmInstructionRegister = new MpmDataRegister();
+            MpmInstructionRegister.Location = new Point(Locations.FirstColumn, MpmAddressRegister.Location.Y + MpmAddressRegister.Size.Height + 10);
+            MpmInstructionRegister.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void InitializeBuses()
@@ -256,25 +258,23 @@ namespace CiscSimulator.Sequencer
             //TODO: Generate location in design
         }
 
-        private void InitializeArithmeticLogicUnit()
-        {
-            ArithmeticLogicUnit = new ArithmeticLogicUnit.ArithmeticLogicUnit();
+        
 
-            //TODO: Generate location in design
+        private void InitializeMpmMemory()
+        {
+            MpmMemory = new MpmMemory();
         }
 
         #endregion
 
         private void AddControls()
         {
-            Controls.Add(Memory);
-            Controls.Add(MpmMemory);
-
             Controls.Add(GeneralRegisters);
-            Controls.Add(InstructionRegister);
-            Controls.Add(MpmInstructionRegister);
+            Controls.Add(Memory);
+
             Controls.Add(MemoryAddressRegister);
             Controls.Add(MemoryDataRegister);
+            Controls.Add(InstructionRegister);
             Controls.Add(StackPointerRegister);
             Controls.Add(TemporaryRegister);
             Controls.Add(ProgramCounterRegister);
@@ -285,6 +285,9 @@ namespace CiscSimulator.Sequencer
             Controls.Add(SBus);
             Controls.Add(DBus);
             Controls.Add(RBus);
+
+            Controls.Add(MpmAddressRegister);
+            Controls.Add(MpmInstructionRegister);
         }
 
         private void Fetch()

@@ -39,6 +39,7 @@ namespace CiscSimulator
         private void InitializeSequencer()
         {
             sequencer = new Sequencer.Sequencer();
+            sequencer.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void LoadAsmFile(object sender, System.EventArgs e)
@@ -111,7 +112,6 @@ namespace CiscSimulator
             panelExtension.Size = sequencer.Size;
             panelExtension.Location = new Point(590, 67);
             panelExtension.Controls.Add(sequencer);
-            sequencer.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void CloseExtension(object sender, EventArgs e)

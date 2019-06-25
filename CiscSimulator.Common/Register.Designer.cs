@@ -38,7 +38,7 @@ namespace CiscSimulator.Common
             // 
             // textBoxValue
             // 
-            this.textBoxValue.Location = new System.Drawing.Point(36, 0);
+            this.textBoxValue.Location = new System.Drawing.Point(39, 0);
             this.textBoxValue.Name = "textBoxValue";
             this.textBoxValue.ReadOnly = true;
             this.textBoxValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -47,12 +47,12 @@ namespace CiscSimulator.Common
             // 
             // labelRegisterName
             // 
-            this.labelRegisterName.AutoSize = true;
-            this.labelRegisterName.Location = new System.Drawing.Point(8, 4);
+            this.labelRegisterName.Location = new System.Drawing.Point(0, 0);
             this.labelRegisterName.Name = "labelRegisterName";
-            this.labelRegisterName.Size = new System.Drawing.Size(21, 13);
+            this.labelRegisterName.Size = new System.Drawing.Size(39, 20);
             this.labelRegisterName.TabIndex = 4;
             this.labelRegisterName.Text = "R0";
+            this.labelRegisterName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Register
             // 

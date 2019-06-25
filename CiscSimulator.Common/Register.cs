@@ -35,6 +35,8 @@ namespace CiscSimulator.Common
             RegisterName = registerName;
             Data = data ?? new Data();
             Data.OnValueChanged = DisplayValue;
+
+            DisplayValue();
         }
 
         private void DisplayValue()

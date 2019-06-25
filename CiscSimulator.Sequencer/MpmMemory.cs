@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows.Forms;
 
 namespace CiscSimulator.Sequencer
@@ -192,6 +193,7 @@ namespace CiscSimulator.Sequencer
             };
         }
 
+        [ExcludeFromCodeCoverage]
         private void InitializeComponent()
         {
             this.labelMpmMemory = new System.Windows.Forms.Label();
@@ -213,7 +215,6 @@ namespace CiscSimulator.Sequencer
             this.Name = "MpmMemory";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
     }
 }
