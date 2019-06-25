@@ -32,10 +32,32 @@ namespace CiscSimulator.Memory
         [ExcludeFromCodeCoverage]
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.labelMemory = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // labelMemory
+            // 
+            this.labelMemory.AutoSize = true;
+            this.labelMemory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMemory.Location = new System.Drawing.Point(44, 58);
+            this.labelMemory.Name = "labelMemory";
+            this.labelMemory.Size = new System.Drawing.Size(61, 19);
+            this.labelMemory.TabIndex = 0;
+            this.labelMemory.Text = "Memory";
+            // 
+            // Memory
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelMemory);
+            this.Name = "Memory";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label labelMemory;
     }
 }

@@ -129,6 +129,8 @@ namespace CiscSimulator.Sequencer
         private void InitializeMpmMemory()
         {
             MpmMemory = new MpmMemory();
+
+            //TODO: Generate location in design
         }
 
         private void InitializeRegisters()
@@ -149,6 +151,8 @@ namespace CiscSimulator.Sequencer
         private void InitializeGeneralRegisters()
         {
             GeneralRegisters = new GeneralRegisters.GeneralRegisters();
+
+            //TODO: Generate location in design
         }
 
         private void InitializeInstructionRegister()
@@ -226,6 +230,8 @@ namespace CiscSimulator.Sequencer
             InitializeSBus();
             InitializeDBus();
             InitializeRBus();
+
+            //TODO: Generate locations in design
         }
 
         private void InitializeSBus()
@@ -260,7 +266,24 @@ namespace CiscSimulator.Sequencer
 
         private void AddControls()
         {
-            //TODO
+            Controls.Add(Memory);
+            Controls.Add(MpmMemory);
+
+            Controls.Add(GeneralRegisters);
+            Controls.Add(InstructionRegister);
+            Controls.Add(MpmInstructionRegister);
+            Controls.Add(MemoryAddressRegister);
+            Controls.Add(MemoryDataRegister);
+            Controls.Add(StackPointerRegister);
+            Controls.Add(TemporaryRegister);
+            Controls.Add(ProgramCounterRegister);
+            Controls.Add(InterruptVectorRegister);
+            Controls.Add(FlagRegister);
+
+            Controls.Add(ArithmeticLogicUnit);
+            Controls.Add(SBus);
+            Controls.Add(DBus);
+            Controls.Add(RBus);
         }
 
         private void Fetch()

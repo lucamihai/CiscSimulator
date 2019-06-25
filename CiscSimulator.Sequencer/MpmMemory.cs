@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace CiscSimulator.Sequencer
 {
-    public class MpmMemory
+    public class MpmMemory : UserControl
     {
+        private Label labelMpmMemory;
         private readonly List<MpmData> mpmDataList;
 
         public int MinimumAddress { get; } = 0;
@@ -190,5 +192,28 @@ namespace CiscSimulator.Sequencer
             };
         }
 
+        private void InitializeComponent()
+        {
+            this.labelMpmMemory = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // labelMpmMemory
+            // 
+            this.labelMpmMemory.AutoSize = true;
+            this.labelMpmMemory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMpmMemory.Location = new System.Drawing.Point(29, 57);
+            this.labelMpmMemory.Name = "labelMpmMemory";
+            this.labelMpmMemory.Size = new System.Drawing.Size(94, 19);
+            this.labelMpmMemory.TabIndex = 1;
+            this.labelMpmMemory.Text = "MpmMemory";
+            // 
+            // MpmMemory
+            // 
+            this.Controls.Add(this.labelMpmMemory);
+            this.Name = "MpmMemory";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
     }
 }

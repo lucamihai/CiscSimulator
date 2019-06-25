@@ -32,8 +32,16 @@ namespace CiscSimulator.Sequencer
         [ExcludeFromCodeCoverage]
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Sequencer
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "Sequencer";
+            this.Size = new System.Drawing.Size(1024, 1024);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

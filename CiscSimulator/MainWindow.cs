@@ -1,96 +1,72 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Windows.Forms;
-using CiscSimulator.Common;
-using CiscSimulator.Common.Enums;
-using CiscSimulator.Sequencer;
 
 namespace CiscSimulator
 {
+    [ExcludeFromCodeCoverage]
     public partial class MainWindow : Form
     {
-        private Timer timerDraw;
-
-        private Line lineDataIn;
-        private Line lineDataOut;
-        private Line lineAddress;
-        private Memory.Memory memory;
-
-        private Register registerBinaryTest;
-        private Register registerDecimalTest;
-        private Register registerHexadecimalTest;
-        private MpmDataRegister mpmDataRegisterBinaryTest;
-        private MpmDataRegister mpmDataRegisterDecimalTest;
-        private MpmDataRegister mpmDataRegisterHexadecimalTest;
+        private Assembler.Assembler assembler;
+        private Sequencer.Sequencer sequencer;
 
         public MainWindow()
         {
             InitializeComponent();
-            InitializeTimer();
-
-            lineDataIn = new Line(new Point(10, 10), new Point(100, 10));
-            lineDataOut = new Line(new Point(250, 10), new Point(340, 10));
-            lineAddress = new Line(new Point(10, 100), new Point(100, 100));
-
-            memory = new Memory.Memory(0, 10);
-            memory.Location = new Point(100, 10);
-            Controls.Add(memory);
-
-            registerBinaryTest = new Register("R0");
-            registerBinaryTest.ValueDisplayMode = ValueDisplayMode.Binary;
-            registerBinaryTest.Location = new Point(200, 200);
-            Controls.Add(registerBinaryTest);
-
-            registerDecimalTest = new Register("R1");
-            registerDecimalTest.ValueDisplayMode = ValueDisplayMode.Decimal;
-            registerDecimalTest.Location = new Point(200, 225);
-            Controls.Add(registerDecimalTest);
-
-            registerHexadecimalTest = new Register("R2");
-            registerHexadecimalTest.ValueDisplayMode = ValueDisplayMode.Hexadecimal;
-            registerHexadecimalTest.Location = new Point(200, 250);
-            Controls.Add(registerHexadecimalTest);
-
-            mpmDataRegisterBinaryTest = new MpmDataRegister();
-            mpmDataRegisterBinaryTest.ValueDisplayMode = ValueDisplayMode.Binary;
-            mpmDataRegisterBinaryTest.Location = new Point(200, 300);
-            Controls.Add(mpmDataRegisterBinaryTest);
-
-            mpmDataRegisterDecimalTest = new MpmDataRegister();
-            mpmDataRegisterDecimalTest.ValueDisplayMode = ValueDisplayMode.Decimal;
-            mpmDataRegisterDecimalTest.Location = new Point(200, 325);
-            Controls.Add(mpmDataRegisterDecimalTest);
-
-            mpmDataRegisterHexadecimalTest = new MpmDataRegister();
-            mpmDataRegisterHexadecimalTest.ValueDisplayMode = ValueDisplayMode.Hexadecimal;
-            mpmDataRegisterHexadecimalTest.Location = new Point(200, 350);
-            Controls.Add(mpmDataRegisterHexadecimalTest);
-
-            timerDraw.Start();
+            InitializeAssembler();
+            InitializeSequencer();
         }
 
-        private void InitializeTimer()
+        private void InitializeAssembler()
         {
-            timerDraw = new Timer();
-            timerDraw.Interval = 100;
-            timerDraw.Tick += TimerDrawTick;
+            assembler = new Assembler.Assembler();
         }
 
-        private void TimerDrawTick(object sender, System.EventArgs e)
+        private void InitializeSequencer()
         {
-            Refresh();
-            registerBinaryTest.Data.Value++;
-            registerDecimalTest.Data.Value++;
-            registerHexadecimalTest.Data.Value++;
-            mpmDataRegisterBinaryTest.MpmData.Value++;
-            mpmDataRegisterDecimalTest.MpmData.Value++;
-            mpmDataRegisterHexadecimalTest.MpmData.Value++;
+            sequencer = new Sequencer.Sequencer();
         }
 
-        private void Form1_Paint(object sender, PaintEventArgs e)
+        private void LoadAsmFile(object sender, System.EventArgs e)
         {
-            lineDataIn.Draw(e);
-            lineDataOut.Draw(e);
-            lineAddress.Draw(e);
+            using (var openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Title = "Browse json file";
+                openFileDialog.DefaultExt = "asm";
+                openFileDialog.Filter = "asm files (*.asm) | *.asm";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (var streamReader = new StreamReader(fileStream))
+                    {
+                        var fileContents = streamReader.ReadToEnd();
+                        textBoxLoadedAsmFile.Text = fileContents;
+
+                        assembler.ParseText(fileContents);
+                    }
+                }
+            }
+
+            UpdateTextBoxParsedFile();
+        }
+
+        private void UpdateTextBoxParsedFile()
+        {
+            if (assembler.Lines.Count == 0)
+            {
+                textBoxParsedCode.Text = "File couldn't be parsed";
+            }
+
+            var text = string.Empty;
+            foreach (var line in assembler.Lines)
+            {
+                text += $"{line}{Environment.NewLine}";
+            }
+
+            textBoxParsedCode.Text = text;
         }
     }
 }

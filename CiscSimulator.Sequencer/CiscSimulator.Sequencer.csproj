@@ -65,7 +65,9 @@
     <Compile Include="MpmDataRegister.Designer.cs">
       <DependentUpon>MpmDataRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="MpmMemory.cs" />
+    <Compile Include="MpmMemory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sequencer.cs">
       <SubType>UserControl</SubType>
@@ -99,6 +101,12 @@
   <ItemGroup>
     <EmbeddedResource Include="MpmDataRegister.resx">
       <DependentUpon>MpmDataRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MpmMemory.resx">
+      <DependentUpon>MpmMemory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sequencer.resx">
+      <DependentUpon>Sequencer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
