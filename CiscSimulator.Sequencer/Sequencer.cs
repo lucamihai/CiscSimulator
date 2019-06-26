@@ -434,6 +434,11 @@ namespace CiscSimulator.Sequencer
                 SBusOperationsMethods.PdT(this);
             }
 
+            if (mpmData.SBusOperation == SBusDBusOperations.PdMdr)
+            {
+                SBusOperationsMethods.PdMdr(this);
+            }
+
             #endregion
 
             #region DBUS Operations
@@ -461,6 +466,11 @@ namespace CiscSimulator.Sequencer
             if (mpmData.DBusOperation == SBusDBusOperations.PdT)
             {
                 DBusOperationsMethods.PdT(this);
+            }
+
+            if (mpmData.DBusOperation == SBusDBusOperations.PdMdr)
+            {
+                DBusOperationsMethods.PdMdr(this);
             }
 
             #endregion
@@ -611,7 +621,7 @@ namespace CiscSimulator.Sequencer
                         offset = 1;
                     }
 
-                    MpmAddressRegister.Data.Value += (ushort)offset;
+                    MpmAddressRegister.Data.Value += (ushort)((ushort)offset * 2);
 
                     return;
                 }
@@ -623,7 +633,7 @@ namespace CiscSimulator.Sequencer
 
                 if (addressMode == AddressMode.Direct)
                 {
-                    MpmAddressRegister.Data.Value = MpmInstructionRegister.MpmData.JumpLocation;
+                    MpmAddressRegister.Data.Value = 23;
                 }
                 else
                 {
