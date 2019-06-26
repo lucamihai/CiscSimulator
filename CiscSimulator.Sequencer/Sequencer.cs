@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using CiscSimulator.ArithmeticLogicUnit.Enums;
 using CiscSimulator.Assembler.Enums;
 using CiscSimulator.Assembler.Interfaces;
 using CiscSimulator.Common;
@@ -406,6 +407,98 @@ namespace CiscSimulator.Sequencer
         {
             var mpmData = MpmInstructionRegister.MpmData;
 
+            #region SBUS Operations
+
+            if (mpmData.SBusOperation == SBusDBusOperations.PD0)
+            {
+                SBusOperationsMethods.Pd0(this);
+            }
+
+            if (mpmData.SBusOperation == SBusDBusOperations.PD1Positive)
+            {
+                SBusOperationsMethods.Pd1Positive(this);
+            }
+
+            if (mpmData.SBusOperation == SBusDBusOperations.PdAdr)
+            {
+                SBusOperationsMethods.PdAdr(this);
+            }
+
+            if (mpmData.SBusOperation == SBusDBusOperations.PdRG)
+            {
+                SBusOperationsMethods.PdRg(this);
+            }
+
+            if (mpmData.SBusOperation == SBusDBusOperations.PdT)
+            {
+                SBusOperationsMethods.PdT(this);
+            }
+
+            #endregion
+
+            #region DBUS Operations
+
+            if (mpmData.DBusOperation == SBusDBusOperations.PD0)
+            {
+                DBusOperationsMethods.Pd0(this);
+            }
+
+            if (mpmData.DBusOperation == SBusDBusOperations.PD1Positive)
+            {
+                DBusOperationsMethods.Pd1Positive(this);
+            }
+
+            if (mpmData.DBusOperation == SBusDBusOperations.PdAdr)
+            {
+                DBusOperationsMethods.PdAdr(this);
+            }
+
+            if (mpmData.DBusOperation == SBusDBusOperations.PdRG)
+            {
+                DBusOperationsMethods.PdRg(this);
+            }
+
+            if (mpmData.DBusOperation == SBusDBusOperations.PdT)
+            {
+                DBusOperationsMethods.PdT(this);
+            }
+
+            #endregion
+
+            #region ALU Operations
+
+            ArithmeticLogicUnit.Operand1 = SBus.Data;
+            ArithmeticLogicUnit.Operand2 = DBus.Data;
+            ArithmeticLogicUnit.Operator = mpmData.AluOperator;
+
+            if (ArithmeticLogicUnit.Operator != AluOperator.Undefined)
+            {
+                ArithmeticLogicUnit.PerformOperation();
+                RBus.Data.Value = ArithmeticLogicUnit.Result.Value;
+            }
+                
+
+            #endregion
+
+            #region RBus Operations
+
+            if (mpmData.RBusOperation == RBusOperations.PmRG)
+            {
+                RBusOperationsMethods.PmRg(this);
+            }
+
+            if (mpmData.RBusOperation == RBusOperations.PmT)
+            {
+                RBusOperationsMethods.PmT(this);
+            }
+
+            if (mpmData.RBusOperation == RBusOperations.PmMdr)
+            {
+                RBusOperationsMethods.PmMdr(this);
+            }
+
+            #endregion
+
             #region Memory Operations
 
             if (mpmData.MemoryOperation == MemoryOperations.IfCh)
@@ -470,6 +563,71 @@ namespace CiscSimulator.Sequencer
                     {
                         SelectedRegister = InstructionValueParser.GetRegisterNumberDestinationB1(InstructionRegister.Data.Value);
                     }
+                }
+
+                if (mpmData.JumpIndex == Indexes.Index4)
+                {
+                    var instructionClass = InstructionValueParser.GetInstructionClass(InstructionRegister.Data.Value);
+                    var opCode = 0;
+
+                    if (instructionClass == InstructionClass.B1)
+                    {
+                        opCode = InstructionValueParser.GetInstructionNumberB1(InstructionRegister.Data.Value);
+                    }
+
+                    if (instructionClass == InstructionClass.B2)
+                    {
+                        opCode = InstructionValueParser.GetInstructionNumberB2(InstructionRegister.Data.Value);
+                    }
+
+                    if (instructionClass == InstructionClass.B3)
+                    {
+                        opCode = InstructionValueParser.GetInstructionNumberB3(InstructionRegister.Data.Value);
+                    }
+
+                    if (instructionClass == InstructionClass.B4)
+                    {
+                        opCode = InstructionValueParser.GetInstructionNumberB4(InstructionRegister.Data.Value);
+                    }
+
+                    MpmAddressRegister.Data.Value += (ushort)opCode;
+                }
+            }
+
+            if (mpmData.JumpOperation == JumpOperations.B1)
+            {
+                if (mpmData.JumpIndex == Indexes.Index4)
+                {
+                    var instructionClass = InstructionValueParser.GetInstructionClass(InstructionRegister.Data.Value);
+                    var offset = 0;
+
+                    if (instructionClass == InstructionClass.B1)
+                    {
+                        MpmAddressRegister.Data.Value = MpmInstructionRegister.MpmData.JumpLocation;
+                        offset = InstructionValueParser.GetInstructionNumberB1(InstructionRegister.Data.Value);
+                    }
+                    else
+                    {
+                        offset = 1;
+                    }
+
+                    MpmAddressRegister.Data.Value += (ushort)offset;
+
+                    return;
+                }
+            }
+
+            if (mpmData.JumpOperation == JumpOperations.AD)
+            {
+                var addressMode = InstructionValueParser.GetAddressModeDestination(InstructionRegister.Data.Value);
+
+                if (addressMode == AddressMode.Direct)
+                {
+                    MpmAddressRegister.Data.Value = MpmInstructionRegister.MpmData.JumpLocation;
+                }
+                else
+                {
+                    MpmAddressRegister.Data.Value++;
                 }
             }
         }

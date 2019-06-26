@@ -75,6 +75,7 @@ namespace CiscSimulator.GeneralRegisters
             {
                 var register = new Register($"R{registerNumber}");
                 register.Location = GetRegisterLocationBasedOnRegisterNumber(registerNumber);
+                register.Data.Value = (ushort)registerNumber;
 
                 registers.Add(register);
             }
