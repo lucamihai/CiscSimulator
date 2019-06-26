@@ -14,6 +14,8 @@ namespace CiscSimulator.Sequencer
 {
     public partial class Sequencer : UserControl
     {
+        public bool Interrupt { get; set; } = false;
+
         private Label labelStep;
         public Step Step { get; private set; } = Step.Fetch;
 
@@ -638,6 +640,14 @@ namespace CiscSimulator.Sequencer
                 else
                 {
                     MpmAddressRegister.Data.Value++;
+                }
+            }
+
+            if (mpmData.JumpOperation == JumpOperations.INTR)
+            {
+                if (!Interrupt)
+                {
+                    MpmAddressRegister.Data.Value = 0;
                 }
             }
         }
