@@ -147,7 +147,7 @@ namespace CiscSimulator
 
         private void LoadInstructionsInSequencer(object sender, EventArgs e)
         {
-            //TODO
+            sequencer.LoadInstructionsInMemory(assembler.Instructions);
         }
 
         private void ObserveSequencer(object sender, EventArgs e)
@@ -165,6 +165,13 @@ namespace CiscSimulator
             var panelForSelectingValueDisplayModeForSequencer = GetPanelForSelectingValueDisplayModeForSequencer();
             panelForSelectingValueDisplayModeForSequencer.Location = new Point(panelExtension.Location.X + panelExtension.Width, panelExtension.Location.Y);
             this.Controls.Add(panelForSelectingValueDisplayModeForSequencer);
+
+            var buttonForSequencerNextStep = GetButtonForSequencerNextStep();
+            buttonForSequencerNextStep.Location = new Point(
+                panelForSelectingValueDisplayModeForSequencer.Location.X, 
+                panelForSelectingValueDisplayModeForSequencer.Location.Y + panelForSelectingValueDisplayModeForSequencer.Height
+            );
+            this.Controls.Add(buttonForSequencerNextStep);
         }
 
         private Panel GetPanelForSelectingValueDisplayModeForSequencer()
@@ -204,6 +211,15 @@ namespace CiscSimulator
             panel.Controls.Add(radioButtonValueDisplayModeHexadecimal);
 
             return panel;
+        }
+
+        private Button GetButtonForSequencerNextStep()
+        {
+            var button = new Button();
+            button.Text = "Next step";
+            button.Click += (sender, args) => sequencer.NextStep();
+
+            return button;
         }
 
         private void CloseExtension(object sender, EventArgs e)

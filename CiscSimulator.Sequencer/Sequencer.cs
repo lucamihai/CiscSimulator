@@ -375,6 +375,7 @@ namespace CiscSimulator.Sequencer
             RBus.ValueDisplayMode = ValueDisplayMode;
 
             MpmAddressRegister.ValueDisplayMode = ValueDisplayMode;
+            MpmInstructionRegister.ValueDisplayMode = ValueDisplayMode;
         }
 
         private void Fetch()

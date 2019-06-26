@@ -139,6 +139,7 @@ namespace CiscSimulator.Sequencer.UnitTests.SequencerUnitTests
             Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.RBus.ValueDisplayMode);
 
             Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.MpmAddressRegister.ValueDisplayMode);
+            Assert.AreEqual(ValueDisplayMode.Decimal, sequencer.MpmInstructionRegister.ValueDisplayMode);
         }
     }
 }

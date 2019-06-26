@@ -35,6 +35,8 @@ namespace CiscSimulator.Sequencer
 
             MpmData = new MpmData();
             MpmData.OnValueChanged = DisplayValue;
+
+            DisplayValue();
         }
 
         private void DisplayValue()
