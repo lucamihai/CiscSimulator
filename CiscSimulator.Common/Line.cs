@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,11 +10,8 @@ namespace CiscSimulator.Common
         public Color Color { get; private set; }
 
         [ExcludeFromCodeCoverage]
-        public Point FirstPoint { get; private set; }
-        [ExcludeFromCodeCoverage]
-        public Point SecondPoint { get; private set; }
-        [ExcludeFromCodeCoverage]
         public float Width { get; set; }
+        public List<Point> Points { get; private set; }
 
         public bool Active
         {
@@ -21,11 +19,10 @@ namespace CiscSimulator.Common
             set => Color = value ? Constants.LineActiveColor : Constants.LineInactiveColor;
         }
 
-        public Line(Point p1, Point p2)
+        public Line()
         {
             Active = false;
-            FirstPoint = p1;
-            SecondPoint = p2;
+            Points = new List<Point>();
         }
 
         [ExcludeFromCodeCoverage]
@@ -34,7 +31,13 @@ namespace CiscSimulator.Common
             using (var pen = new Pen(Color))
             {
                 pen.Width = Width;
-                e.Graphics.DrawLine(pen, FirstPoint, SecondPoint);
+                for (int pointNumber = 0; pointNumber < Points.Count - 1; pointNumber++)
+                {
+                    var firstPoint = Points[pointNumber];
+                    var secondPoint = Points[pointNumber + 1];
+
+                    e.Graphics.DrawLine(pen, firstPoint, secondPoint);
+                }
             }
         }
     }

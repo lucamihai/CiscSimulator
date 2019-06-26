@@ -13,7 +13,7 @@ namespace CiscSimulator.Common.UnitTests
         [TestInitialize]
         public void Setup()
         {
-            line = new Line(new Point(), new Point());
+            line = new Line();
         }
 
         [TestMethod]

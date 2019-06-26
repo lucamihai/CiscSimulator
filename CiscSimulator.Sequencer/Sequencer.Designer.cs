@@ -40,6 +40,7 @@ namespace CiscSimulator.Sequencer
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "Sequencer";
             this.Size = new System.Drawing.Size(1024, 720);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.EventPaint);
             this.ResumeLayout(false);
 
         }

@@ -36,6 +36,8 @@ namespace CiscSimulator.Sequencer
 
         public Memory.Memory Memory { get; private set; }
 
+        #region Registers
+
         public Register MemoryAddressRegister { get; private set; }
         public Register MemoryDataRegister { get; private set; }
         public Register InstructionRegister { get; private set; }
@@ -44,6 +46,8 @@ namespace CiscSimulator.Sequencer
         public Register ProgramCounterRegister { get; private set; }
         public Register InterruptVectorRegister { get; private set; }
         public FlagRegister FlagRegister { get; private set; }
+
+        #endregion
 
         public ArithmeticLogicUnit.ArithmeticLogicUnit ArithmeticLogicUnit { get; private set; }
 
@@ -63,6 +67,14 @@ namespace CiscSimulator.Sequencer
         public Register MpmAddressRegister { get; private set; }
         public MpmMemory MpmMemory { get; private set; }
 
+        #region
+
+        private Line lineFromMemoryAddressRegisterToMemory;
+        private Line lineFromMemoryAddressRegisterToSBus;
+        private Line lineFromMemoryDataRegisterToMemory;
+
+        #endregion
+
         public Sequencer()
         {
             InitializeComponent();
@@ -75,7 +87,11 @@ namespace CiscSimulator.Sequencer
             InitializeBuses();
             InitializeArithmeticLogicUnit();
 
+            InitializeLines();
+
             AddControls();
+
+            this.Refresh();
         }
 
         public void LoadInstructionsInMemory(List<IInstruction> instructions)
@@ -342,6 +358,35 @@ namespace CiscSimulator.Sequencer
         private void InitializeMpmMemory()
         {
             MpmMemory = new MpmMemory();
+        }
+
+        #endregion
+
+        private void InitializeLines()
+        {
+            InitializeLineFromMemoryAddressRegisterToMemory();
+            InitializeLineFromMemoryDataRegisterToMemory();
+        }
+
+        #region Lines initialization
+
+        private void InitializeLineFromMemoryAddressRegisterToMemory()
+        {
+            lineFromMemoryAddressRegisterToMemory = new Line();
+            lineFromMemoryAddressRegisterToMemory.Points.Add(new Point(MemoryAddressRegister.Location.X + MemoryAddressRegister.Width / 2, MemoryAddressRegister.Location.Y));
+            lineFromMemoryAddressRegisterToMemory.Points.Add(new Point(MemoryAddressRegister.Location.X + MemoryAddressRegister.Width / 2, Memory.Location.Y + Memory.Height));
+        }
+
+        private void InitializeLineFromMemoryDataRegisterToMemory()
+        {
+            lineFromMemoryDataRegisterToMemory = new Line();
+            lineFromMemoryDataRegisterToMemory.Points.Add(new Point(MemoryDataRegister.Location.X + MemoryDataRegister.Width / 2 - 20, MemoryDataRegister.Location.Y));
+            lineFromMemoryDataRegisterToMemory.Points.Add(new Point(MemoryDataRegister.Location.X + MemoryDataRegister.Width / 2 - 20, Memory.Location.Y + Memory.Height));
+        }
+
+        private void InitializeLineFromMemoryAddressRegisterToSBus()
+        {
+
         }
 
         #endregion
@@ -650,6 +695,12 @@ namespace CiscSimulator.Sequencer
                     MpmAddressRegister.Data.Value = 0;
                 }
             }
+        }
+
+        private void EventPaint(object sender, PaintEventArgs e)
+        {
+            lineFromMemoryAddressRegisterToMemory.Draw(e);
+            lineFromMemoryDataRegisterToMemory.Draw(e);
         }
     }
 }

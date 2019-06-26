@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using CiscSimulator.Common;
 using CiscSimulator.Common.Enums;
 
 namespace CiscSimulator
