@@ -11,6 +11,7 @@ namespace CiscSimulator.Sequencer
 {
     public partial class Sequencer : UserControl
     {
+        private Label labelStep;
         public Step Step { get; private set; } = Step.Fetch;
 
         private ValueDisplayMode valueDisplayMode;
@@ -60,6 +61,9 @@ namespace CiscSimulator.Sequencer
         public Sequencer()
         {
             InitializeComponent();
+
+            InitializeLabelStep();
+
             InitializeMemory();
             InitializeMpmMemory();
             InitializeRegisters();
@@ -91,6 +95,7 @@ namespace CiscSimulator.Sequencer
                 Fetch();
 
                 Step = Step.Execute;
+                labelStep.Text = $"Step: {Step.ToString()}";
                 return;
             }
 
@@ -99,6 +104,7 @@ namespace CiscSimulator.Sequencer
                 Execute();
 
                 Step = Step.Fetch;
+                labelStep.Text = $"Step: {Step.ToString()}";
                 return;
             }
         }
@@ -143,6 +149,13 @@ namespace CiscSimulator.Sequencer
         }
 
         #region Controls initialization
+
+        private void InitializeLabelStep()
+        {
+            labelStep = new Label();
+            labelStep.Text = $"Step: {Step.ToString()}";
+            labelStep.Location = new Point(this.Width - labelStep.Size.Width, 0);
+        }
 
         private void InitializeGeneralRegisters()
         {
@@ -328,6 +341,8 @@ namespace CiscSimulator.Sequencer
 
         private void AddControls()
         {
+            Controls.Add(labelStep);
+
             Controls.Add(GeneralRegisters);
             Controls.Add(Memory);
 
@@ -385,7 +400,12 @@ namespace CiscSimulator.Sequencer
 
         private void Execute()
         {
-            //TODO
+            if (MpmInstructionRegister.MpmData.JumpOperation == JumpOperations.STEP)
+            {
+                MpmAddressRegister.Data.Value++;
+
+                return;
+            }
         }
     }
 }
