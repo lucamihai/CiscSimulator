@@ -77,5 +77,32 @@ namespace CiscSimulator.Sequencer.Methods
 
             return instructionNumber;
         }
+
+        public static byte GetRegisterNumberSourceB1(ushort instructionValue)
+        {
+            var binaryStringRepresentation = Utilities.GetBinaryStringRepresentation(instructionValue, 16);
+            var instructionNumberBits = binaryStringRepresentation.GetBitsFromSpecifiedPositions(9, 6);
+            var registerNumber = (byte)Utilities.GetValueFromBinaryStringRepresentation(instructionNumberBits);
+
+            return registerNumber;
+        }
+
+        public static byte GetRegisterNumberDestinationB1(ushort instructionValue)
+        {
+            var binaryStringRepresentation = Utilities.GetBinaryStringRepresentation(instructionValue, 16);
+            var instructionNumberBits = binaryStringRepresentation.GetBitsFromSpecifiedPositions(3, 0);
+            var registerNumber = (byte)Utilities.GetValueFromBinaryStringRepresentation(instructionNumberBits);
+
+            return registerNumber;
+        }
+
+        public static byte GetRegisterNumberDestinationB2(ushort instructionValue)
+        {
+            var binaryStringRepresentation = Utilities.GetBinaryStringRepresentation(instructionValue, 16);
+            var instructionNumberBits = binaryStringRepresentation.GetBitsFromSpecifiedPositions(3, 0);
+            var registerNumber = (byte)Utilities.GetValueFromBinaryStringRepresentation(instructionNumberBits);
+
+            return registerNumber;
+        }
     }
 }

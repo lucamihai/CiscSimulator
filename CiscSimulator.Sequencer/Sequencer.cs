@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using CiscSimulator.Assembler.Enums;
 using CiscSimulator.Assembler.Interfaces;
 using CiscSimulator.Common;
 using CiscSimulator.Common.Enums;
 using CiscSimulator.Sequencer.Enums;
+using CiscSimulator.Sequencer.Methods;
 
 namespace CiscSimulator.Sequencer
 {
@@ -86,6 +88,8 @@ namespace CiscSimulator.Sequencer
                     Memory[currentAddress++].Value = data.Value;
                 }
             }
+
+            ProgramCounterRegister.Data.Value = Constants.MemoryInstructionStartAddress;
         }
 
         public void NextStep()
@@ -400,11 +404,73 @@ namespace CiscSimulator.Sequencer
 
         private void Execute()
         {
-            if (MpmInstructionRegister.MpmData.JumpOperation == JumpOperations.STEP)
+            var mpmData = MpmInstructionRegister.MpmData;
+
+            #region Memory Operations
+
+            if (mpmData.MemoryOperation == MemoryOperations.IfCh)
+            {
+                InstructionRegister.Data.Value = Memory[ProgramCounterRegister.Data.Value].Value;
+            }
+
+            #endregion
+
+            #region OtherOperations
+
+            if (mpmData.OtherOperation == OtherOperations.IncrementPC)
+            {
+                ProgramCounterRegister.Data.Value++;
+            }
+
+            #endregion
+
+            if (mpmData.JumpOperation == JumpOperations.STEP)
             {
                 MpmAddressRegister.Data.Value++;
 
                 return;
+            }
+
+            if (mpmData.JumpOperation == JumpOperations.JUMP)
+            {
+                MpmAddressRegister.Data.Value = MpmInstructionRegister.MpmData.JumpLocation;
+
+                return;
+            }
+
+            if (mpmData.JumpOperation == JumpOperations.JUMPI)
+            {
+                MpmAddressRegister.Data.Value = MpmInstructionRegister.MpmData.JumpLocation;
+
+                if (mpmData.JumpIndex == Indexes.Index1)
+                {
+                    var instructionClass = InstructionValueParser.GetInstructionClass(InstructionRegister.Data.Value);
+                    MpmAddressRegister.Data.Value += (ushort)instructionClass;
+                }
+
+                if (mpmData.JumpIndex == Indexes.Index2)
+                {
+                    var addressMode = InstructionValueParser.GetAddressModeSource(InstructionRegister.Data.Value);
+                    var index = (ushort)((ushort)addressMode * 2);
+                    MpmAddressRegister.Data.Value += index;
+
+                    if (addressMode != AddressMode.Immediate)
+                    {
+                        SelectedRegister = InstructionValueParser.GetRegisterNumberSourceB1(InstructionRegister.Data.Value);
+                    }
+                }
+
+                if (mpmData.JumpIndex == Indexes.Index3)
+                {
+                    var addressMode = InstructionValueParser.GetAddressModeDestination(InstructionRegister.Data.Value);
+                    var index = (ushort)((ushort)addressMode * 2);
+                    MpmAddressRegister.Data.Value += index;
+
+                    if (addressMode != AddressMode.Immediate)
+                    {
+                        SelectedRegister = InstructionValueParser.GetRegisterNumberDestinationB1(InstructionRegister.Data.Value);
+                    }
+                }
             }
         }
     }

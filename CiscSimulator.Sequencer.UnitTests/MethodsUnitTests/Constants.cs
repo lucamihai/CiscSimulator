@@ -27,12 +27,15 @@ namespace CiscSimulator.Sequencer.UnitTests.MethodsUnitTests
         public const AddressMode ExpectedDestinationAddressMode1 = AddressMode.Direct;
         public const AddressMode ExpectedSourceAddressMode1 = AddressMode.Immediate;
         public const byte ExpectedInstructionNumber1 = 1;
+        public const byte ExpectedRegisterNumberSource1 = 0;
+        public const byte ExpectedRegisterNumberDestination1 = 0;
 
         // 10000000 10010001
         public const ushort InstructionValue2 = 32913;
         public const InstructionClass ExpectedInstructionClass2 = InstructionClass.B2;
         public const AddressMode ExpectedDestinationAddressMode2 = AddressMode.Direct;
         public const byte ExpectedInstructionNumber2 = 2;
+        public const byte ExpectedRegisterNumberDestination2 = 1;
 
         // 11000000 00010100
         public const ushort InstructionValue3 = 49172;

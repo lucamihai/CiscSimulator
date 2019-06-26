@@ -95,5 +95,29 @@ namespace CiscSimulator.Sequencer.UnitTests.MethodsUnitTests
 
             Assert.AreEqual(Constants.ExpectedInstructionNumber4, instructionNumber);
         }
+
+        [TestMethod]
+        public void GetRegisterNumberSourceB1ReturnsExpectedRegisterNumber1()
+        {
+            var registerNumber = InstructionValueParser.GetRegisterNumberSourceB1(Constants.InstructionValue1);
+
+            Assert.AreEqual(Constants.ExpectedRegisterNumberSource1, registerNumber);
+        }
+
+        [TestMethod]
+        public void GetRegisterNumberDestinationB1ReturnsExpectedRegisterNumber1()
+        {
+            var registerNumber = InstructionValueParser.GetRegisterNumberDestinationB1(Constants.InstructionValue1);
+
+            Assert.AreEqual(Constants.ExpectedRegisterNumberDestination1, registerNumber);
+        }
+
+        [TestMethod]
+        public void GetRegisterNumberDestinationB2ReturnsExpectedRegisterNumber1()
+        {
+            var registerNumber = InstructionValueParser.GetRegisterNumberDestinationB2(Constants.InstructionValue2);
+
+            Assert.AreEqual(Constants.ExpectedRegisterNumberDestination2, registerNumber);
+        }
     }
 }

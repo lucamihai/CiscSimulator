@@ -4,7 +4,7 @@
     {
         NONE,
         STEP,
-        JuMP,
+        JUMP,
         JUMPI,
         B1 = 5,
         AD,
