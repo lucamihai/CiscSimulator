@@ -79,6 +79,10 @@ namespace CiscSimulator.Sequencer
         private Line lineFromMemoryDataRegisterToDBus;
         private Line lineFromMemoryDataRegisterToRBus;
 
+        private Line lineFromInstructionRegisterToSBus;
+        private Line lineFromInstructionRegisterToDBus;
+        private Line lineFromInstructionRegisterToRBus;
+
         #endregion
 
         public Sequencer()
@@ -379,6 +383,10 @@ namespace CiscSimulator.Sequencer
             InitializeLineFromMemoryDataRegisterToSBus();
             InitializeLineFromMemoryDataRegisterToDBus();
             InitializeLineFromMemoryDataRegisterToRBus();
+
+            InitializeLineFromInstructionRegisterToSBus();
+            InitializeLineFromInstructionRegisterToDBus();
+            InitializeLineFromInstructionRegisterToRBus();
         }
 
         #region Lines initialization
@@ -437,6 +445,27 @@ namespace CiscSimulator.Sequencer
             lineFromMemoryDataRegisterToRBus = new Line();
             lineFromMemoryDataRegisterToRBus.Points.Add(new Point(MemoryDataRegister.Location.X, MemoryDataRegister.Location.Y + MemoryDataRegister.Height / 2));
             lineFromMemoryDataRegisterToRBus.Points.Add(new Point(RBus.Location.X, MemoryDataRegister.Location.Y + MemoryDataRegister.Height / 2));
+        }
+
+        private void InitializeLineFromInstructionRegisterToSBus()
+        {
+            lineFromInstructionRegisterToSBus = new Line();
+            lineFromInstructionRegisterToSBus.Points.Add(new Point(InstructionRegister.Location.X, InstructionRegister.Location.Y + 4));
+            lineFromInstructionRegisterToSBus.Points.Add(new Point(SBus.Location.X, InstructionRegister.Location.Y + 4));
+        }
+
+        private void InitializeLineFromInstructionRegisterToDBus()
+        {
+            lineFromInstructionRegisterToDBus = new Line();
+            lineFromInstructionRegisterToDBus.Points.Add(new Point(InstructionRegister.Location.X, InstructionRegister.Location.Y + MemoryDataRegister.Height - 4));
+            lineFromInstructionRegisterToDBus.Points.Add(new Point(DBus.Location.X, InstructionRegister.Location.Y + MemoryDataRegister.Height - 4));
+        }
+
+        private void InitializeLineFromInstructionRegisterToRBus()
+        {
+            lineFromInstructionRegisterToRBus = new Line();
+            lineFromInstructionRegisterToRBus.Points.Add(new Point(InstructionRegister.Location.X, InstructionRegister.Location.Y + InstructionRegister.Height / 2));
+            lineFromInstructionRegisterToRBus.Points.Add(new Point(RBus.Location.X, InstructionRegister.Location.Y + InstructionRegister.Height / 2));
         }
 
         #endregion
@@ -758,6 +787,10 @@ namespace CiscSimulator.Sequencer
             lineFromMemoryDataRegisterToSBus.Draw(e);
             lineFromMemoryDataRegisterToDBus.Draw(e);
             lineFromMemoryDataRegisterToRBus.Draw(e);
+
+            lineFromInstructionRegisterToSBus.Draw(e);
+            lineFromInstructionRegisterToDBus.Draw(e);
+            lineFromInstructionRegisterToRBus.Draw(e);
         }
     }
 }
