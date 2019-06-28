@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Windows.Forms;
 using CiscSimulator.ArithmeticLogicUnit.Enums;
@@ -69,6 +70,10 @@ namespace CiscSimulator.Sequencer
 
         #region
 
+        private Line lineFromGeneralRegisterToSBus;
+        private Line lineFromGeneralRegisterToDBus;
+        private Line lineFromGeneralRegisterToRBus;
+
         private Line lineFromMemoryAddressRegisterToMemory;
         private Line lineFromMemoryAddressRegisterToSBus;
         private Line lineFromMemoryAddressRegisterToDBus;
@@ -102,6 +107,10 @@ namespace CiscSimulator.Sequencer
         private Line lineFromFlagRegisterToSBus;
         private Line lineFromFlagRegisterToDBus;
         private Line lineFromFlagRegisterToRBus;
+
+        private Line lineFromArithmeticLogicUnitToSBus;
+        private Line lineFromArithmeticLogicUnitToDBus;
+        private Line lineFromArithmeticLogicUnitToRBus;
 
         #endregion
 
@@ -201,6 +210,7 @@ namespace CiscSimulator.Sequencer
             }
         }
 
+
         #region Controls initialization
 
         private void InitializeLabelStep()
@@ -213,7 +223,7 @@ namespace CiscSimulator.Sequencer
         private void InitializeGeneralRegisters()
         {
             GeneralRegisters = new GeneralRegisters.GeneralRegisters();
-            GeneralRegisters.Location = new Point(Locations.FirstColumn, 0);
+            GeneralRegisters.Location = new Point(Locations.FirstColumn, 49);
             GeneralRegisters.BorderStyle = BorderStyle.FixedSingle;
         }
 
@@ -392,8 +402,15 @@ namespace CiscSimulator.Sequencer
 
         #endregion
 
+
+        #region Lines initialization
+
         private void InitializeLines()
         {
+            InitializeLineFromGeneralRegistersToSBus();
+            InitializeLineFromGeneralRegistersToDBus();
+            InitializeLineFromGeneralRegistersToRBus();
+
             InitializeLineFromMemoryAddressRegisterToMemory();
             InitializeLineFromMemoryAddressRegisterToSBus();
             InitializeLineFromMemoryAddressRegisterToDBus();
@@ -427,9 +444,29 @@ namespace CiscSimulator.Sequencer
             InitializeLineFromFlagRegisterToSBus();
             InitializeLineFromFlagRegisterToDBus();
             InitializeLineFromFlagRegisterToRBus();
+
+            InitializeLineFromArithmeticLogicUnitToSBus();
+            InitializeLineFromArithmeticLogicUnitToDBus();
+            InitializeLineFromArithmeticLogicUnitToRBus();
         }
 
-        #region Lines initialization
+        private void InitializeLineFromGeneralRegistersToSBus()
+        {
+            lineFromGeneralRegisterToSBus = new Line();
+            lineFromGeneralRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedControlToSBus(GeneralRegisters));
+        }
+
+        private void InitializeLineFromGeneralRegistersToDBus()
+        {
+            lineFromGeneralRegisterToDBus = new Line();
+            lineFromGeneralRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedControlToDBus(GeneralRegisters));
+        }
+
+        private void InitializeLineFromGeneralRegistersToRBus()
+        {
+            lineFromGeneralRegisterToRBus = new Line();
+            lineFromGeneralRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedControlToRBus(GeneralRegisters));
+        }
 
         private void InitializeLineFromMemoryAddressRegisterToMemory()
         {
@@ -441,19 +478,19 @@ namespace CiscSimulator.Sequencer
         private void InitializeLineFromMemoryAddressRegisterToSBus()
         {
             lineFromMemoryAddressRegisterToSBus = new Line();
-            lineFromMemoryAddressRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(MemoryAddressRegister));
+            lineFromMemoryAddressRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedControlToSBus(MemoryAddressRegister));
         }
 
         private void InitializeLineFromMemoryAddressRegisterToDBus()
         {
             lineFromMemoryAddressRegisterToDBus = new Line();
-            lineFromMemoryAddressRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(MemoryAddressRegister));
+            lineFromMemoryAddressRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedControlToDBus(MemoryAddressRegister));
         }
 
         private void InitializeLineFromMemoryAddressRegisterToRBus()
         {
             lineFromMemoryAddressRegisterToRBus = new Line();
-            lineFromMemoryAddressRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(MemoryAddressRegister));
+            lineFromMemoryAddressRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedControlToRBus(MemoryAddressRegister));
         }
 
         private void InitializeLineFromMemoryDataRegisterToMemory()
@@ -466,160 +503,179 @@ namespace CiscSimulator.Sequencer
         private void InitializeLineFromMemoryDataRegisterToSBus()
         {
             lineFromMemoryDataRegisterToSBus = new Line();
-            lineFromMemoryDataRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(MemoryDataRegister));
+            lineFromMemoryDataRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedControlToSBus(MemoryDataRegister));
         }
 
         private void InitializeLineFromMemoryDataRegisterToDBus()
         {
             lineFromMemoryDataRegisterToDBus = new Line();
-            lineFromMemoryDataRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(MemoryDataRegister));
+            lineFromMemoryDataRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedControlToDBus(MemoryDataRegister));
         }
 
         private void InitializeLineFromMemoryDataRegisterToRBus()
         {
             lineFromMemoryDataRegisterToRBus = new Line();
-            lineFromMemoryDataRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(MemoryDataRegister));
+            lineFromMemoryDataRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedControlToRBus(MemoryDataRegister));
         }
 
         private void InitializeLineFromInstructionRegisterToSBus()
         {
             lineFromInstructionRegisterToSBus = new Line();
-            lineFromInstructionRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(InstructionRegister));
+            lineFromInstructionRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedControlToSBus(InstructionRegister));
         }
 
         private void InitializeLineFromInstructionRegisterToDBus()
         {
             lineFromInstructionRegisterToDBus = new Line();
-            lineFromInstructionRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(InstructionRegister));
+            lineFromInstructionRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedControlToDBus(InstructionRegister));
         }
 
         private void InitializeLineFromInstructionRegisterToRBus()
         {
             lineFromInstructionRegisterToRBus = new Line();
-            lineFromInstructionRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(InstructionRegister));
+            lineFromInstructionRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedControlToRBus(InstructionRegister));
         }
 
         private void InitializeLineFromStackPointerRegisterToSBus()
         {
             lineFromStackPointerRegisterToSBus = new Line();
-            lineFromStackPointerRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(StackPointerRegister));
+            lineFromStackPointerRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedControlToSBus(StackPointerRegister));
         }
 
         private void InitializeLineFromStackPointerRegisterToDBus()
         {
             lineFromStackPointerRegisterToDBus = new Line();
-            lineFromStackPointerRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(StackPointerRegister));
+            lineFromStackPointerRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedControlToDBus(StackPointerRegister));
         }
 
         private void InitializeLineFromStackPointerRegisterToRBus()
         {
             lineFromStackPointerRegisterToRBus = new Line();
-            lineFromStackPointerRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(StackPointerRegister));
+            lineFromStackPointerRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedControlToRBus(StackPointerRegister));
         }
 
         private void InitializeLineFromTemporaryRegisterToSBus()
         {
             lineFromTemporaryRegisterToSBus = new Line();
-            lineFromTemporaryRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(TemporaryRegister));
+            lineFromTemporaryRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedControlToSBus(TemporaryRegister));
         }
 
         private void InitializeLineFromTemporaryRegisterToDBus()
         {
             lineFromTemporaryRegisterToDBus = new Line();
-            lineFromTemporaryRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(TemporaryRegister));
+            lineFromTemporaryRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedControlToDBus(TemporaryRegister));
         }
 
         private void InitializeLineFromTemporaryRegisterToRBus()
         {
             lineFromTemporaryRegisterToRBus = new Line();
-            lineFromTemporaryRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(TemporaryRegister));
+            lineFromTemporaryRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedControlToRBus(TemporaryRegister));
         }
 
         private void InitializeLineFromProgramCounterRegisterToSBus()
         {
             lineFromProgramCounterRegisterToSBus = new Line();
-            lineFromProgramCounterRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(ProgramCounterRegister));
+            lineFromProgramCounterRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedControlToSBus(ProgramCounterRegister));
         }
 
         private void InitializeLineFromProgramCounterRegisterToDBus()
         {
             lineFromProgramCounterRegisterToDBus = new Line();
-            lineFromProgramCounterRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(ProgramCounterRegister));
+            lineFromProgramCounterRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedControlToDBus(ProgramCounterRegister));
         }
 
         private void InitializeLineFromProgramCounterRegisterToRBus()
         {
             lineFromProgramCounterRegisterToRBus = new Line();
-            lineFromProgramCounterRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(ProgramCounterRegister));
+            lineFromProgramCounterRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedControlToRBus(ProgramCounterRegister));
         }
 
         private void InitializeLineFromInterruptVectorRegisterToSBus()
         {
             lineFromInterruptVectorRegisterToSBus = new Line();
-            lineFromInterruptVectorRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(InterruptVectorRegister));
+            lineFromInterruptVectorRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedControlToSBus(InterruptVectorRegister));
         }
 
         private void InitializeLineFromInterruptVectorRegisterToDBus()
         {
             lineFromInterruptVectorRegisterToDBus = new Line();
-            lineFromInterruptVectorRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(InterruptVectorRegister));
+            lineFromInterruptVectorRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedControlToDBus(InterruptVectorRegister));
         }
 
         private void InitializeLineFromInterruptVectorRegisterToRBus()
         {
             lineFromInterruptVectorRegisterToRBus = new Line();
-            lineFromInterruptVectorRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(InterruptVectorRegister));
+            lineFromInterruptVectorRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedControlToRBus(InterruptVectorRegister));
         }
 
         private void InitializeLineFromFlagRegisterToSBus()
         {
             lineFromFlagRegisterToSBus = new Line();
-            lineFromFlagRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(FlagRegister));
+            lineFromFlagRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedControlToSBus(FlagRegister));
         }
 
         private void InitializeLineFromFlagRegisterToDBus()
         {
             lineFromFlagRegisterToDBus = new Line();
-            lineFromFlagRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(FlagRegister));
+            lineFromFlagRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedControlToDBus(FlagRegister));
         }
 
         private void InitializeLineFromFlagRegisterToRBus()
         {
             lineFromFlagRegisterToRBus = new Line();
-            lineFromFlagRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(FlagRegister));
+            lineFromFlagRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedControlToRBus(FlagRegister));
         }
 
-        private List<Point> GetLinePointsFromProvidedRegisterToSBus(Register register)
+        private void InitializeLineFromArithmeticLogicUnitToSBus()
+        {
+            lineFromArithmeticLogicUnitToSBus = new Line();
+            lineFromArithmeticLogicUnitToSBus.Points.AddRange(GetLinePointsFromProvidedControlToSBus(ArithmeticLogicUnit));
+        }
+
+        private void InitializeLineFromArithmeticLogicUnitToDBus()
+        {
+            lineFromArithmeticLogicUnitToDBus = new Line();
+            lineFromArithmeticLogicUnitToDBus.Points.AddRange(GetLinePointsFromProvidedControlToDBus(ArithmeticLogicUnit));
+        }
+
+        private void InitializeLineFromArithmeticLogicUnitToRBus()
+        {
+            lineFromArithmeticLogicUnitToRBus = new Line();
+            lineFromArithmeticLogicUnitToRBus.Points.AddRange(GetLinePointsFromProvidedControlToRBus(ArithmeticLogicUnit));
+        }
+
+        private List<Point> GetLinePointsFromProvidedControlToSBus(Control control)
         {
             var points = new List<Point>();
 
-            points.Add(new Point(register.Location.X, register.Location.Y + 4));
-            points.Add(new Point(SBus.Location.X, register.Location.Y + 4));
+            points.Add(new Point(control.Location.X, control.Location.Y + 4));
+            points.Add(new Point(SBus.Location.X, control.Location.Y + 4));
 
             return points;
         }
 
-        private List<Point> GetLinePointsFromProvidedRegisterToDBus(Register register)
+        private List<Point> GetLinePointsFromProvidedControlToDBus(Control control)
         {
             var points = new List<Point>();
 
-            points.Add(new Point(register.Location.X, register.Location.Y + register.Height - 4));
-            points.Add(new Point(DBus.Location.X, register.Location.Y + register.Height - 4));
+            points.Add(new Point(control.Location.X, control.Location.Y + control.Height - 4));
+            points.Add(new Point(DBus.Location.X, control.Location.Y + control.Height - 4));
 
             return points;
         }
 
-        private List<Point> GetLinePointsFromProvidedRegisterToRBus(Register register)
+        private List<Point> GetLinePointsFromProvidedControlToRBus(Control control)
         {
             var points = new List<Point>();
 
-            points.Add(new Point(register.Location.X, register.Location.Y + register.Height / 2));
-            points.Add(new Point(RBus.Location.X, register.Location.Y + register.Height / 2));
+            points.Add(new Point(control.Location.X, control.Location.Y + control.Height / 2));
+            points.Add(new Point(RBus.Location.X, control.Location.Y + control.Height / 2));
 
             return points;
         }
 
         #endregion
+
 
         private void AddControls()
         {
@@ -927,8 +983,13 @@ namespace CiscSimulator.Sequencer
             }
         }
 
+        [ExcludeFromCodeCoverage]
         private void EventPaint(object sender, PaintEventArgs e)
         {
+            lineFromGeneralRegisterToSBus.Draw(e);
+            lineFromGeneralRegisterToDBus.Draw(e);
+            lineFromGeneralRegisterToRBus.Draw(e);
+
             lineFromMemoryAddressRegisterToMemory.Draw(e);
             lineFromMemoryAddressRegisterToSBus.Draw(e);
             lineFromMemoryAddressRegisterToDBus.Draw(e);
@@ -962,6 +1023,10 @@ namespace CiscSimulator.Sequencer
             lineFromFlagRegisterToSBus.Draw(e);
             lineFromFlagRegisterToDBus.Draw(e);
             lineFromFlagRegisterToRBus.Draw(e);
+
+            lineFromArithmeticLogicUnitToSBus.Draw(e);
+            lineFromArithmeticLogicUnitToDBus.Draw(e);
+            lineFromArithmeticLogicUnitToRBus.Draw(e);
         }
     }
 }

@@ -43,16 +43,16 @@ namespace CiscSimulator.GeneralRegisters.UnitTests
             for (int registerNumber = Constants.MinimumRegisterNumber; registerNumber <= Constants.MaximumRegisterNumber; registerNumber++)
             {
                 Assert.IsNotNull(generalRegisters[registerNumber]);
-                Assert.AreEqual(0, generalRegisters[registerNumber].Data.Value);
             }
         }
 
         [TestMethod]
-        public void AllRegistersHaveDataEqualToZero()
+        public void AllRegistersHaveExpectedDataValue()
         {
             for (int registerNumber = Constants.MinimumRegisterNumber; registerNumber <= Constants.MaximumRegisterNumber; registerNumber++)
             {
-                Assert.AreEqual(0, generalRegisters[registerNumber].Data.Value);
+                var expectedDataValue = registerNumber;
+                Assert.AreEqual(expectedDataValue, generalRegisters[registerNumber].Data.Value);
             }
         }
 

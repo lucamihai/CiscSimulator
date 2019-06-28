@@ -11,7 +11,7 @@ namespace CiscSimulator.Sequencer
         private readonly List<MpmData> mpmDataList;
 
         public int MinimumAddress { get; } = 0;
-        public int MaximumAddress { get; } = 200;
+        public int MaximumAddress { get; } = 199;
 
         public MpmData this[int address]
         {
