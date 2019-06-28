@@ -409,22 +409,19 @@ namespace CiscSimulator.Sequencer
         private void InitializeLineFromMemoryAddressRegisterToSBus()
         {
             lineFromMemoryAddressRegisterToSBus = new Line();
-            lineFromMemoryAddressRegisterToSBus.Points.Add(new Point(MemoryAddressRegister.Location.X, MemoryAddressRegister.Location.Y + 4));
-            lineFromMemoryAddressRegisterToSBus.Points.Add(new Point(SBus.Location.X, MemoryAddressRegister.Location.Y + 4));
+            lineFromMemoryAddressRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(MemoryAddressRegister));
         }
 
         private void InitializeLineFromMemoryAddressRegisterToDBus()
         {
             lineFromMemoryAddressRegisterToDBus = new Line();
-            lineFromMemoryAddressRegisterToDBus.Points.Add(new Point(MemoryAddressRegister.Location.X, MemoryAddressRegister.Location.Y + MemoryAddressRegister.Height - 4));
-            lineFromMemoryAddressRegisterToDBus.Points.Add(new Point(DBus.Location.X, MemoryAddressRegister.Location.Y + MemoryAddressRegister.Height - 4));
+            lineFromMemoryAddressRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(MemoryAddressRegister));
         }
 
         private void InitializeLineFromMemoryAddressRegisterToRBus()
         {
             lineFromMemoryAddressRegisterToRBus = new Line();
-            lineFromMemoryAddressRegisterToRBus.Points.Add(new Point(MemoryAddressRegister.Location.X, MemoryAddressRegister.Location.Y + MemoryAddressRegister.Height / 2));
-            lineFromMemoryAddressRegisterToRBus.Points.Add(new Point(RBus.Location.X, MemoryAddressRegister.Location.Y + MemoryAddressRegister.Height / 2));
+            lineFromMemoryAddressRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(MemoryAddressRegister));
         }
 
         private void InitializeLineFromMemoryDataRegisterToMemory()
@@ -437,64 +434,85 @@ namespace CiscSimulator.Sequencer
         private void InitializeLineFromMemoryDataRegisterToSBus()
         {
             lineFromMemoryDataRegisterToSBus = new Line();
-            lineFromMemoryDataRegisterToSBus.Points.Add(new Point(MemoryDataRegister.Location.X, MemoryDataRegister.Location.Y + 4));
-            lineFromMemoryDataRegisterToSBus.Points.Add(new Point(SBus.Location.X, MemoryDataRegister.Location.Y + 4));
+            lineFromMemoryDataRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(MemoryDataRegister));
         }
 
         private void InitializeLineFromMemoryDataRegisterToDBus()
         {
             lineFromMemoryDataRegisterToDBus = new Line();
-            lineFromMemoryDataRegisterToDBus.Points.Add(new Point(MemoryDataRegister.Location.X, MemoryDataRegister.Location.Y + MemoryDataRegister.Height - 4));
-            lineFromMemoryDataRegisterToDBus.Points.Add(new Point(DBus.Location.X, MemoryDataRegister.Location.Y + MemoryDataRegister.Height - 4));
+            lineFromMemoryDataRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(MemoryDataRegister));
         }
 
         private void InitializeLineFromMemoryDataRegisterToRBus()
         {
             lineFromMemoryDataRegisterToRBus = new Line();
-            lineFromMemoryDataRegisterToRBus.Points.Add(new Point(MemoryDataRegister.Location.X, MemoryDataRegister.Location.Y + MemoryDataRegister.Height / 2));
-            lineFromMemoryDataRegisterToRBus.Points.Add(new Point(RBus.Location.X, MemoryDataRegister.Location.Y + MemoryDataRegister.Height / 2));
+            lineFromMemoryDataRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(MemoryDataRegister));
         }
 
         private void InitializeLineFromInstructionRegisterToSBus()
         {
             lineFromInstructionRegisterToSBus = new Line();
-            lineFromInstructionRegisterToSBus.Points.Add(new Point(InstructionRegister.Location.X, InstructionRegister.Location.Y + 4));
-            lineFromInstructionRegisterToSBus.Points.Add(new Point(SBus.Location.X, InstructionRegister.Location.Y + 4));
+            lineFromInstructionRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(InstructionRegister));
         }
 
         private void InitializeLineFromInstructionRegisterToDBus()
         {
             lineFromInstructionRegisterToDBus = new Line();
-            lineFromInstructionRegisterToDBus.Points.Add(new Point(InstructionRegister.Location.X, InstructionRegister.Location.Y + InstructionRegister.Height - 4));
-            lineFromInstructionRegisterToDBus.Points.Add(new Point(DBus.Location.X, InstructionRegister.Location.Y + InstructionRegister.Height - 4));
+            lineFromInstructionRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(InstructionRegister));
         }
 
         private void InitializeLineFromInstructionRegisterToRBus()
         {
             lineFromInstructionRegisterToRBus = new Line();
-            lineFromInstructionRegisterToRBus.Points.Add(new Point(InstructionRegister.Location.X, InstructionRegister.Location.Y + InstructionRegister.Height / 2));
-            lineFromInstructionRegisterToRBus.Points.Add(new Point(RBus.Location.X, InstructionRegister.Location.Y + InstructionRegister.Height / 2));
+            lineFromInstructionRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(InstructionRegister));
         }
 
         private void InitializeLineFromStackPointerRegisterToSBus()
         {
             lineFromStackPointerRegisterToSBus = new Line();
-            lineFromStackPointerRegisterToSBus.Points.Add(new Point(StackPointerRegister.Location.X, StackPointerRegister.Location.Y + 4));
-            lineFromStackPointerRegisterToSBus.Points.Add(new Point(SBus.Location.X, StackPointerRegister.Location.Y + 4));
+            lineFromStackPointerRegisterToSBus.Points.AddRange(GetLinePointsFromProvidedRegisterToSBus(StackPointerRegister));
         }
 
         private void InitializeLineFromStackPointerRegisterToDBus()
         {
             lineFromStackPointerRegisterToDBus = new Line();
-            lineFromStackPointerRegisterToDBus.Points.Add(new Point(StackPointerRegister.Location.X, StackPointerRegister.Location.Y + StackPointerRegister.Height - 4));
-            lineFromStackPointerRegisterToDBus.Points.Add(new Point(DBus.Location.X, StackPointerRegister.Location.Y + StackPointerRegister.Height - 4));
+            lineFromStackPointerRegisterToDBus.Points.AddRange(GetLinePointsFromProvidedRegisterToDBus(StackPointerRegister));
         }
 
         private void InitializeLineFromStackPointerRegisterToRBus()
         {
             lineFromStackPointerRegisterToRBus = new Line();
-            lineFromStackPointerRegisterToRBus.Points.Add(new Point(StackPointerRegister.Location.X, StackPointerRegister.Location.Y + StackPointerRegister.Height / 2));
-            lineFromStackPointerRegisterToRBus.Points.Add(new Point(RBus.Location.X, StackPointerRegister.Location.Y + StackPointerRegister.Height / 2));
+            lineFromStackPointerRegisterToRBus.Points.AddRange(GetLinePointsFromProvidedRegisterToRBus(StackPointerRegister));
+        }
+
+        private List<Point> GetLinePointsFromProvidedRegisterToSBus(Register register)
+        {
+            var points = new List<Point>();
+
+            points.Add(new Point(register.Location.X, register.Location.Y + 4));
+            points.Add(new Point(SBus.Location.X, register.Location.Y + 4));
+
+            return points;
+        }
+
+        private List<Point> GetLinePointsFromProvidedRegisterToDBus(Register register)
+        {
+            var points = new List<Point>();
+
+            points.Add(new Point(register.Location.X, register.Location.Y + register.Height - 4));
+            points.Add(new Point(DBus.Location.X, register.Location.Y + register.Height - 4));
+
+            return points;
+        }
+
+        private List<Point> GetLinePointsFromProvidedRegisterToRBus(Register register)
+        {
+            var points = new List<Point>();
+
+            points.Add(new Point(register.Location.X, register.Location.Y + register.Height / 2));
+            points.Add(new Point(RBus.Location.X, register.Location.Y + register.Height / 2));
+
+            return points;
         }
 
         #endregion
